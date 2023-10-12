@@ -10,6 +10,9 @@ set listchars+=tab:\|.
 set nohlsearch
 set noshowmode noruler noshowcmd
 
+filetype indent off
+set autoindent
+
 autocmd FileType markdown,html* set ts=2 sw=2 et ai
 
 if has ('syntax')
