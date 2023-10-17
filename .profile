@@ -11,6 +11,9 @@ EDITOR=vi
 
 set +a	# End of exports
 
+# Disable Ctrl-S and Ctrl-Q flow-control
+stty -ixon
+
 if tmux has-session 2>/dev/null; then
 	s=$(tmux ls)
 	case $s in
