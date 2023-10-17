@@ -1,10 +1,15 @@
 TODO
 ====
 
-Stuff to learn
+1. ~~Learn about HTTP~~
+2. Learn about REST APIs
+3. *Small* API project
+
+
+Stuff To Learn
 --------------
 * HTTP
-* Rest APIs
+* REST APIs
 * Flask
 * SQL
 * Databases
@@ -15,3 +20,9 @@ Stuff to learn
 * AWS
 * Django
 * FastAPI
+
+
+Project Ideas
+-------------
+* A calculator web app (vanilla HTML/CSS/JS)
+* A local weather landing page (openweathermap API, python/HTML/CSS/JS)
