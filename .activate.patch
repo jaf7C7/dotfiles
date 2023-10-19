@@ -1,0 +1,37 @@
+--- .venv/bin/activate	2023-10-19 17:04:42.222158481 +0100
++++ /tmp/activate	2023-10-19 17:04:30.668947005 +0100
+@@ -27,6 +27,15 @@
+         unset _OLD_VIRTUAL_PS1
+     fi
+ 
++    # Added by jfox
++    if [ -n "${_OLD_VIRTUAL_EXINIT:-}" ] ; then
++        EXINIT="${_OLD_VIRTUAL_EXINIT:-}"
++        export EXINIT
++        unset _OLD_VIRTUAL_EXINIT
++    elif [ ! "${1:-}" = "nondestructive" ] ; then
++        unset EXINIT
++    fi
++
+     unset VIRTUAL_ENV
+     if [ ! "${1:-}" = "nondestructive" ] ; then
+     # Self destruct!
+@@ -54,10 +63,17 @@
+ 
+ if [ -z "${VIRTUAL_ENV_DISABLE_PROMPT:-}" ] ; then
+     _OLD_VIRTUAL_PS1="${PS1:-}"
+-    PS1="(.venv) ${PS1:-}"
++    PS1="\[\e[01;32m\]*\[\e[m\]${PS1:-}"
+     export PS1
+ fi
+ 
++# Added by jfox
++if [ -n "${EXINIT:-}" ] ; then
++    _OLD_VIRTUAL_EXINIT="${EXINIT:-}"
++fi
++EXINIT='set ts=4 sw=4 et ai'
++export EXINIT
++
+ # This should detect bash and zsh, which have a hash command that must
+ # be called to get it to forget past commands.  Without forgetting
+ # past commands the $PATH changes we made may not be respected
