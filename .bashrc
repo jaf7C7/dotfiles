@@ -23,3 +23,9 @@ check-git ()
 	done
 	unset dir
 }
+
+post ()
+{
+	# Usage: `post -d '{"foo": 10, "bar": {"qux": 30}}'`
+	curl -sH 'Content-Type: application/json' -X POST "$@"
+}
