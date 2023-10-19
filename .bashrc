@@ -14,12 +14,12 @@ check-git ()
 {
 	for dir in ~/{dotfiles,bin,notes,projects/*}
 	do
-		# If there are uncommitted changes
-		if [[ -n ${status:=$(git -c color.ui=always -C "$dir" status -s)} ]]
+		status=$(git -c color.ui=always -C "$dir" status -s)
+		if [[ -n $status ]]
 		then
 			printf '\e[01m%s\e[m\n%s\n' "$dir" "$status"
-			unset status
 		fi
+		unset status
 	done
 	unset dir
 }
