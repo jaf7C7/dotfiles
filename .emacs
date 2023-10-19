@@ -10,6 +10,9 @@
 ;; Stop making '.#lock' files
 (setq create-lockfiles nil)
 
+;; Prompt to auto-revert buffers if they change during editing
+(global-auto-revert-mode t)
+
 ;; Make shell-mode indent using tabs and not 4 spaces
 ;; https://www.xemacs.org/Links/tutorials_toc.html#TOC12
 (defun sh-indent-setup ()
