@@ -10,6 +10,12 @@
 ;; Stop making '.#lock' files
 (setq create-lockfiles nil)
 
+;; Make shell-mode indent using tabs and not 4 spaces
+;; https://www.xemacs.org/Links/tutorials_toc.html#TOC12
+(defun sh-indent-setup ()
+  (setq sh-basic-offset 8))
+(add-hook 'sh-mode-hook 'sh-indent-setup)
+
 ;; Use minimal syntax-highlighting
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
