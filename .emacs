@@ -31,5 +31,6 @@
  '(font-lock-comment-face ((t (:foreground "blue" :weight bold))))
  '(font-lock-constant-face ((t (:foreground "cyan"))))
  '(font-lock-function-name-face ((t (:foreground "green" :weight bold))))
+ '(font-lock-keyword-face ((t nil)))
  '(font-lock-string-face ((t (:inherit font-lock-constant-face))))
  '(font-lock-variable-name-face ((t nil))))
