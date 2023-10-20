@@ -20,6 +20,10 @@
 ;; https://www.xemacs.org/Links/tutorials_toc.html#TOC12
 ;;(setq sh-basic-offset 8)
 
+;; Only indent with spaces (no tabs) - Use C-j to skip autoindent and M-i
+;; to insert a tab)
+(setq-default indent-tabs-mode nil)
+
 ;; Highlight trailing whitespace
 (setq-default show-trailing-whitespace t)
 
