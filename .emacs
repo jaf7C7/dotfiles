@@ -1,6 +1,9 @@
 ;; No useless menu bar
 (menu-bar-mode -1)
 
+;; No startup screen
+(setq inhibit-startup-screen t)
+
 ;; Stop creating '#auto-save#' files
 (setq auto-save-default nil)
 
