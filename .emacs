@@ -18,9 +18,7 @@
 
 ;; Make shell-mode indent using tabs and not 4 spaces
 ;; https://www.xemacs.org/Links/tutorials_toc.html#TOC12
-(defun sh-indent-setup ()
-  (setq sh-basic-offset 8))
-(add-hook 'sh-mode-hook 'sh-indent-setup)
+;;(setq sh-basic-offset 8)
 
 ;; Highlight trailing whitespace
 (setq-default show-trailing-whitespace t)
@@ -42,9 +40,3 @@
  '(font-lock-string-face ((t (:inherit font-lock-constant-face))))
  '(font-lock-variable-name-face ((t nil)))
  '(sh-quoted-exec ((t nil))))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
