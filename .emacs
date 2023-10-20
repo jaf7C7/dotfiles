@@ -14,15 +14,14 @@
 (setq create-lockfiles nil)
 
 ;; Prompt to auto-revert buffers if they change during editing
-(global-auto-revert-mode t)
+;;(global-auto-revert-mode t)
 
-;; Make shell-mode indent using tabs and not 4 spaces
-;; https://www.xemacs.org/Links/tutorials_toc.html#TOC12
-;;(setq sh-basic-offset 8)
+;; Disable auto-indent
+;;(setq-default electric-indent-mode nil)
 
 ;; Only indent with spaces (no tabs) - Use C-j to skip autoindent and M-i
-;; to insert a tab)
-(setq-default indent-tabs-mode nil)
+;; to insert a tab
+;;(setq-default indent-tabs-mode nil)
 
 ;; Highlight trailing whitespace
 (setq-default show-trailing-whitespace t)
@@ -30,8 +29,8 @@
 ;; Use minimal syntax highlighting
 (setq font-lock-maximum-decoration nil)
 
-;; To customise a face, put the cursor over the offending text, and hit
-;; `M-x customize-face` -- https://stackoverflow.com/a/1076514
+;; "To customise a face, put the cursor over the offending text, and hit
+;; `M-x customize-face`" -- https://stackoverflow.com/a/1076514
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
