@@ -13,15 +13,7 @@
 ;; Stop making '.#lock' files
 (setq create-lockfiles nil)
 
-;; Prompt to auto-revert buffers if they change during editing
-;;(global-auto-revert-mode t)
 
-;; Disable auto-indent
-;;(setq-default electric-indent-mode nil)
-
-;; Only indent with spaces (no tabs) - Use C-j to skip autoindent and M-i
-;; to insert a tab
-;;(setq-default indent-tabs-mode nil)
 
 ;; Highlight trailing whitespace
 (setq-default show-trailing-whitespace t)
