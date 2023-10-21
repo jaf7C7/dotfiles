@@ -13,7 +13,11 @@
 ;; Stop making '.#lock' files
 (setq create-lockfiles nil)
 
+;; Set how whitespace is displayed in `whitespace-mode`
+(setq whitespace-style '(face trailing tabs tab-mark empty))
 
+;; Set whitespace mode always on
+(global-whitespace-mode 1)
 
 ;; Highlight trailing whitespace
 (setq-default show-trailing-whitespace t)
@@ -34,4 +38,5 @@
  '(font-lock-keyword-face ((t nil)))
  '(font-lock-string-face ((t (:inherit font-lock-constant-face))))
  '(font-lock-variable-name-face ((t nil)))
- '(sh-quoted-exec ((t nil))))
+ '(sh-quoted-exec ((t nil)))
+ '(whitespace-tab ((t (:foreground "black" :weight bold)))))
