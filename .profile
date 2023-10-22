@@ -1,18 +1,27 @@
 # ~/.profile
 
-set -a	# Export all variables assigned
+_append_path()
+{
+	case $PATH in
+	*:"$1") ;;
+	*)
+		PATH=${PATH}:${1}
+	esac
+}
 
-case $PATH in
-~/bin:*) ;;
-*)
-	PATH=~/bin:$PATH
-esac
-EDITOR=vi
+_prepend_path()
+{
+	case $PATH in
+	"$1":*) ;;
+	*)
+		PATH=${1}:${PATH}
+	esac
+}
 
-set +a	# End of exports
+_prepend_path ~/bin
+_append_path ~/go/bin
 
-# Disable Ctrl-S and Ctrl-Q flow-control
-stty -ixon
+unset _append_path _prepend_path
 
 if tmux has-session 2>/dev/null; then
 	s=$(tmux ls)
