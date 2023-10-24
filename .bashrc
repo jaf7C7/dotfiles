@@ -12,7 +12,7 @@ CDPATH=.:~:~/projects
 
 check-git ()
 {
-	for dir in ~/{dotfiles,bin,notes,projects/*}
+	for dir in ~/{dotfiles,bin,notes,projects/*,udemy/*}
 	do
 		status=$(git -c color.ui=always -C "$dir" status -s)
 		if [[ -n $status ]]
