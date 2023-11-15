@@ -3,7 +3,21 @@
 # User extension for the 'lesspipe' utility
 
 case "$1" in
-	*.py)
+	*.*)
+		interpreter="${1##*.}"
+		;;
+	*)
+		read -r shebang _ <"$1"
+		case "$shebang" in
+			'#!'*) ;;
+			*)
+				exit 1
+		esac
+		interpreter="${shebang##*/}"
+esac
+
+case "$interpreter" in
+	py|python)
 		# Rudimentary syntax highlighting for python files.
 		sed -e 's/^\([[:space:]]*def \)\([^(]*\)/\1[1;32m\2[m/g' \
 			-e 's/^\([[:space:]]*class \)\([^(]*\)/\1[1;31m\2[m/g' \
@@ -12,10 +26,8 @@ case "$1" in
 			"$@"
 		 ;;
 	*)
-		 # We don't handle this format.
 		 exit 1
 esac
 
-# No further processing by lesspipe necessary
 exit 0
 
