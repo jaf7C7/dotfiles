@@ -1,0 +1,21 @@
+#!/bin/sh
+#
+# User extension for the 'lesspipe' utility
+
+case "$1" in
+	*.py)
+		# Rudimentary syntax highlighting for python files.
+		sed -e 's/^\([[:space:]]*def \)\([^(]*\)/\1[1;32m\2[m/g' \
+			-e 's/^\([[:space:]]*class \)\([^(]*\)/\1[1;31m\2[m/g' \
+			-e '/^[^#]*$/s/['\''"][^'\''"]*['\''"]/[36m&[m/g' \
+			-e 's/\([^\]\)\(#.*\)/\1[1;34m\2[m/g' \
+			"$@"
+		 ;;
+	*)
+		 # We don't handle this format.
+		 exit 1
+esac
+
+# No further processing by lesspipe necessary
+exit 0
+
