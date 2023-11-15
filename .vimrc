@@ -9,21 +9,15 @@ set nohlsearch
 set noshowmode noruler noshowcmd
 set listchars=tab:.\ 
 set list
-set autoindent
+set copyindent
 
+" Disable vim's automatic indentation
 filetype indent off
 
-autocmd FileType markdown,html* set ts=2 sw=2 et
-autocmd FileType vim set ts=4 sw=4 et
+autocmd FileType sh,python,vim set ai et sw=4
 
 if has ('syntax')
     syntax on
-
-    " Highlight trailing whitespace
-    hi TrailingSpace ctermbg=1
-    au BufEnter * match TrailingSpace /\s\+$/
-    au InsertEnter * match TrailingSpace /\s\+\%#\@<!$/
-    au InsertLeave * match TrailingSpace /\s\+$/
 
     " Get syntax group under the cursor
     function! SynStack()
@@ -33,32 +27,38 @@ if has ('syntax')
         echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
     endfunc
     nnoremap gs :call SynStack()<CR>
-
-    " Syntax highlighting overrides:
-
-    hi clear Directory
-
-    hi clear PreProc
-    hi clear Statement
-    hi clear Identifier
-    hi Constant ctermfg=6
-    hi Function ctermfg=2 cterm=bold
-    hi Comment ctermfg=4 cterm=bold
-    hi clear Type
-    hi clear Special
-    hi clear Error
-    hi Todo ctermfg=1 ctermbg=none cterm=bold
-    hi Title ctermfg=none cterm=bold
-    hi Underlined ctermfg=none cterm=underline
-
-    hi! link vimFunction Function
-    hi! link vimFuncName NONE
-
-    hi! link pythonBuiltin NONE
-    hi! link pythonDecoratorName NONE
-
-    hi markdownLinkText ctermfg=none cterm=underline
-    hi! link markdownUrl Constant
-    hi! link markdownUrlDelimiter NONE
-    hi! link markdownBlockquote NONE
 endif
+
+" Highlight trailing whitespace
+hi TrailingSpace ctermbg=1
+au BufEnter * match TrailingSpace /\s\+$/
+au InsertEnter * match TrailingSpace /\s\+\%#\@<!$/
+au InsertLeave * match TrailingSpace /\s\+$/
+
+" Syntax highlighting overrides:
+
+hi clear Directory
+
+hi clear PreProc
+hi clear Statement
+hi clear Identifier
+hi Constant ctermfg=6
+hi Function ctermfg=2 cterm=bold
+hi Comment ctermfg=4 cterm=bold
+hi clear Type
+hi clear Special
+hi clear Error
+hi Todo ctermfg=1 ctermbg=none cterm=bold
+hi Title ctermfg=none cterm=bold
+hi Underlined ctermfg=none cterm=underline
+
+hi! link vimFunction Function
+hi! link vimFuncName NONE
+
+hi! link pythonBuiltin NONE
+hi! link pythonDecoratorName NONE
+
+hi markdownLinkText ctermfg=none cterm=underline
+hi! link markdownUrl Constant
+hi! link markdownUrlDelimiter NONE
+hi! link markdownBlockquote NONE
