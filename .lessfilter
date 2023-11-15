@@ -1,9 +1,9 @@
 #!/bin/sh
 #
-# User extension for the 'lesspipe' utility
+# User extension for 'lesspipe'.
 
 case "$1" in
-	*.*)
+	?*.*)
 		interpreter="${1##*.}"
 		;;
 	*)
@@ -16,18 +16,24 @@ case "$1" in
 		interpreter="${shebang##*/}"
 esac
 
+# Very rough syntax highlighting.
 case "$interpreter" in
 	py|python)
-		# Rudimentary syntax highlighting for python files.
 		sed -e 's/^\([[:space:]]*def \)\([^(]*\)/\1[1;32m\2[m/g' \
 			-e 's/^\([[:space:]]*class \)\([^(]*\)/\1[1;31m\2[m/g' \
-			-e '/^[^#]*$/s/['\''"][^'\''"]*['\''"]/[36m&[m/g' \
-			-e 's/\([^\]\)\(#.*\)/\1[1;34m\2[m/g' \
+			-e "s/[\"'].*['\"]/[36m\0[m/g" \
+			-e 's/\([^\]*\)\(#.*\)/\1[1;34m\2[m/g' \
 			"$@"
 		 ;;
+	*sh)
+		sed -e 's/^\([[:space:]]*\)\([[:alpha:]_-]*\)\( *()\)/\1[1;32m\2[m\3/g' \
+			-e "s/[\"'].*['\"]/[36m\0[m/g" \
+			-e 's/^\([[:space:]]*\)\(#.*\)/\1[1;34m\2[m/g' \
+			-e 's/\([[:space:]]\{1,\}\)\(#.*\)/\1[1;34m\2[m/g' \
+			"$@"
+		;;
 	*)
 		 exit 1
 esac
 
 exit 0
-
