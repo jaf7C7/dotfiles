@@ -10,11 +10,13 @@ set noshowmode noruler noshowcmd
 set listchars=tab:.\ 
 set list
 set copyindent
+set softtabstop=-1
 
 " Disable vim's automatic indentation
 filetype indent off
 
-autocmd FileType sh,python,vim set ai et sw=4
+autocmd FileType sh,python,vim,sql set ai et sw=4
+autocmd FileType html,css,js set ai et sw=2
 
 if has ('syntax')
     syntax on
@@ -57,6 +59,7 @@ hi! link vimFuncName NONE
 
 hi! link pythonBuiltin NONE
 hi! link pythonDecoratorName NONE
+hi pythonDecorator ctermfg=5
 
 hi markdownLinkText ctermfg=none cterm=underline
 hi! link markdownUrl Constant
