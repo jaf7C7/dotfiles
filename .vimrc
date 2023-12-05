@@ -59,7 +59,7 @@ hi! link vimFuncName NONE
 
 hi! link pythonBuiltin NONE
 hi! link pythonDecoratorName NONE
-hi pythonDecorator ctermfg=5
+"hi pythonDecorator ctermfg=5
 
 hi markdownLinkText ctermfg=none cterm=underline
 hi! link markdownUrl Constant
