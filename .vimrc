@@ -1,18 +1,19 @@
 " ~/.vimrc
 
-set compatible
-set shiftwidth=4
-set softtabstop=-1
-set expandtab
-set copyindent
-set autoindent
-set list
-set listchars=tab:\|\ ,trail:.
-set shortmess=I
-set history=50
-set cpoptions-=<
-set timeoutlen=300
+set compatible      " Act like `vi(1)` as much as possible
+set noexpandtab     " Don't mess with existing tabs
+set shiftwidth=4    " `>>` and `<<` shift 4 spaces
+set softtabstop=-1  " `<Tab>` and `<BS>` insert/delete `shiftwidth` spaces
+set autoindent      " New lines will be indented to the same level as the last
+set copyindent      " `autoindent` will use tabs or spaces accordingly
+set history=50      " Command line history
+set list                        " Show tabs and trailing spaces
+set listchars=tab:\|\ ,trail:.  " Tab: `|    `, Trailing space: `.`
+set shortmess=I                 " No startup screen
 
+" Readline-ish command-line editing
+set cpoptions-=<    " Allow symbolic control chars in mappings (e.g. `<C-a>`)
+set timeoutlen=100  " Wait 100ms after `<Esc>` for a mapping to complete
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-a> <Home>
