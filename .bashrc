@@ -3,6 +3,7 @@
 [[ $- == *i* ]] || return
 
 PS1='\[\e]0;\u@\h:\w$(__git_ps1 " (%s)")\a\]\$ '
+HISTCONTROL=erasedups
 
 shopt -s checkwinsize globstar failglob
 

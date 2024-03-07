@@ -27,5 +27,5 @@ highlight ErrorMsg ctermfg=1 ctermbg=none cterm=none
 highlight clear Directory
 highlight Title ctermfg=none ctermbg=none cterm=bold
 highlight Visual ctermfg=7 ctermbg=4 cterm=none
-highlight PMenu ctermfg=4 ctermbg=none cterm=none
-highlight PMenuSel ctermfg=7 ctermbg=4 cterm=none
+highlight PMenu ctermfg=7 ctermbg=4 cterm=none
+highlight PMenuSel ctermfg=6 ctermbg=5 cterm=bold
