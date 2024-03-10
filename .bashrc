@@ -2,20 +2,18 @@
 
 [[ $- == *i* ]] || return
 
+source ~/dotfiles/git-prompt.sh
+
+[[ -x /usr/bin/lesspipe ]] && eval "$(SHELL=/bin/sh lesspipe)"
+
 PS1='\[\e]0;\u@\h:\w$(__git_ps1 " (%s)")\a\]\$ '
 HISTCONTROL=erasedups
+CDPATH=.:~
 
 shopt -s checkwinsize globstar failglob
 
-alias args='for arg; do printf "%3d %s\n" $((i++)) "$arg"; done; unset i args'
+alias args='for _; do printf "%3d  %s\n" $((i++)) "$_"; done; unset i'
 alias diff='diff --color'
 alias grep='grep --color'
 alias ls='ls --color'
 alias tree='tree -C'
-
-[[ -x /usr/bin/lesspipe ]] && eval "$(SHELL=/bin/sh lesspipe)"
-
-command -v __git_ps1 &>/dev/null || {
-    [[ -e /usr/lib/git-core/git-sh-prompt ]] &&
-    . /usr/lib/git-core/git-sh-prompt
-}
