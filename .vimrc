@@ -19,8 +19,9 @@ set listchars=tab:\|\ ,trail:.  " Tab: `|    `, Trailing space: `.`
 set shortmess=I                 " No startup screen
 set laststatus=0                " Don't show status bar
 set clipboard=                  " Don't use system clipboard
+set viminfo=                    " Don't keep a viminfo file
 set noloadplugins               " Don't load plugins
-filetype plugin indent off      " ^^^^^^^^^^^^^^^^^^
+filetype plugin indent off      " Don't load plugins
 
 " Readline-ish command-line editing and completion
 set wildchar=<Tab>
@@ -35,9 +36,15 @@ cnoremap <Esc>b <S-Left>
 " :p -> :prev[ious]
 cnoreabbrev p prev
 
-" K calls python help
+" K calls language help
 autocmd FileType python setlocal keywordprg=python\ -c'help(<cword>)'
+autocmd FileType sh setlocal keywordprg=<cword>\ --help
 
+" Ctrl-K runs test under cursor
+autocmd FileType python nnoremap <C-k> :!coverage run -m pytest -k <cword><CR>
+
+" Only use standard 8 terminal colours
+set t_Co=8
 if has('syntax')
     syntax clear
     hi Comment ctermfg=1 ctermbg=none cterm=none
@@ -50,18 +57,16 @@ if has('syntax')
     hi Underlined ctermfg=none ctermbg=none cterm=none
     hi Ignore ctermfg=none ctermbg=none cterm=none
     hi Error ctermfg=none ctermbg=none cterm=none
-    hi Todo ctermfg=0 ctermbg=1 cterm=reverse
+    hi Todo ctermfg=3 ctermbg=none cterm=bold
     hi String ctermfg=2 ctermbg=none cterm=none
+    hi Number ctermfg=5 ctermbg=none cterm=none
     hi Function ctermfg=4 ctermbg=none cterm=bold
-    "
-    " TODO: Vim can't highlight long strings correctly
-    "     https://learnvimscriptthehardway.stevelosh.com/chapters/47.html
-    "     https://vim.fandom.com/wiki/Fix_syntax_highlighting
-    "
-    " au filetype python
-    "    \ hi DocString ctermfg=4 cterm=bold |
-    "    \ match DocString /"""\_.\{-}"""$/
-    " syntax enable
+    hi GitConflict ctermfg=5 ctermbg=none cterm=bold
+    2match GitConflict /^[><=]\{7\}.*/
+    hi Class ctermfg=1 cterm=bold
+    autocmd FileType python 3match Class /class \zs\w\+\ze[:(]/
+    hi pythonBuiltin ctermfg=6
+    syntax enable
 endif
 
 highlight ErrorMsg ctermfg=1 ctermbg=none cterm=none
