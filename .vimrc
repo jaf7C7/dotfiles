@@ -16,17 +16,18 @@ augroup color_overrides
        \ | hi Directory ctermfg=15
        \ | hi Title ctermfg=15 cterm=bold
        \ | hi SpecialKey ctermfg=1 cterm=bold
-       \ | hi NonText ctermfg=None cterm=bold
+       \ | hi NonText ctermfg=none cterm=bold
        \ | hi Search ctermfg=0 ctermbg=15 cterm=none
        \ | hi IncSearch ctermfg=0 ctermbg=11 cterm=bold
        \ | hi Error ctermfg=7 ctermbg=1
-       \ | hi Todo ctermfg=9 ctermbg=None cterm=bold
+       \ | hi Todo ctermfg=9 ctermbg=none cterm=bold
+       \ | hi MatchParen ctermfg=0 ctermbg=6 cterm=none
        \ | hi Statement ctermfg=12 cterm=bold
-       \ | hi Comment ctermfg=14
+       \ | hi Comment ctermfg=6
        \ | hi String ctermfg=2
        \ | hi Constant ctermfg=1
        \ | hi Identifier ctermfg=15 cterm=bold
-       \ | hi Type ctermfg=6
+       \ | hi Type ctermfg=5
        \ | hi Special ctermfg=3
        \ | hi PreProc ctermfg=15
 
