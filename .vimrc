@@ -11,7 +11,7 @@ cnoremap <C-H> <C-W>
 " See `:help colorscheme-override`.
 augroup color_overrides
     autocmd!
-    autocmd Colorscheme *
+    autocmd Colorscheme default
        \ set t_Co=16
        \ | hi Directory ctermfg=15
        \ | hi Title ctermfg=15 cterm=bold
@@ -21,7 +21,6 @@ augroup color_overrides
        \ | hi IncSearch ctermfg=0 ctermbg=11 cterm=bold
        \ | hi Error ctermfg=7 ctermbg=1
        \ | hi Todo ctermfg=9 ctermbg=None cterm=bold
-    autocmd Colorscheme default
        \ | hi Statement ctermfg=12 cterm=bold
        \ | hi Comment ctermfg=14
        \ | hi String ctermfg=2
