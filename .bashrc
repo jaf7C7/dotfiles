@@ -7,7 +7,7 @@ __git_ps1 ()
 		# TODO: Display 'rebasing...' if currently rebasing
 	fi
 }
-PS1='\[\e]0;\u@\h:\w$(__git_ps1)\a\]\$ '  # Prompt sets terminal title
+PROMPT_COMMAND='printf "\e]0;%s\a" "${USER}@${HOSTNAME}:${PWD//$HOME/\~}$(__git_ps1)"'
 export EDITOR='vi'
 alias ls='ls --color'
 alias grep='grep --color'
