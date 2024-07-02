@@ -1,3 +1,4 @@
+[[ -f /etc/bashrc ]] && . /etc/bashrc
 __git_ps1 ()
 {
 	command -v git &>/dev/null || return
