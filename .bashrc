@@ -8,6 +8,7 @@ __git_ps1 ()
 	fi
 }
 PS1='\[\e]0;\u@\h:\w$(__git_ps1)\a\]\$ '  # Prompt sets terminal title
+export EDITOR='vi'
 alias ls='ls --color'
 alias grep='grep --color'
 alias diff='diff --color'
