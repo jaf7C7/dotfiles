@@ -7,6 +7,9 @@ set expandtab
 " Comment text with `gc{motion}` or `gcc`.
 packadd comment
 
+" Improve `%` behaviour
+packadd matchit
+
 
 " Make Ctrl-Backspace delete previous word.
 inoremap <C-H> <C-W>
