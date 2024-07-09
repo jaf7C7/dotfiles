@@ -43,6 +43,16 @@ augroup END
 color default
 
 
+" Check syn item under cursor with `gs`
+function! SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+nnoremap gs :call SynStack()<CR>
+
+
 " Vimscript
 augroup vimscript_syntax_overrides
     autocmd!
@@ -87,13 +97,3 @@ augroup javascript_syntax_overrides
         \ | syn region javaScriptComment start=+/\*+ end=+\*/+  contains=CONTAINED
         \ | syn keyword javaScriptReserved from
 augroup END
-
-
-" Check syntax item under cursor with `gs`
-function! SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
-nnoremap gs :call SynStack()<CR>
