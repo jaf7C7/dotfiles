@@ -46,7 +46,7 @@ color default
 " Vimscript
 augroup vimscript_syntax_overrides
     autocmd!
-    autocmd FileType vimscript syntax clear vimFuncName
+    autocmd FileType vimscript syn clear vimFuncName
 augroup END
 
 
