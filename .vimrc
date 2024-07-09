@@ -4,6 +4,9 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+" Comment text with `gc{motion}` or `gcc`.
+packadd comment
+
 
 " Make Ctrl-Backspace delete previous word.
 inoremap <C-H> <C-W>
