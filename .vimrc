@@ -4,9 +4,11 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+
 " Make Ctrl-Backspace delete previous word.
 inoremap <C-H> <C-W>
 cnoremap <C-H> <C-W>
+
 
 " See `:help colorscheme-override`.
 augroup color_overrides
@@ -32,6 +34,7 @@ augroup color_overrides
         \ | hi clear Special
         \ | hi clear PreProc
 augroup END
+
 color default
 
 
