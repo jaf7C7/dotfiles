@@ -16,6 +16,13 @@ inoremap <C-H> <C-W>
 cnoremap <C-H> <C-W>
 
 
+" Mark trailing whitespace as an error when not in insert mode.
+3match Error /\s\+$/
+autocmd BufWinEnter * 3match Error /\s\+$/
+autocmd InsertEnter * 3match Error /\s\+\%#\@<!$/
+autocmd InsertLeave * 3match Error /\s\+$/
+
+
 " See `:help colorscheme-override`.
 augroup color_overrides
     autocmd!
