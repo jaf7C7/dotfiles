@@ -66,3 +66,13 @@ augroup javascript_syntax_overrides
         \ | syntax match javaScriptLineComment +\/\/.*+ contains=CONTAINED
         \ | syntax region javaScriptComment start=+/\*+ end=+\*/+  contains=CONTAINED
 augroup END
+
+
+" Check syntax item under cursor with `gs`
+function! SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+nnoremap gs :call SynStack()<CR>
