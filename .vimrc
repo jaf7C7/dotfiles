@@ -29,10 +29,15 @@ augroup color_overrides
         \ | hi Comment ctermfg=3
         \ | hi String ctermfg=6
         \ | hi clear Constant
-        \ | hi! link Identifier Statement
+        \ | hi clear Identifier
         \ | hi clear Type
         \ | hi clear Special
         \ | hi clear PreProc
+        \ | hi clear Function
+        \ | hi PMenu ctermfg=0 ctermbg=8
+        \ | hi PMenuSel ctermfg=0 ctermbg=7
+        \ | hi PmenuSbar ctermbg=8
+        \ | hi PmenuThumb ctermbg=7
 augroup END
 
 color default
