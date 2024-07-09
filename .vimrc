@@ -67,9 +67,9 @@ augroup python_syntax_overrides
         \ | hi link pythonOperator Statement
         \ | hi link pythonInclude Statement
         \ | hi pythonBuiltin cterm=bold
-        \ | syntax clear pythonFunction
-        \ | syntax match pythonBraces /[][{}()]/
-        \ | syntax match pythonOperator /[-+*^%></?!=&|]\+\ze\(\s\+\|$\)/
+        \ | syn clear pythonFunction
+        \ | syn match pythonBraces /[][{}()]/
+        \ | syn match pythonOperator /[-+*^%></?!=&|]\+\ze\(\s\+\|$\)/
 augroup END
 
 
