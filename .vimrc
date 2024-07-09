@@ -77,11 +77,15 @@ augroup END
 augroup javascript_syntax_overrides
     autocmd!
     autocmd FileType javascript
-        \ syn clear javaScriptBraces
+        \ hi link javaScriptBraces Statement
+        \ | hi link javaScriptIdentifier Statement
+        \ | hi link javaScriptFunction Statement
+        \ | syn clear javaScriptBraces
         \ | syn match javaScriptBraces /[][{}()]/
-        \ | syntax match javaScriptOperator /[-+*^%></?!=&|]\+\ze\(\s\+\|$\)/
-        \ | syntax match javaScriptLineComment +\/\/.*+ contains=CONTAINED
-        \ | syntax region javaScriptComment start=+/\*+ end=+\*/+  contains=CONTAINED
+        \ | syn match javaScriptOperator /[-+*^%></?!=&|]\+\ze\(\s\+\|$\)/
+        \ | syn match javaScriptLineComment +\/\/.*+ contains=CONTAINED
+        \ | syn region javaScriptComment start=+/\*+ end=+\*/+  contains=CONTAINED
+        \ | syn keyword javaScriptReserved from
 augroup END
 
 
