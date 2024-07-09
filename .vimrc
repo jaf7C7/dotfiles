@@ -40,3 +40,17 @@ augroup vimscript_syntax_overrides
     autocmd!
     autocmd FileType vimscript syntax clear vimFuncName
 augroup END
+
+
+" Python
+augroup python_syntax_overrides
+    autocmd!
+    autocmd FileType python
+        \ hi link pythonBraces Statement
+        \ | hi link pythonOperator Statement
+        \ | hi link pythonInclude Statement
+        \ | hi pythonBuiltin cterm=bold
+        \ | syntax clear pythonFunction
+        \ | syntax match pythonBraces /[][{}()]/
+        \ | syntax match pythonOperator /[-+*^%></?!=&|]\+\ze\(\s\+\|$\)/
+augroup END
