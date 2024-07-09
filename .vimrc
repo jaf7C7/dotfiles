@@ -54,3 +54,15 @@ augroup python_syntax_overrides
         \ | syntax match pythonBraces /[][{}()]/
         \ | syntax match pythonOperator /[-+*^%></?!=&|]\+\ze\(\s\+\|$\)/
 augroup END
+
+
+" JavaScript
+augroup javascript_syntax_overrides
+    autocmd!
+    autocmd FileType javascript
+        \ syn clear javaScriptBraces
+        \ | syn match javaScriptBraces /[][{}()]/
+        \ | syntax match javaScriptOperator /[-+*^%></?!=&|]\+\ze\(\s\+\|$\)/
+        \ | syntax match javaScriptLineComment +\/\/.*+ contains=CONTAINED
+        \ | syntax region javaScriptComment start=+/\*+ end=+\*/+  contains=CONTAINED
+augroup END
