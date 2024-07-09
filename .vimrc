@@ -33,3 +33,10 @@ augroup color_overrides
         \ | hi clear PreProc
 augroup END
 color default
+
+
+" Vimscript
+augroup vimscript_syntax_overrides
+    autocmd!
+    autocmd FileType vimscript syntax clear vimFuncName
+augroup END
