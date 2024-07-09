@@ -50,6 +50,15 @@ augroup vimscript_syntax_overrides
 augroup END
 
 
+" Shell
+augroup shell_syntax_overrides
+    autocmd!
+    autocmd FileType sh
+        \ hi link shVarAssign shStatement
+        \ | hi link shCaseEsac shStatement
+augroup END
+
+
 " Python
 augroup python_syntax_overrides
     autocmd!
