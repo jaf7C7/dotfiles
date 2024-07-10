@@ -1,16 +1,15 @@
+" See :h 'indent.txt' for indentation options.
 filetype plugin indent on
 
 " Comment text with `gc{motion}` or `gcc`.
 packadd comment
 
-" Improve `%` behaviour
+" Improve `%` behaviour.
 packadd matchit
-
 
 " Make Ctrl-Backspace delete previous word.
 inoremap <C-H> <C-W>
 cnoremap <C-H> <C-W>
-
 
 " Mark trailing whitespace as an error when not in insert mode.
 3match Error /\s\+$/
@@ -55,7 +54,7 @@ augroup END
 color default
 
 
-" Check syn item under cursor with `gs`
+" Check syn item under cursor with `gs`.
 function! SynStack()
   if !exists("*synstack")
     return
@@ -65,14 +64,14 @@ endfunc
 nnoremap gs :call SynStack()<CR>
 
 
-" Vimscript
+" Vimscript.
 augroup vimscript_syntax_overrides
     autocmd!
     autocmd FileType vimscript syn clear vimFuncName
 augroup END
 
 
-" Shell
+" Shell.
 augroup shell_syntax_overrides
     autocmd!
     autocmd FileType sh
@@ -81,7 +80,7 @@ augroup shell_syntax_overrides
 augroup END
 
 
-" Python
+" Python.
 augroup python_syntax_overrides
     autocmd!
     autocmd FileType python
@@ -95,7 +94,7 @@ augroup python_syntax_overrides
 augroup END
 
 
-" JavaScript
+" JavaScript.
 augroup javascript_syntax_overrides
     autocmd!
     autocmd FileType javascript
