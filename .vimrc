@@ -1,9 +1,5 @@
 filetype plugin indent on
 
-set tabstop=4
-set shiftwidth=4
-set expandtab
-
 " Comment text with `gc{motion}` or `gcc`.
 packadd comment
 
@@ -21,6 +17,9 @@ cnoremap <C-H> <C-W>
 autocmd BufWinEnter * 3match Error /\s\+$/
 autocmd InsertEnter * 3match Error /\s\+\%#\@<!$/
 autocmd InsertLeave * 3match Error /\s\+$/
+
+" Filetype whitespace settings
+autocmd FileType javascript setlocal sw=4 et
 
 
 " See `:help colorscheme-override`.
