@@ -26,7 +26,7 @@ augroup color_overrides
         \ | hi ColorColumn ctermbg=8 cterm=bold
         \ | hi Directory ctermfg=15
         \ | hi ErrorMsg ctermfg=1 ctermbg=none cterm=bold
-        \ | hi IncSearch ctermfg=0 ctermbg=13 cterm=bold
+        \ | hi IncSearch ctermfg=0 ctermbg=13 cterm=none
         \ | hi NonText ctermfg=none cterm=bold
         \ | hi PMenu ctermfg=0 ctermbg=8
         \ | hi PmenuSbar ctermbg=8
@@ -42,11 +42,11 @@ augroup color_overrides
         \ | hi clear PreProc
         \ | hi clear Special
         \ | hi clear Type
-        \ | hi Comment ctermfg=2
+        \ | hi Comment ctermfg=3
         \ | hi Error ctermfg=7 ctermbg=1
         \ | hi MatchParen ctermfg=9 ctermbg=none cterm=bold
         \ | hi Statement ctermfg=12
-        \ | hi String ctermfg=6
+        \ | hi String ctermfg=2
         \ | hi Todo ctermfg=9 ctermbg=none cterm=bold
 augroup END
 
