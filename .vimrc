@@ -1,11 +1,8 @@
-" See :h 'indent.txt' for indentation options.
-filetype plugin indent on
+filetype plugin indent on " See :help 'indent.txt'
+packadd comment           " Comment text with `gc{motion}` or `gcc`.
+packadd matchit           " Improve `%` behaviour.
 
-" Comment text with `gc{motion}` or `gcc`.
-packadd comment
-
-" Improve `%` behaviour.
-packadd matchit
+set nohlsearch
 
 " Make Ctrl-Backspace delete previous word.
 inoremap <C-H> <C-W>
@@ -18,93 +15,62 @@ autocmd InsertEnter * 3match Error /\s\+\%#\@<!$/
 autocmd InsertLeave * 3match Error /\s\+$/
 
 " Filetype whitespace settings
-autocmd FileType javascript setlocal sw=4 et
-
+autocmd FileType javascript,vim setlocal sw=4 et
+autocmd FileType html setlocal sw=2 et
 
 " See `:help colorscheme-override`.
 augroup color_overrides
     autocmd!
     autocmd Colorscheme default
         \ set t_Co=16
-        \ | hi Directory ctermfg=15
-        \ | hi Title ctermfg=15 cterm=bold
-        \ | hi SpecialKey ctermfg=1 cterm=bold
-        \ | hi NonText ctermfg=none cterm=bold
-        \ | hi Search ctermfg=0 ctermbg=7 cterm=none
-        \ | hi IncSearch ctermfg=0 ctermbg=13 cterm=bold
-        \ | hi Error ctermfg=7 ctermbg=1
-        \ | hi Todo ctermfg=9 ctermbg=none cterm=bold
-        \ | hi MatchParen ctermfg=9 ctermbg=none cterm=bold
         \ | hi ColorColumn ctermbg=8 cterm=bold
-        \ | hi Statement ctermfg=12
-        \ | hi Comment ctermfg=3
-        \ | hi String ctermfg=6
-        \ | hi clear Constant
-        \ | hi clear Identifier
-        \ | hi clear Type
-        \ | hi clear Special
-        \ | hi clear PreProc
-        \ | hi clear Function
+        \ | hi Directory ctermfg=15
+        \ | hi ErrorMsg ctermfg=1 ctermbg=none cterm=bold
+        \ | hi IncSearch ctermfg=0 ctermbg=13 cterm=bold
+        \ | hi NonText ctermfg=none cterm=bold
         \ | hi PMenu ctermfg=0 ctermbg=8
-        \ | hi PMenuSel ctermfg=0 ctermbg=7
         \ | hi PmenuSbar ctermbg=8
+        \ | hi PMenuSel ctermfg=0 ctermbg=7
         \ | hi PmenuThumb ctermbg=7
+        \ | hi Search ctermfg=0 ctermbg=7 cterm=none
+        \ | hi SpecialKey ctermfg=1 cterm=bold
+        \ | hi Title ctermfg=15 cterm=bold
+        \ | hi WarningMsg ctermfg=3 cterm=bold
+        \ | hi clear Constant
+        \ | hi clear Function
+        \ | hi clear Identifier
+        \ | hi clear PreProc
+        \ | hi clear Special
+        \ | hi clear Type
+        \ | hi Comment ctermfg=2
+        \ | hi Error ctermfg=7 ctermbg=1
+        \ | hi MatchParen ctermfg=9 ctermbg=none cterm=bold
+        \ | hi Statement ctermfg=12
+        \ | hi String ctermfg=6
+        \ | hi Todo ctermfg=9 ctermbg=none cterm=bold
 augroup END
 
 color default
 
-
 " Check syn item under cursor with `gs`.
 function! SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+    if !exists("*synstack")
+        return
+    endif
+    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 nnoremap gs :call SynStack()<CR>
 
-
-" Vimscript.
-augroup vimscript_syntax_overrides
-    autocmd!
-    autocmd FileType vimscript syn clear vimFuncName
-augroup END
-
-
-" Shell.
-augroup shell_syntax_overrides
-    autocmd!
-    autocmd FileType sh
-        \ hi link shVarAssign shStatement
-        \ | hi link shCaseEsac shStatement
-augroup END
-
-
-" Python.
-augroup python_syntax_overrides
-    autocmd!
-    autocmd FileType python
-        \ hi link pythonBraces Statement
-        \ | hi link pythonOperator Statement
-        \ | hi link pythonInclude Statement
-        \ | hi pythonBuiltin cterm=bold
-        \ | syn clear pythonFunction
-        \ | syn match pythonBraces /[][{}()]/
-        \ | syn match pythonOperator /[-+*^%></?!=&|]\+\ze\(\s\+\|$\)/
-augroup END
-
-
-" JavaScript.
-augroup javascript_syntax_overrides
-    autocmd!
-    autocmd FileType javascript
-        \ hi link javaScriptBraces Statement
-        \ | hi link javaScriptIdentifier Statement
-        \ | hi link javaScriptFunction Statement
-        \ | syn clear javaScriptBraces
-        \ | syn match javaScriptBraces /[][{}()]/
-        \ | syn match javaScriptOperator /[-+*^%></?!=&|]\+\ze\(\s\+\|$\)/
-        \ | syn match javaScriptLineComment +\/\/.*+ contains=CONTAINED
-        \ | syn region javaScriptComment start=+/\*+ end=+\*/+  contains=CONTAINED
-        \ | syn keyword javaScriptReserved from
-augroup END
+" Syntax overrides
+autocmd FileType python syntax keyword Statement import from
+autocmd FileType sh
+    \ hi! link shQuote String
+    \ | hi! link shOperator None
+    \ | hi! link bashStatement None
+    \ | hi! link shStatement None
+    \ | hi! link shConditional None
+    \ | hi! link shIf None
+    \ | hi! link shSet None
+    \ | hi! link shSnglCase None
+    \ | hi! link shRepeat None
+    \ | syn clear shDerefWordError
