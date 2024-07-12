@@ -26,7 +26,7 @@ augroup color_overrides
         \ | hi ColorColumn ctermbg=8 cterm=bold
         \ | hi Directory ctermfg=15
         \ | hi ErrorMsg ctermfg=1 ctermbg=none cterm=bold
-        \ | hi IncSearch ctermfg=0 ctermbg=13 cterm=none
+        \ | hi IncSearch ctermfg=0 ctermbg=15 cterm=none
         \ | hi NonText ctermfg=none cterm=bold
         \ | hi PMenu ctermfg=0 ctermbg=8
         \ | hi PmenuSbar ctermbg=8
@@ -35,14 +35,15 @@ augroup color_overrides
         \ | hi Search ctermfg=0 ctermbg=7 cterm=none
         \ | hi SpecialKey ctermfg=1 cterm=bold
         \ | hi Title ctermfg=15 cterm=bold
+        \ | hi Underlined ctermfg=none cterm=underline
         \ | hi WarningMsg ctermfg=3 cterm=bold
         \ | hi clear Constant
-        \ | hi clear Function
+        \ | hi Function ctermfg=15
         \ | hi clear Identifier
         \ | hi clear PreProc
         \ | hi clear Special
         \ | hi clear Type
-        \ | hi Comment ctermfg=3
+        \ | hi Comment ctermfg=6
         \ | hi Error ctermfg=7 ctermbg=1
         \ | hi MatchParen ctermfg=9 ctermbg=none cterm=bold
         \ | hi Statement ctermfg=12
@@ -72,7 +73,6 @@ autocmd FileType sh
     \ | hi! link shTestOpr None
     \ | hi! link shLoop Statement
     \ | hi! link shIf None
-    \ | hi! link shSet None
     \ | hi! link shSnglCase None
     \ | hi! link shRepeat None
     \ | syn clear shDerefWordError
