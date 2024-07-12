@@ -67,8 +67,10 @@ autocmd FileType sh
     \ hi! link shQuote String
     \ | hi! link shOperator None
     \ | hi! link bashStatement None
-    \ | hi! link shStatement None
-    \ | hi! link shConditional None
+    \ | hi! link shSet shStatement
+    \ | hi! link shConditional Statement
+    \ | hi! link shTestOpr None
+    \ | hi! link shLoop Statement
     \ | hi! link shIf None
     \ | hi! link shSet None
     \ | hi! link shSnglCase None
