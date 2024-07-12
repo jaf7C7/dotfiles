@@ -13,6 +13,7 @@ export EDITOR='vi'
 alias ls='ls --color'
 alias grep='grep --color'
 alias diff='diff --color'
+alias open='xdg-open'
 if [[ $OS == 'Windows_NT' ]]
 then
 	alias python='winpty python'
