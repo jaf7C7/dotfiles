@@ -1,6 +1,7 @@
 filetype plugin indent on " See :help 'indent.txt'
 packadd comment           " Comment text with `gc{motion}` or `gcc`.
 packadd matchit           " Improve `%` behaviour.
+set nohlsearch
 
 " Make Ctrl-Backspace delete previous word.
 inoremap <C-H> <C-W>
@@ -23,7 +24,7 @@ augroup colorscheme_overrides
         \| hi ColorColumn ctermbg=7 guibg=#362300
         \| hi MatchParen guibg=#795000 guifg=#FFA800
         \| hi Todo ctermfg=15 ctermbg=0 guibg=#FFA800 guifg=#251800 cterm=bold
-        \| hi Search guifg=#CB8600 guibg=#362300
+        \| hi Search ctermfg=none ctermbg=7 guifg=#CB8600 guibg=#362300
         \| hi Comment ctermfg=1 cterm=italic guifg=#795000
         \| hi Constant ctermfg=none guifg=#875a01
         \| hi Special ctermfg=none guifg=#CB8600
