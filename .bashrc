@@ -22,3 +22,23 @@ then
 fi
 stty -ixon  # Disable Ctrl-S pausing input
 stty werase '^H'  # Make Ctrl-Backspace delete previous word
+
+# See section: 'Operating System Controls'
+# https://www.xfree86.org/current/ctlseqs.html
+defcolor ()
+{
+	# Change color number $1 to rgb/hex value $2
+	printf '\033]4;%d;%s\007' "$1" "$2"
+}
+
+setbg ()
+{
+	# Change background to rgb/hex value $1
+	printf '\033]11;%s\007' "$1"
+}
+
+setfg ()
+{
+	# Change background to rgb/hex value $1
+	printf '\033]10;%s\007' "$1"
+}
