@@ -17,15 +17,20 @@ autocmd FileType html setlocal sw=2 et
 
 augroup colorscheme_overrides
     autocmd!
+    set t_Co=8
     autocmd ColorScheme default
-        \ set t_Co=256
-        \| hi Comment ctermfg=1
-        \| hi clear Constant
-        \| hi clear Special
-        \| hi clear Identifier
-        \| hi clear Statement
-        \| hi clear PreProc
-        \| hi clear Type
+        \ hi Normal ctermfg=none guifg=#CB8600 guibg=#251800
+        \| hi ColorColumn ctermbg=7 guibg=#362300
+        \| hi MatchParen guibg=#795000 guifg=#FFA800
+        \| hi Todo ctermfg=15 ctermbg=0 guibg=#FFA800 guifg=#251800 cterm=bold
+        \| hi Search guifg=#CB8600 guibg=#362300
+        \| hi Comment ctermfg=1 cterm=italic guifg=#795000
+        \| hi Constant ctermfg=none guifg=#875a01
+        \| hi Special ctermfg=none guifg=#CB8600
+        \| hi Identifier gui=bold ctermfg=none guifg=#FFA800
+        \| hi Statement ctermfg=none guifg=#CB8600
+        \| hi PreProc ctermfg=none guifg=#CB8600
+        \| hi Type ctermfg=none guifg=#CB8600
 augroup END
 
 color default
