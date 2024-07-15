@@ -22,6 +22,7 @@ __setfg ()
 
 set_theme ()
 {
+	# TODO: Find escape sequence to toggle 'use bright colors for bold'
 	case "$1" in
 	'dark')
 		__setbg '#251800'
