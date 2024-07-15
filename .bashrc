@@ -20,7 +20,7 @@ __setfg ()
 	printf '\033]10;%s\007' "$1"
 }
 
-__set_theme ()
+set_theme ()
 {
 	case "$1" in
 	'dark')
@@ -51,9 +51,7 @@ __set_theme ()
 	esac
 }
 
-__set_theme 'light'
-
-unset __defcolor __setbg __setfg __set_theme
+set_theme 'light'
 
 __git_ps1 ()
 {
