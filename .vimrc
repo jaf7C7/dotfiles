@@ -22,6 +22,7 @@ autocmd FileType html setlocal sw=2 et
 augroup color_overrides
     autocmd!
     autocmd Colorscheme default
+        \ hi ColorColumn ctermfg=147 ctermbg=234 cterm=bold
         \ | hi Comment ctermfg=147
         \ | hi Statement ctermfg=178
         \ | hi Constant ctermfg=134
