@@ -13,7 +13,7 @@ XTerm.vt100.tiXtraScroll: True
 ! Trim trailing blanks and newlines from selection.
 XTerm.vt100.cutNewline: False
 XTerm.vt100.trimSelection: True
-XTerm.vt100.on3Clicks: regex (http[^[:space:]]*)|(['"`][^'"`]*['"`])|(![^[:space:]].*$)
+XTerm.vt100.on3Clicks: regex (http[^[:space:]]*)|(['"`][^'"`]*['"`])
 XTerm.vt100.on4Clicks: regex [^[:space:]].*$
 XTerm.vt100.translations: #override \
     Shift Ctrl <Key> C: copy-selection(CLIPBOARD) \n\
