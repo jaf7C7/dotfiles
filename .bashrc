@@ -33,23 +33,23 @@ __set_theme ()
 		printf '\033]4;%d;%s\007' "$((i++))" "$color"
 	done
 
-	local fg='#ffffff'
-	local bg='#000000'
+	local fg='#000000'
+	local bg='#ffffff'
 
-	# Set background
-	printf '\033]10;%s\007' "$bg"
 	# Set foreground
-	printf '\033]11;%s\007' "$fg"
+	printf '\033]10;%s\007' "$fg"
+	# Set background
+	printf '\033]11;%s\007' "$bg"
 
 	# Set cursor type (1=blinking block)
 	printf '\033[%d q' 1
 	# Set cursor color
 	#printf '\033]12;%s\007' '#00ff00'
 
-	# Set highlight background
-	printf '\033]19;%s\007' "$fg"
 	# Set highlight foreground
-	printf '\033]17;%s\007' "$bg"
+	printf '\033]17;%s\007' "$fg"
+	# Set highlight background
+	printf '\033]19;%s\007' "$bg"
 }
 
 resize ()
