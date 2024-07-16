@@ -83,6 +83,15 @@ then
 	alias gh='winpty gh'
 fi
 
-stty -ixon        # Disable Ctrl-S pausing input.
-stty werase '^H'  # Make Ctrl-Backspace delete previous word.
+# Disable Ctrl-S pausing input.
+stty -ixon
+
+# Make Ctrl-Backspace delete previous word, depending on the terminal's
+# default setting.
+if ! stty -a | grep -q '; erase = ^H;'
+then
+	stty werase '^H'
+else
+	stty werase '^?'
+fi
 __set_theme

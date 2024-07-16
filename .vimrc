@@ -4,8 +4,11 @@ packadd matchit           " Improve `%` behaviour.
 set nohlsearch
 
 " Make Ctrl-Backspace delete previous word.
-inoremap <C-H> <C-W>
-cnoremap <C-H> <C-W>
+if &t_kb != ''
+    noremap!  
+else
+    noremap!  
+endif
 
 autocmd FileType javascript,vim setlocal sw=4 et
 autocmd FileType html setlocal sw=2 et
