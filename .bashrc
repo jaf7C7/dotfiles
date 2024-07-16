@@ -1,58 +1,62 @@
 [[ -f /etc/bashrc ]] && . /etc/bashrc
 
-# See section: 'Operating System Controls'
-# https://www.xfree86.org/current/ctlseqs.html
-__defcolor ()
+__set_theme ()
 {
-	# Change color number $1 to rgb/hex value $2
-	printf '\033]4;%d;%s\007' "$1" "$2"
+	# XTerm Escape Sequences:
+	# https://invisible-island.net/xterm/ctlseqs/ctlseqs.html
+
+	# VGA theme copied from gnome-terminal
+	local -a VGA=(
+		'#000000'
+		'#AA0000'
+		'#00AA00'
+		'#AA5500'
+		'#0000AA'
+		'#AA00AA'
+		'#00AAAA'
+		'#AAAAAA'
+		'#555555'
+		'#FF5555'
+		'#55FF55'
+		'#FFFF55'
+		'#5555FF'
+		'#FF55FF'
+		'#55FFFF'
+		'#FFFFFF'
+	)
+
+	local i=0
+	local color
+	for color in "${VGA[@]}"
+	do
+		# Define 16-color palette. Accepts `#??????` or `rgb:/??/??/??`.
+		printf '\033]4;%d;%s\007' "$((i++))" "$color"
+	done
+
+	local fg='#ffffff'
+	local bg='#000000'
+
+	# Set background
+	printf '\033]10;%s\007' "$bg"
+	# Set foreground
+	printf '\033]11;%s\007' "$fg"
+
+	# Set cursor type (1=blinking block)
+	printf '\033[%d q' 1
+	# Set cursor color
+	#printf '\033]12;%s\007' '#00ff00'
+
+	# Set highlight background
+	printf '\033]19;%s\007' "$fg"
+	# Set highlight foreground
+	printf '\033]17;%s\007' "$bg"
 }
 
-__setbg ()
+resize ()
 {
-	# Change background to rgb/hex value $1
-	printf '\033]11;%s\007' "$1"
+	# Resize window to <height> x <width> in chars
+	printf '\033[8;%d;%dt' "${1:-24}" "${2:-80}"
 }
-
-__setfg ()
-{
-	# TODO: Change background to rgb/hex value $1
-	printf '\033]10;%s\007' "$1"
-}
-
-set_theme ()
-{
-	# TODO: Find escape sequence to toggle 'use bright colors for bold'
-	case "$1" in
-	'dark')
-		__setbg '#251800'
-		__setfg '#CB8600'
-		__defcolor 0 '#555555'
-		__defcolor 1 '#FF5555'
-		__defcolor 2 '#55FF55'
-		__defcolor 3 '#FFFF55'
-		__defcolor 4 '#5555FF'
-		__defcolor 5 '#FF55FF'
-		__defcolor 6 '#55FFFF'
-		__defcolor 7 '#FFFFFF'
-		export VIMINIT='so ~/.vimrc | set termguicolors'
-		;;
-	'light')
-		__setbg '#ffffff'
-		__setfg '#000000'
-		__defcolor 0 '#000000'
-		__defcolor 1 '#AA0000'
-		__defcolor 2 '#00AA00'
-		__defcolor 3 '#AA5500'
-		__defcolor 4 '#0000AA'
-		__defcolor 5 '#AA00AA'
-		__defcolor 6 '#00AAAA'
-		__defcolor 7 '#AAAAAA'
-		unset VIMINIT
-	esac
-}
-
-set_theme 'light'
 
 __git_ps1 ()
 {
@@ -79,5 +83,7 @@ then
 	alias gh='winpty gh'
 fi
 
-stty -ixon  # Disable Ctrl-S pausing input
-stty werase '^H'  # Make Ctrl-Backspace delete previous word
+stty -ixon        # Disable Ctrl-S pausing input.
+stty werase '^H'  # Make Ctrl-Backspace delete previous word.
+__set_theme
+resize 43 80
