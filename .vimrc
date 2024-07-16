@@ -2,6 +2,7 @@ filetype plugin indent on " See :help 'indent.txt'
 packadd comment           " Comment text with `gc{motion}` or `gcc`.
 packadd matchit           " Improve `%` behaviour.
 set nohlsearch
+set noshowmode
 
 " Make Ctrl-Backspace delete previous word.
 if &t_kb != ''
