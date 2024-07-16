@@ -1,0 +1,20 @@
+XTerm.vt100.faceName: CommitMono:size=12
+XTerm.vt100.faceNameDoublesize: Noto Color Emoji:size=12
+XTerm.vt100.boldColors: False
+XTerm.vt100.cursorOnTime: 500
+XTerm.vt100.cursorOffTime: 500
+XTerm.vt100.scrollBar: False
+! Scroll with mouse in alternate screen
+XTerm.vt100.alternateScroll: True
+XTerm.vt100.saveLines: 10000
+! Push cleared text into scrollback buffer.
+XTerm.vt100.cdXtraScroll: True
+XTerm.vt100.tiXtraScroll: True
+! Trim trailing blanks and newlines from selection.
+XTerm.vt100.cutNewline: False
+XTerm.vt100.trimSelection: True
+XTerm.vt100.on3Clicks: regex (http[^[:space:]]*)|(['"`][^'"`]*['"`])|(![^[:space:]].*$)
+XTerm.vt100.on4Clicks: regex [^[:space:]].*$
+XTerm.vt100.translations: #override \
+    Shift Ctrl <Key> C: copy-selection(CLIPBOARD) \n\
+    Shift Ctrl <Key> V: insert-selection(CLIPBOARD)
