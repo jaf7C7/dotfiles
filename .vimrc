@@ -33,6 +33,12 @@ function! SetTheme()
     " UI
     hi ColorColumn ctermfg=none ctermbg=255
     hi Todo ctermfg=none ctermbg=none cterm=reverse
+    hi Title ctermfg=none cterm=bold
+    hi Underlined ctermfg=none cterm=underline
+    hi clear Directory
+    hi SpecialKey ctermfg=1 cterm=bold
+    hi Error ctermfg=15 ctermbg=1
+    hi PMenu ctermfg=8 ctermbg=255
 
     " Syntax highlighting
     hi clear Search
