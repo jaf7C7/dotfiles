@@ -86,4 +86,3 @@ fi
 stty -ixon        # Disable Ctrl-S pausing input.
 stty werase '^H'  # Make Ctrl-Backspace delete previous word.
 __set_theme
-resize 43 80
