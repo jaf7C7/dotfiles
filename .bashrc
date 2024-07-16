@@ -54,8 +54,8 @@ __set_theme ()
 
 resize ()
 {
-	# Resize window to <height> x <width> in chars
-	printf '\033[8;%d;%dt' "${1:-24}" "${2:-80}"
+	# Resize window to <cols>x<rows> (default 80x43)
+	printf '\033[8;%d;%dt' "${2:-43}" "${1:-80}"
 }
 
 __git_ps1 ()
