@@ -5,8 +5,8 @@ __set_theme ()
 	# XTerm Escape Sequences:
 	# https://invisible-island.net/xterm/ctlseqs/ctlseqs.html
 
-	# VGA theme copied from gnome-terminal
-	local -a VGA=(
+	# linux_console theme copied from gnome-terminal
+	local -a linux_console=(
 		'#000000'
 		'#AA0000'
 		'#00AA00'
@@ -27,7 +27,7 @@ __set_theme ()
 
 	local i=0
 	local color
-	for color in "${VGA[@]}"
+	for color in "${linux_console[@]}"
 	do
 		# Define 16-color palette. Accepts `#??????` or `rgb:/??/??/??`.
 		printf '\033]4;%d;%s\007' "$((i++))" "$color"
