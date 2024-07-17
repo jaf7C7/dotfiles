@@ -31,25 +31,26 @@ nnoremap gs :call SynStack()<CR>
 
 function! SetTheme()
     " UI
-    hi ColorColumn ctermfg=none ctermbg=255
+    hi ColorColumn ctermfg=none ctermbg=8
     hi Todo ctermfg=none ctermbg=none cterm=reverse
     hi Title ctermfg=none ctermbg=none cterm=bold
     hi Underlined ctermfg=none cterm=underline
     hi clear Directory
     hi SpecialKey ctermfg=1 cterm=bold
-    hi Error ctermfg=15 ctermbg=1
-    hi PMenu ctermfg=8 ctermbg=255
+    hi Error ctermfg=7 ctermbg=1
+    hi PMenu ctermfg=0 ctermbg=7
 
     " Syntax highlighting
-    hi clear Search
-    hi clear Comment
-    hi clear Constant
-    hi clear Special
-    hi clear Identifier
-    hi clear Statement
-    hi clear PreProc
-    hi clear Type
+    "hi Search ctermfg=0 ctermbg=7
+    hi Comment ctermfg=1
+    "hi Constant ctermfg=3
+    "hi String ctermfg=150
+    "hi Special ctermfg=5
+    "hi Identifier cterm=bold ctermfg=15
+    "hi Statement ctermfg=147
+    "hi PreProc ctermfg=5
+    "hi Type ctermfg=178
 endfunc
 
-"autocmd ColorScheme default call SetTheme()
-"color default
+autocmd ColorScheme default call SetTheme()
+color default
