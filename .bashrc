@@ -5,51 +5,35 @@ __set_theme ()
 	# XTerm Escape Sequences:
 	# https://invisible-island.net/xterm/ctlseqs/ctlseqs.html
 
-	# linux_console theme copied from gnome-terminal
-	local -a linux_console=(
-		'#000000'
-		'#AA0000'
-		'#00AA00'
-		'#AA5500'
-		'#0000AA'
-		'#AA00AA'
-		'#00AAAA'
-		'#AAAAAA'
-		'#555555'
-		'#FF5555'
-		'#55FF55'
-		'#FFFF55'
-		'#5555FF'
-		'#FF55FF'
-		'#55FFFF'
-		'#FFFFFF'
-	)
-
-	local i=0
-	local color
-	for color in "${linux_console[@]}"
-	do
-		# Define 16-color palette. Accepts `#??????` or `rgb:/??/??/??`.
-		printf '\033]4;%d;%s\007' "$((i++))" "$color"
-	done
+	# Define 16-color palette. Accepts `#??????` or `rgb:/??/??/??`.
+	# 'Linux console' palette from gnome-terminal
+	printf '\033]4;%d;%s\007' \
+		0 '#000000' \
+		1 '#AA0000' \
+		2 '#00AA00' \
+		3 '#AA5500' \
+		4 '#0000AA' \
+		5 '#AA00AA' \
+		6 '#00AAAA' \
+		7 '#AAAAAA' \
+		8 '#555555' \
+		9 '#FF5555' \
+		10 '#55FF55' \
+		11 '#FFFF55' \
+		12 '#5555FF' \
+		13 '#FF55FF' \
+		14 '#55FFFF' \
+		15 '#FFFFFF'
 
 	local fg='#000000'
 	local bg='#ffffff'
 
-	# Set foreground
-	printf '\033]10;%s\007' "$fg"
-	# Set background
-	printf '\033]11;%s\007' "$bg"
-
-	# Set cursor type (1=blinking block)
-	printf '\033[%d q' 1
-	# Set cursor color
-	#printf '\033]12;%s\007' '#00ff00'
-
-	# Set highlight foreground
-	printf '\033]17;%s\007' "$fg"
-	# Set highlight background
-	printf '\033]19;%s\007' "$bg"
+	printf '\033]10;%s\007' "$fg"  # fg
+	printf '\033]11;%s\007' "$bg"  # bg
+	printf '\033[%d q' 1           # cursor type
+	#printf '\033]12;%s\007' '#00ff00'  # cursor color
+	printf '\033]17;%s\007' "$fg"  # selection fg
+	printf '\033]19;%s\007' "$bg"  # selection bg
 }
 
 resize ()
@@ -98,4 +82,5 @@ then
 else
 	stty werase '^?'
 fi
+
 __set_theme
