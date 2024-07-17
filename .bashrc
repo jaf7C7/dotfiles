@@ -25,11 +25,11 @@ theme ()
 		local color15='#FFFFFF'
 
 		case "$2" in
-		'dark')
+		'dark'|'')
 			local fg="$color7"
 			local bg="$color0"
 			;;
-		'light'|'')
+		'light')
 			local fg="$color0"
 			local bg="$color15"
 			;;
@@ -55,11 +55,11 @@ theme ()
 		local color15='#fdf6e3'
 
 		case "$2" in
-		'dark')
+		'dark'|'')
 			local bg="$color8"
 			local fg="$color12"
 			;;
-		'light'|'')
+		'light')
 			local bg="$color15"
 			local fg="$color11"
 			;;
@@ -68,7 +68,7 @@ theme ()
 	'gruvbox')
 		# https://github.com/morhetz/gruvbox-contrib/tree/master/xresources
 		case "$2" in
-		'dark')
+		'dark'|'')
 			local color0='#282828'
 			local color1='#cc241d'
 			local color2='#98971a'
@@ -90,7 +90,7 @@ theme ()
 			local bg='#282828'  # normal contrast
 			local fg='#ebdbb2'
 			;;
-		'light'|'')
+		'light')
 			local color0='#fdf4c1'
 			local color1='#cc241d'
 			local color2='#98971a'
