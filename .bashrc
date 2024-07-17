@@ -71,6 +71,10 @@ __git_ps1 ()
 PS1='\$ '
 PROMPT_COMMAND='printf "\e]0;%s\a" "${USER}@${HOSTNAME}:${PWD//$HOME/\~}$(__git_ps1)"'
 export EDITOR='vi'
+if [[ -d "$HOME/.local/bin" && "$PATH" != "$HOME/.local/bin":* ]]
+then
+	PATH="$HOME/.local/bin:$PATH"
+fi
 
 alias ls='ls --color'
 alias grep='grep --color'
