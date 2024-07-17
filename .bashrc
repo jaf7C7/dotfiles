@@ -1,12 +1,11 @@
+# XTerm control seqs: https://invisible-island.net/xterm/ctlseqs/ctlseqs.html
+
 [[ -f /etc/bashrc ]] && . /etc/bashrc
 
-__set_theme ()
+__linux_console ()
 {
-	# XTerm Escape Sequences:
-	# https://invisible-island.net/xterm/ctlseqs/ctlseqs.html
-
-	# Define 16-color palette. Accepts `#??????` or `rgb:/??/??/??`.
 	# 'Linux console' palette from gnome-terminal
+
 	printf '\033]4;%d;%s\007' \
 		0 '#000000' \
 		1 '#AA0000' \
@@ -30,10 +29,67 @@ __set_theme ()
 
 	printf '\033]10;%s\007' "$fg"  # fg
 	printf '\033]11;%s\007' "$bg"  # bg
-	printf '\033[%d q' 1           # cursor type
-	#printf '\033]12;%s\007' '#00ff00'  # cursor color
 	printf '\033]17;%s\007' "$fg"  # selection fg
 	printf '\033]19;%s\007' "$bg"  # selection bg
+	printf '\033[%d q' 1           # cursor type (1=blinking block)
+}
+
+solarized ()
+{
+	# https://github.com/solarized/xresources/blob/master/Xresources.dark
+
+	local base03='#002b36'
+	local base02='#073642'
+	local base01='#586e75'
+	local base00='#657b83'
+	local base0='#839496'
+	local base1='#93a1a1'
+	local base2='#eee8d5'
+	local base3='#fdf6e3'
+
+	local yellow='#b58900'
+	local orange='#cb4b16'
+	local red='#dc322f'
+	local magenta='#d33682'
+	local violet='#6c71c4'
+	local blue='#268bd2'
+	local cyan='#2aa198'
+	local green='#859900'
+
+	case "$1" in
+	'dark')
+		local bg="$base03"
+		local fg="$base0"
+		;;
+	'light')
+		local bg="$base3"
+		local fg="$base00"
+		;;
+	esac
+
+	printf '\033]4;%d;%s\007' \
+		0 "$base02" \
+		1 "$red" \
+		2 "$green" \
+		3 "$yellow" \
+		4 "$blue" \
+		5 "$magenta" \
+		6 "$cyan" \
+		7 "$base2" \
+		8 "$base03" \
+		9 "$orange" \
+		10 "$base01" \
+		11 "$base00" \
+		12 "$base0" \
+		13 "$violet" \
+		14 "$base1" \
+		15 "$base3"
+
+	printf '\033]10;%s\007' "$fg"  # fg
+	printf '\033]11;%s\007' "$bg"  # bg
+	printf '\033]17;%s\007' "$fg"  # selection fg
+	printf '\033]19;%s\007' "$bg"  # selection bg
+	printf '\033[%d q' 1           # cursor type (1=blinking block)
 }
 
 resize ()
@@ -82,5 +138,3 @@ then
 else
 	stty werase '^?'
 fi
-
-__set_theme
