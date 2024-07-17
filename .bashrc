@@ -36,8 +36,7 @@ theme ()
 		esac
 		;;
 	'solarized')
-		# https://github.com/solarized/xresources/blob/master/Xresources.dark
-
+		# https://github.com/solarized/xresources
 		local color0='#073642'
 		local color1='#dc322f'
 		local color2='#859900'
@@ -63,6 +62,55 @@ theme ()
 		'light'|'')
 			local bg="$color15"
 			local fg="$color11"
+			;;
+		esac
+		;;
+	'gruvbox')
+		# https://github.com/morhetz/gruvbox-contrib/tree/master/xresources
+		case "$2" in
+		'dark')
+			local color0='#282828'
+			local color1='#cc241d'
+			local color2='#98971a'
+			local color3='#d79921'
+			local color4='#458588'
+			local color5='#b16286'
+			local color6='#689d6a'
+			local color7='#a89984'
+			local color8='#928374'
+			local color9='#fb4934'
+			local color10='#b8bb26'
+			local color11='#fabd2f'
+			local color12='#83a598'
+			local color13='#d3869b'
+			local color14='#8ec07c'
+			local color15='#ebdbb2'
+			#local bg='#1d2021'  # hard contrast
+			#local bg='#32302f'  # soft contrast
+			local bg='#282828'  # normal contrast
+			local fg='#ebdbb2'
+			;;
+		'light'|'')
+			local color0='#fdf4c1'
+			local color1='#cc241d'
+			local color2='#98971a'
+			local color3='#d79921'
+			local color4='#458588'
+			local color5='#b16286'
+			local color6='#689d6a'
+			local color7='#7c6f64'
+			local color8='#928374'
+			local color9='#9d0006'
+			local color10='#79740e'
+			local color11='#b57614'
+			local color12='#076678'
+			local color13='#8f3f71'
+			local color14='#427b58'
+			local color15='#3c3836'
+			#local bg='#f9f5d7'  # hard contrast
+			#local bg='#f2e5bc'  # soft contrast
+			local bg='#fbf1c7'  # normal contrast
+			local fg='#3c3836'
 			;;
 		esac
 		;;
