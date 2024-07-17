@@ -2,26 +2,73 @@
 
 [[ -f /etc/bashrc ]] && . /etc/bashrc
 
-__linux_console ()
+theme ()
 {
-	# 'Linux console' palette from gnome-terminal
-	local color0='#000000'
-	local color1='#AA0000'
-	local color2='#00AA00'
-	local color3='#AA5500'
-	local color4='#0000AA'
-	local color5='#AA00AA'
-	local color6='#00AAAA'
-	local color7='#AAAAAA'
-	local color8='#555555'
-	local color9='#FF5555'
-	local color10='#55FF55'
-	local color11='#FFFF55'
-	local color12='#5555FF'
-	local color13='#FF55FF'
-	local color14='#55FFFF'
-	local color15='#FFFFFF'
+	case "$1" in
+	'linux'|'')
+		# 'Linux console' palette from gnome-terminal
+		local color0='#000000'
+		local color1='#AA0000'
+		local color2='#00AA00'
+		local color3='#AA5500'
+		local color4='#0000AA'
+		local color5='#AA00AA'
+		local color6='#00AAAA'
+		local color7='#AAAAAA'
+		local color8='#555555'
+		local color9='#FF5555'
+		local color10='#55FF55'
+		local color11='#FFFF55'
+		local color12='#5555FF'
+		local color13='#FF55FF'
+		local color14='#55FFFF'
+		local color15='#FFFFFF'
 
+		case "$2" in
+		'dark')
+			local fg="$color7"
+			local bg="$color0"
+			;;
+		'light'|'')
+			local fg="$color0"
+			local bg="$color15"
+			;;
+		esac
+		;;
+	'solarized')
+		# https://github.com/solarized/xresources/blob/master/Xresources.dark
+
+		local color0='#073642'
+		local color1='#dc322f'
+		local color2='#859900'
+		local color3='#b58900'
+		local color4='#268bd2'
+		local color5='#d33682'
+		local color6='#2aa198'
+		local color7='#eee8d5'
+		local color8='#002b36'
+		local color9='#cb4b16'
+		local color10='#586e75'
+		local color11='#657b83'
+		local color12='#839496'
+		local color13='#6c71c4'
+		local color14='#93a1a1'
+		local color15='#fdf6e3'
+
+		case "$2" in
+		'dark')
+			local bg="$color8"
+			local fg="$color12"
+			;;
+		'light'|'')
+			local bg="$color15"
+			local fg="$color11"
+			;;
+		esac
+		;;
+	esac
+
+	# Define 16-color palette
 	printf '\033]4;%d;%s\007' \
 		0 "$color0" \
 		1 "$color1" \
@@ -40,80 +87,11 @@ __linux_console ()
 		14 "$color14" \
 		15 "$color15"
 
-	case "$2" in
-	'dark')
-		local fg="$color0"
-		local bg="$color15"
-		;;
-	'light')
-		local fg="$color7"
-		local bg="$color0"
-		;;
-	esac
-
-	printf '\033]10;%s\007' "$fg"  # fg
-	printf '\033]11;%s\007' "$bg"  # bg
-	printf '\033]17;%s\007' "$fg"  # selection fg
-	printf '\033]19;%s\007' "$bg"  # selection bg
-	printf '\033[%d q' 1           # cursor type (1=blinking block)
-}
-
-__solarized ()
-{
-	# https://github.com/solarized/xresources/blob/master/Xresources.dark
-
-	local base03='#002b36'
-	local base02='#073642'
-	local base01='#586e75'
-	local base00='#657b83'
-	local base0='#839496'
-	local base1='#93a1a1'
-	local base2='#eee8d5'
-	local base3='#fdf6e3'
-
-	local yellow='#b58900'
-	local orange='#cb4b16'
-	local red='#dc322f'
-	local magenta='#d33682'
-	local violet='#6c71c4'
-	local blue='#268bd2'
-	local cyan='#2aa198'
-	local green='#859900'
-
-	case "$1" in
-	'dark')
-		local bg="$base03"
-		local fg="$base0"
-		;;
-	'light')
-		local bg="$base3"
-		local fg="$base00"
-		;;
-	esac
-
-	printf '\033]4;%d;%s\007' \
-		0 "$base02" \
-		1 "$red" \
-		2 "$green" \
-		3 "$yellow" \
-		4 "$blue" \
-		5 "$magenta" \
-		6 "$cyan" \
-		7 "$base2" \
-		8 "$base03" \
-		9 "$orange" \
-		10 "$base01" \
-		11 "$base00" \
-		12 "$base0" \
-		13 "$violet" \
-		14 "$base1" \
-		15 "$base3"
-
-	printf '\033]10;%s\007' "$fg"  # fg
-	printf '\033]11;%s\007' "$bg"  # bg
-	printf '\033]17;%s\007' "$fg"  # selection fg
-	printf '\033]19;%s\007' "$bg"  # selection bg
-	printf '\033[%d q' 1           # cursor type (1=blinking block)
+	printf '\033]10;%s\007' "$fg"  # Text fg
+	printf '\033]11;%s\007' "$bg"  # Text bg
+	printf '\033]17;%s\007' "$fg"  # Selection fg
+	printf '\033]19;%s\007' "$bg"  # Selection bg
+	printf '\033[%d q' 1           # Cursor type (1=blinking block)
 }
 
 resize ()
