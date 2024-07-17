@@ -33,7 +33,7 @@ function! SetTheme()
     " UI
     hi ColorColumn ctermfg=none ctermbg=255
     hi Todo ctermfg=none ctermbg=none cterm=reverse
-    hi Title ctermfg=none cterm=bold
+    hi Title ctermfg=none ctermbg=none cterm=bold
     hi Underlined ctermfg=none cterm=underline
     hi clear Directory
     hi SpecialKey ctermfg=1 cterm=bold
@@ -51,5 +51,5 @@ function! SetTheme()
     hi clear Type
 endfunc
 
-autocmd ColorScheme default call SetTheme()
-color default
+"autocmd ColorScheme default call SetTheme()
+"color default
