@@ -5,27 +5,51 @@
 __linux_console ()
 {
 	# 'Linux console' palette from gnome-terminal
+	local color0='#000000'
+	local color1='#AA0000'
+	local color2='#00AA00'
+	local color3='#AA5500'
+	local color4='#0000AA'
+	local color5='#AA00AA'
+	local color6='#00AAAA'
+	local color7='#AAAAAA'
+	local color8='#555555'
+	local color9='#FF5555'
+	local color10='#55FF55'
+	local color11='#FFFF55'
+	local color12='#5555FF'
+	local color13='#FF55FF'
+	local color14='#55FFFF'
+	local color15='#FFFFFF'
 
 	printf '\033]4;%d;%s\007' \
-		0 '#000000' \
-		1 '#AA0000' \
-		2 '#00AA00' \
-		3 '#AA5500' \
-		4 '#0000AA' \
-		5 '#AA00AA' \
-		6 '#00AAAA' \
-		7 '#AAAAAA' \
-		8 '#555555' \
-		9 '#FF5555' \
-		10 '#55FF55' \
-		11 '#FFFF55' \
-		12 '#5555FF' \
-		13 '#FF55FF' \
-		14 '#55FFFF' \
-		15 '#FFFFFF'
+		0 "$color0" \
+		1 "$color1" \
+		2 "$color2" \
+		3 "$color3" \
+		4 "$color4" \
+		5 "$color5" \
+		6 "$color6" \
+		7 "$color7" \
+		8 "$color8" \
+		9 "$color9" \
+		10 "$color10" \
+		11 "$color11" \
+		12 "$color12" \
+		13 "$color13" \
+		14 "$color14" \
+		15 "$color15"
 
-	local fg='#000000'
-	local bg='#ffffff'
+	case "$2" in
+	'dark')
+		local fg="$color0"
+		local bg="$color15"
+		;;
+	'light')
+		local fg="$color7"
+		local bg="$color0"
+		;;
+	esac
 
 	printf '\033]10;%s\007' "$fg"  # fg
 	printf '\033]11;%s\007' "$bg"  # bg
@@ -34,7 +58,7 @@ __linux_console ()
 	printf '\033[%d q' 1           # cursor type (1=blinking block)
 }
 
-solarized ()
+__solarized ()
 {
 	# https://github.com/solarized/xresources/blob/master/Xresources.dark
 
