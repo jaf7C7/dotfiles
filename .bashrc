@@ -239,4 +239,7 @@ else
 	stty werase '^?'
 fi
 
-theme linux light
+if [[ -z "$TERM_PROGRAM" ]]  # VSCode terminal
+then
+	theme solarized
+fi
