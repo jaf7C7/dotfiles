@@ -122,6 +122,46 @@ theme ()
 			;;
 		esac
 		;;
+	'nord')
+		# https://github.com/nordtheme/xresources/blob/develop/src/nord
+
+		local nord0='#2E3440'
+		local nord1='#3B4252'
+		local nord2='#434C5E'
+		local nord3='#4C566A'
+		local nord4='#D8DEE9'
+		local nord5='#E5E9F0'
+		local nord6='#ECEFF4'
+		local nord7='#8FBCBB'
+		local nord8='#88C0D0'
+		local nord9='#81A1C1'
+		local nord10='#5E81AC'
+		local nord11='#BF616A'
+		local nord12='#D08770'
+		local nord13='#EBCB8B'
+		local nord14='#A3BE8C'
+		local nord15='#B48EAD'
+
+		local color0="$nord1"
+		local color1="$nord11"
+		local color2="$nord14"
+		local color3="$nord13"
+		local color4="$nord9"
+		local color5="$nord15"
+		local color6="$nord8"
+		local color7="$nord5"
+		local color8="$nord3"
+		local color9="$nord11"
+		local color10="$nord14"
+		local color11="$nord13"
+		local color12="$nord9"
+		local color13="$nord15"
+		local color14="$nord7"
+		local color15="$nord6"
+
+		local fg="$nord4"
+		local bg="$nord0"
+		;;
 	esac
 
 	# Define 16-color palette
