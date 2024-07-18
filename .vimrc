@@ -69,14 +69,19 @@ function! SetTheme()
 
     elseif $TERMINAL_THEME =~ 'gruvbox'
         hi Statement ctermfg=9
-        hi Identifier ctermfg=12
+        hi Identifier ctermfg=14
         hi Comment ctermfg=8
         hi Constant ctermfg=10
         hi Number ctermfg=13
-        hi Special ctermfg=11
+        hi Special ctermfg=3
         hi PreProc ctermfg=14
         hi Type ctermfg=11
         hi Todo ctermfg=15 ctermbg=0 cterm=bold
+        hi SpecialKey ctermfg=0 ctermbg=7 cterm=bold
+
+        hi! link Operator None
+        hi! pythonInclude ctermfg=12
+        hi! pythonBuiltin ctermfg=6
 
     elseif $TERMINAL_THEME =~ 'nord'
         hi Statement ctermfg=4
