@@ -125,6 +125,8 @@ theme ()
 	'nord')
 		# https://github.com/nordtheme/xresources/blob/develop/src/nord
 
+		export TERMINAL_THEME='nord'
+
 		local nord0='#2E3440'
 		local nord1='#3B4252'
 		local nord2='#434C5E'
