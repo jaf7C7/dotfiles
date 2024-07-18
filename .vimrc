@@ -38,7 +38,7 @@ function! SetTheme()
         set bg=dark
     endif
 
-    if $TERMINAL_THEME =~ 'linux'
+    if !exists('$TERMINAL_THEME') || $TERMINAL_THEME =~ 'linux'
         hi clear Statement
         hi clear Identifier
         hi Comment ctermfg=1
