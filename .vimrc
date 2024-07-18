@@ -48,7 +48,7 @@ function! SetTheme()
         hi clear PreProc
         hi clear Type
         hi Todo ctermfg=none ctermbg=none cterm=reverse
-        hi SpecialKey ctermfg=9 cterm=bold
+        hi SpecialKey ctermfg=none ctermbg=none cterm=reverse
 
     elseif $TERMINAL_THEME =~ 'solarized'
         hi Statement ctermfg=2
@@ -68,6 +68,8 @@ function! SetTheme()
         hi! link vimHiGroup vimGroup
 
     elseif $TERMINAL_THEME =~ 'gruvbox'
+        hi SpecialKey ctermfg=0 ctermbg=7 cterm=bold
+
         hi Statement ctermfg=9
         hi Identifier ctermfg=14
         hi Comment ctermfg=8
@@ -75,13 +77,19 @@ function! SetTheme()
         hi Number ctermfg=13
         hi Special ctermfg=3
         hi PreProc ctermfg=14
-        hi Type ctermfg=11
+        hi Type ctermfg=13
         hi Todo ctermfg=15 ctermbg=0 cterm=bold
-        hi SpecialKey ctermfg=0 ctermbg=7 cterm=bold
+        hi MatchParen ctermfg=none ctermbg=8 cterm=bold
 
+        hi Boolean ctermfg=13
         hi! link Operator None
         hi! pythonInclude ctermfg=12
         hi! pythonBuiltin ctermfg=6
+        hi! javaScriptIdentifier ctermfg=3
+        hi! link javaScriptBraces None
+        hi! link javaScriptOperator Statement
+        hi! link shOption None
+        hi! link Delimiter None
 
     elseif $TERMINAL_THEME =~ 'nord'
         hi Statement ctermfg=4
