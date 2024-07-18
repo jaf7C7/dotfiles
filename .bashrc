@@ -238,8 +238,3 @@ then
 else
 	stty werase '^?'
 fi
-
-if [[ -z "$TERM_PROGRAM" ]]  # VSCode terminal
-then
-	theme solarized
-fi
