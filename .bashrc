@@ -7,6 +7,7 @@ theme ()
 	case "$1" in
 	'linux'|'')
 		# 'Linux console' palette from gnome-terminal
+
 		local color0='#000000'
 		local color1='#AA0000'
 		local color2='#00AA00'
@@ -26,10 +27,12 @@ theme ()
 
 		case "$2" in
 		'dark'|'')
+			export TERMINAL_THEME='linux-dark'
 			local fg="$color7"
 			local bg="$color0"
 			;;
 		'light')
+			export TERMINAL_THEME='linux-light'
 			local fg="$color0"
 			local bg="$color15"
 			;;
@@ -37,6 +40,7 @@ theme ()
 		;;
 	'solarized')
 		# https://github.com/solarized/xresources
+
 		local color0='#073642'
 		local color1='#dc322f'
 		local color2='#859900'
@@ -56,10 +60,12 @@ theme ()
 
 		case "$2" in
 		'dark'|'')
+			export TERMINAL_THEME='solarized-dark'
 			local bg="$color8"
 			local fg="$color12"
 			;;
 		'light')
+			export TERMINAL_THEME='solarized-light'
 			local bg="$color15"
 			local fg="$color11"
 			;;
@@ -69,6 +75,7 @@ theme ()
 		# https://github.com/morhetz/gruvbox-contrib/tree/master/xresources
 		case "$2" in
 		'dark'|'')
+			export TERMINAL_THEME='gruvbox-dark'
 			local color0='#282828'
 			local color1='#cc241d'
 			local color2='#98971a'
@@ -91,6 +98,7 @@ theme ()
 			local fg='#ebdbb2'
 			;;
 		'light')
+			export TERMINAL_THEME='gruvbox-light'
 			local color0='#fdf4c1'
 			local color1='#cc241d'
 			local color2='#98971a'

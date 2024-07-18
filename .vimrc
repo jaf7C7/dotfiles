@@ -40,6 +40,8 @@ function! SetTheme()
     hi Error ctermfg=7 ctermbg=1
     hi PMenu ctermfg=0 ctermbg=7
 
+    " TODO: Check env var 'TERMINAL_THEME' and set colors accordingly
+
     " Syntax highlighting
     hi Search ctermfg=0 ctermbg=7
     hi Comment ctermfg=1
