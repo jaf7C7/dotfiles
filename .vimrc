@@ -38,18 +38,7 @@ function! SetTheme()
         set bg=dark
     endif
 
-    if $TERMINAL_THEME =~ 'gruvbox'
-        hi Statement ctermfg=9
-        hi Identifier ctermfg=12
-        hi Comment ctermfg=8
-        hi Constant ctermfg=10
-        hi Number ctermfg=13
-        hi Special ctermfg=11
-        hi PreProc ctermfg=14
-        hi Type ctermfg=11
-        hi Todo ctermfg=15 ctermbg=0 cterm=bold
-
-    elseif $TERMINAL_THEME =~ 'linux'
+    if $TERMINAL_THEME =~ 'linux'
         hi clear Statement
         hi clear Identifier
         hi Comment ctermfg=1
@@ -62,15 +51,32 @@ function! SetTheme()
         hi SpecialKey ctermfg=9 cterm=bold
 
     elseif $TERMINAL_THEME =~ 'solarized'
-        hi Statement ctermfg=14 cterm=bold
+        hi Statement ctermfg=2
         hi Identifier ctermfg=4
         hi Comment ctermfg=10
         hi Constant ctermfg=6
-        hi Number ctermfg=5
-        hi clear Special
-        hi PreProc ctermfg=4
-        hi Type ctermfg=11
+        hi Special ctermfg=1
+        hi PreProc ctermfg=1
+        hi Type ctermfg=3
         hi Todo ctermfg=5 ctermbg=none cterm=bold
+        hi MatchParen ctermfg=1 ctermbg=10 cterm=bold
+
+        hi pythonBuiltin ctermfg=13 cterm=none
+        hi! link vimCommand None
+        hi! link Delimiter None
+        hi! link vimGroup Identifier
+        hi! link vimHiGroup vimGroup
+
+    elseif $TERMINAL_THEME =~ 'gruvbox'
+        hi Statement ctermfg=9
+        hi Identifier ctermfg=12
+        hi Comment ctermfg=8
+        hi Constant ctermfg=10
+        hi Number ctermfg=13
+        hi Special ctermfg=11
+        hi PreProc ctermfg=14
+        hi Type ctermfg=11
+        hi Todo ctermfg=15 ctermbg=0 cterm=bold
 
     elseif $TERMINAL_THEME =~ 'nord'
         hi Statement ctermfg=4
