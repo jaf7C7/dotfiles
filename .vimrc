@@ -30,29 +30,71 @@ endfunc
 nnoremap gs :call SynStack()<CR>
 
 function! SetTheme()
-    " UI
-    hi ColorColumn ctermfg=none ctermbg=8
-    hi Todo ctermfg=none ctermbg=none cterm=reverse
-    hi Title ctermfg=none ctermbg=none cterm=bold
-    hi Underlined ctermfg=none cterm=underline
-    hi clear Directory
-    hi SpecialKey ctermfg=1 cterm=bold
-    hi Error ctermfg=7 ctermbg=1
-    hi PMenu ctermfg=0 ctermbg=7
+    set t_Co=16
 
-    " TODO: Check env var 'TERMINAL_THEME' and set colors accordingly
+    if $TERMINAL_THEME =~ 'light'
+        set bg=light
+    else
+        set bg=dark
+    endif
 
-    " Syntax highlighting
-    hi Search ctermfg=0 ctermbg=7
-    hi Comment ctermfg=1
-    hi clear Constant
-    hi clear String
-    hi clear Special
-    hi clear Identifier
-    hi clear Statement
-    hi clear PreProc
-    hi clear Type
+    if $TERMINAL_THEME =~ 'gruvbox'
+        hi Statement ctermfg=9
+        hi Identifier ctermfg=12
+        hi Comment ctermfg=8
+        hi Constant ctermfg=10
+        hi Number ctermfg=13
+        hi Special ctermfg=11
+        hi PreProc ctermfg=14
+        hi Type ctermfg=11
+        hi Todo ctermfg=15 ctermbg=0 cterm=bold
+
+    elseif $TERMINAL_THEME =~ 'linux'
+        hi clear Statement
+        hi clear Identifier
+        hi Comment ctermfg=1
+        hi clear Constant
+        hi clear Number
+        hi clear Special
+        hi clear PreProc
+        hi clear Type
+        hi Todo ctermfg=none ctermbg=none cterm=reverse
+        hi SpecialKey ctermfg=9 cterm=bold
+
+    elseif $TERMINAL_THEME =~ 'solarized'
+        hi Statement ctermfg=14 cterm=bold
+        hi Identifier ctermfg=4
+        hi Comment ctermfg=10
+        hi Constant ctermfg=6
+        hi Number ctermfg=5
+        hi clear Special
+        hi PreProc ctermfg=4
+        hi Type ctermfg=11
+        hi Todo ctermfg=5 ctermbg=none cterm=bold
+
+    elseif $TERMINAL_THEME =~ 'nord'
+        hi Statement ctermfg=4
+        hi Function ctermfg=6
+        hi Identifier ctermfg=4
+        hi Comment ctermfg=8
+        hi Constant ctermfg=5
+        hi String ctermfg=2
+        hi clear Special
+        hi PreProc ctermfg=4
+        hi Type ctermfg=4
+        hi Todo ctermfg=1 ctermbg=none cterm=bold
+
+        hi! link javaScriptBraces None
+        hi! link pythonBuiltin Identifier
+        hi! link shDerefSimple None
+        hi! link shCmdSubRegion None
+        hi! link shDerefVar None
+        hi! link shVariable None
+        hi! link shAlias None
+        hi! link vimVar None
+        hi! link vimUserFunc Function
+    endif
 endfunc
 
+autocmd VimEnter * call SetTheme()
 autocmd ColorScheme default call SetTheme()
-color default
