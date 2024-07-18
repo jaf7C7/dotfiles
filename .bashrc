@@ -92,9 +92,9 @@ theme ()
 			local color13='#d3869b'
 			local color14='#8ec07c'
 			local color15='#ebdbb2'
-			#local bg='#1d2021'  # hard contrast
+			local bg='#1d2021'  # hard contrast
 			#local bg='#32302f'  # soft contrast
-			local bg='#282828'  # normal contrast
+			#local bg='#282828'  # normal contrast
 			local fg='#ebdbb2'
 			;;
 		'light')
