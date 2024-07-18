@@ -41,15 +41,15 @@ function! SetTheme()
     hi PMenu ctermfg=0 ctermbg=7
 
     " Syntax highlighting
-    "hi Search ctermfg=0 ctermbg=7
+    hi Search ctermfg=0 ctermbg=7
     hi Comment ctermfg=1
-    "hi Constant ctermfg=3
-    "hi String ctermfg=150
-    "hi Special ctermfg=5
-    "hi Identifier cterm=bold ctermfg=15
-    "hi Statement ctermfg=147
-    "hi PreProc ctermfg=5
-    "hi Type ctermfg=178
+    hi clear Constant
+    hi clear String
+    hi clear Special
+    hi clear Identifier
+    hi clear Statement
+    hi clear PreProc
+    hi clear Type
 endfunc
 
 autocmd ColorScheme default call SetTheme()

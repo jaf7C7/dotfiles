@@ -188,3 +188,5 @@ then
 else
 	stty werase '^?'
 fi
+
+theme linux light
