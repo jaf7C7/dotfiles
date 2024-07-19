@@ -5,9 +5,10 @@
 theme ()
 {
 	case "$1" in
-	'linux'|'')
-		# 'Linux console' palette from gnome-terminal
+	'vga'|'')
+		export TERMINAL_THEME='vga'
 
+		# 'Linux console' palette from gnome-terminal
 		local color0='#000000'
 		local color1='#AA0000'
 		local color2='#00AA00'
@@ -25,18 +26,32 @@ theme ()
 		local color14='#55FFFF'
 		local color15='#FFFFFF'
 
-		case "$2" in
-		'dark'|'')
-			export TERMINAL_THEME='linux-dark'
-			local fg="$color7"
-			local bg="$color0"
-			;;
-		'light')
-			export TERMINAL_THEME='linux-light'
-			local fg="$color0"
-			local bg="$color15"
-			;;
-		esac
+		local fg="$color7"
+		local bg="$color0"
+		;;
+	'clean')
+		export TERMINAL_THEME='clean'
+
+		# Same as 'vga'
+		local color0='#000000'
+		local color1='#AA0000'
+		local color2='#00AA00'
+		local color3='#AA5500'
+		local color4='#0000AA'
+		local color5='#AA00AA'
+		local color6='#00AAAA'
+		local color7='#AAAAAA'
+		local color8='#555555'
+		local color9='#FF5555'
+		local color10='#55FF55'
+		local color11='#FFFF55'
+		local color12='#5555FF'
+		local color13='#FF55FF'
+		local color14='#55FFFF'
+		local color15='#FFFFFF'
+
+		local fg="$color0"
+		local bg="$color15"
 		;;
 	'solarized')
 		# https://github.com/solarized/xresources

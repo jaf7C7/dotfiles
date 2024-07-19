@@ -38,7 +38,7 @@ function! SetTheme()
         set bg=dark
     endif
 
-    if !exists('$TERMINAL_THEME') || $TERMINAL_THEME =~ 'linux'
+    if !exists('$TERMINAL_THEME') || $TERMINAL_THEME =~ 'clean'
         hi clear Statement
         hi clear Identifier
         hi Comment ctermfg=1
@@ -50,6 +50,46 @@ function! SetTheme()
         hi Todo ctermfg=none ctermbg=none cterm=reverse
         hi SpecialKey ctermfg=none ctermbg=none cterm=reverse
 
+    elseif $TERMINAL_THEME =~ 'vga'
+        hi Statement ctermfg=12 cterm=bold
+        hi Identifier ctermfg=12 cterm=bold
+        hi Function ctermfg=10 cterm=bold
+        hi Comment ctermfg=8
+        hi Constant ctermfg=6
+        hi clear Number
+        hi clear Special
+        hi PreProc ctermfg=14
+        hi clear Type
+
+        hi Todo ctermfg=9 ctermbg=none cterm=bold
+        hi SpecialKey ctermfg=9 ctermbg=none cterm=bold
+        hi ColorColumn ctermfg=7 ctermbg=8
+
+        hi! shVariable ctermfg=15 cterm=none
+        hi! shAlias ctermfg=15 cterm=none
+        hi! link shOperator None
+        hi! link shTestOpr None
+        hi! link bashAdminStatement None
+        hi! link bashStatement None
+        syn keyword shStatement command
+        hi! link Delimiter None
+        hi! link shOption None
+        hi! link shCommandSub None
+
+        hi! link vimHiCtermFgBg None
+        hi! link vimHiCterm None
+        hi! vimFuncName ctermfg=15
+        hi! link vimFunction Function
+        hi! link vimHiAttrib None
+
+        hi! pythonBuiltin ctermfg=15
+        hi! link pythonInclude pythonStatement
+        hi! pythonExceptions ctermfg=15 cterm=bold
+
+        hi! link javaScriptBraces None
+        hi! javaScriptType ctermfg=15
+
+
     elseif $TERMINAL_THEME =~ 'solarized'
         hi Statement ctermfg=2
         hi Identifier ctermfg=4
@@ -60,6 +100,7 @@ function! SetTheme()
         hi Type ctermfg=3
         hi Todo ctermfg=5 ctermbg=none cterm=bold
         hi MatchParen ctermfg=1 ctermbg=10 cterm=bold
+        hi ColorColumn ctermbg=7
 
         hi pythonBuiltin ctermfg=13 cterm=none
         hi! link vimCommand None
@@ -90,6 +131,8 @@ function! SetTheme()
         hi! link javaScriptOperator Statement
         hi! link shOption None
         hi! link Delimiter None
+        hi! link vimHiCtermFgBg None
+        hi! link vimHiCterm None
 
     elseif $TERMINAL_THEME =~ 'nord'
         hi Statement ctermfg=4
