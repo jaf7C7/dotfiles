@@ -213,6 +213,12 @@ resize ()
 	printf '\033[8;%d;%dt' "${2:-43}" "${1:-80}"
 }
 
+bconv ()
+{
+	# Usage: bconv <input base> <output base> <number>
+	printf 'obase=%d; ibase=%d; %s\n' "$2" "$1" "${3@U}" | bc
+}
+
 __git_ps1 ()
 {
 	command -v git &>/dev/null || return
