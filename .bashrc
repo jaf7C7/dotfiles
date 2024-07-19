@@ -81,6 +81,9 @@ theme ()
 			local bg="$color15"
 			local fg="$color11"
 			;;
+		*)
+			echo "Unknown theme: '$*'" >&2
+			return 1
 		esac
 		;;
 	'gruvbox')
@@ -178,6 +181,9 @@ theme ()
 		local fg="$nord4"
 		local bg="$nord0"
 		;;
+	*)
+		echo "Unknown theme: '$*'" >&2
+		return 1
 	esac
 
 	# Control seqs. from:
