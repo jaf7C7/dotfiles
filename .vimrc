@@ -101,7 +101,11 @@ function! SetTheme()
     elseif $TERMINAL_THEME =~ 'solarized'
         hi Statement ctermfg=2
         hi Identifier ctermfg=4
-        hi Comment ctermfg=10
+        if $TERMINAL_THEME =~ 'light'
+            hi Comment ctermfg=14
+        else
+            hi Comment ctermfg=10
+        endif
         hi Constant ctermfg=6
         hi Special ctermfg=1
         hi PreProc ctermfg=1
@@ -118,9 +122,11 @@ function! SetTheme()
 
     elseif $TERMINAL_THEME =~ 'gruvbox'
         hi SpecialKey ctermfg=0 ctermbg=7 cterm=bold
+        hi ColorColumn ctermfg=8 ctermbg=0
+        hi Error ctermfg=7 ctermbg=1
 
         hi Statement ctermfg=9
-        hi Identifier ctermfg=14
+        hi Identifier ctermfg=14 cterm=bold
         hi Comment ctermfg=8
         hi Constant ctermfg=10
         hi Number ctermfg=13
