@@ -3,6 +3,8 @@ packadd comment           " Comment text with `gc{motion}` or `gcc`.
 packadd matchit           " Improve `%` behaviour.
 set nohlsearch
 set noshowmode
+set noincsearch
+set colorcolumn=80
 
 " Make Ctrl-Backspace delete previous word.
 if &t_kb != ''
@@ -52,6 +54,7 @@ function! SetTheme()
         hi Title ctermfg=none cterm=bold
         hi Error ctermbg=1 ctermfg=15
         hi ColorColumn ctermfg=8 ctermbg=7
+        hi Added ctermfg=2
 
     elseif $TERMINAL_THEME =~ 'vga'
         hi Statement ctermfg=12 cterm=bold
