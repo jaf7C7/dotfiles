@@ -43,7 +43,7 @@ function! SetTheme()
         hi clear Identifier
         hi Comment ctermfg=1
         hi clear Constant
-        hi clear Number
+        hi String ctermfg=4
         hi clear Special
         hi clear PreProc
         hi clear Type
@@ -51,6 +51,7 @@ function! SetTheme()
         hi SpecialKey ctermfg=none ctermbg=none cterm=reverse
         hi Title ctermfg=none cterm=bold
         hi Error ctermbg=1 ctermfg=15
+        hi ColorColumn ctermfg=8 ctermbg=7
 
     elseif $TERMINAL_THEME =~ 'vga'
         hi Statement ctermfg=12 cterm=bold
