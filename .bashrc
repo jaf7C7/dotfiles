@@ -1,5 +1,3 @@
-# XTerm control seqs: https://invisible-island.net/xterm/ctlseqs/ctlseqs.html
-
 [[ -f /etc/bashrc ]] && . /etc/bashrc
 
 theme ()
@@ -55,7 +53,6 @@ theme ()
 		;;
 	'solarized')
 		# https://github.com/solarized/xresources
-
 		local color0='#073642'
 		local color1='#dc322f'
 		local color2='#859900'
@@ -135,13 +132,15 @@ theme ()
 			local bg='#fbf1c7'  # normal contrast
 			local fg='#3c3836'
 			;;
+		*)
+			echo "Unknown theme: '$*'" >&2
+			return 1
 		esac
 		;;
 	'nord')
-		# https://github.com/nordtheme/xresources/blob/develop/src/nord
-
 		export TERMINAL_THEME='nord'
 
+		# https://github.com/nordtheme/xresources/blob/develop/src/nord
 		local nord0='#2E3440'
 		local nord1='#3B4252'
 		local nord2='#434C5E'
@@ -180,6 +179,9 @@ theme ()
 		local bg="$nord0"
 		;;
 	esac
+
+	# Control seqs. from:
+	# https://invisible-island.net/xterm/ctlseqs/ctlseqs.html
 
 	# Define 16-color palette
 	printf '\033]4;%d;%s\007' \
@@ -229,6 +231,7 @@ __git_ps1 ()
 	fi
 }
 
+# TODO: Make terminal title more informative (use bash PS1 escapes)
 PS1='\$ '
 PROMPT_COMMAND='printf "\e]0;%s\a" "${USER}@${HOSTNAME}:${PWD//$HOME/\~}$(__git_ps1)"'
 export EDITOR='vi'
