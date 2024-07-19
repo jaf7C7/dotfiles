@@ -209,7 +209,7 @@ theme ()
 
 resize ()
 {
-	# Resize window to <cols>x<rows> (default 80x43)
+	# Usage: resize <cols> <rows> (default 80x43)
 	printf '\033[8;%d;%dt' "${2:-43}" "${1:-80}"
 }
 
