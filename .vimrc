@@ -49,6 +49,8 @@ function! SetTheme()
         hi clear Type
         hi Todo ctermfg=none ctermbg=none cterm=reverse
         hi SpecialKey ctermfg=none ctermbg=none cterm=reverse
+        hi Title ctermfg=none cterm=bold
+        hi Error ctermbg=1 ctermfg=15
 
     elseif $TERMINAL_THEME =~ 'vga'
         hi Statement ctermfg=12 cterm=bold
@@ -60,6 +62,8 @@ function! SetTheme()
         hi clear Special
         hi PreProc ctermfg=14
         hi clear Type
+        hi Title ctermfg=none cterm=bold
+        hi Error ctermbg=1 ctermfg=7
 
         hi Todo ctermfg=9 ctermbg=none cterm=bold
         hi SpecialKey ctermfg=9 ctermbg=none cterm=bold
