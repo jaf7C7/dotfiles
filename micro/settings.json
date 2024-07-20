@@ -1,0 +1,12 @@
+{
+    "*.json": {
+        "commenttype": "// %s"
+    },
+    "colorcolumn": 80,
+    "colorscheme": "solarized",
+    "diffgutter": true,
+    "ruler": false,
+    "softwrap": true,
+    "statusformatr": "",
+    "tabsize": 8
+}

@@ -1,0 +1,11 @@
+{
+    "Alt-/": "lua:comment.comment",
+    "CtrlBackslash": "Suspend",
+    "CtrlUnderscore": "lua:comment.comment",
+    "OldBackspace": "DeleteWordLeft",
+    "Ctrl-Delete": "DeleteWordRight",
+    "command": {
+        "OldBackspace": "DeleteWordLeft",
+        "Ctrl-Delete": "DeleteWordRight",
+    }
+}
