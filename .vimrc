@@ -5,6 +5,7 @@ set nohlsearch
 set noshowmode
 set noincsearch
 set colorcolumn=81
+set statusline=%f\ %m\ %r\ %y\ %l:%v\ ts=%{&ts}\ et=%{&et}\ (%n)
 
 " Make Ctrl-Backspace delete previous word.
 if &t_kb != ''
@@ -55,6 +56,8 @@ function! SetTheme()
         hi Todo ctermfg=5 ctermbg=none cterm=bold
         hi MatchParen ctermfg=1 ctermbg=10 cterm=bold
         hi ColorColumn ctermbg=0 ctermfg=10 cterm=none
+        hi StatusLine ctermfg=8 ctermbg=12 cterm=none
+        hi StatusLineNC ctermfg=8 ctermbg=12 cterm=none
 
         hi pythonBuiltin ctermfg=13 cterm=none
         hi! link vimCommand None
