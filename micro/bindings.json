@@ -3,7 +3,7 @@
     "CtrlBackslash": "Undo",
     "Ctrl-z": "Suspend",
     "CtrlUnderscore": "lua:comment.comment",
-    "OldBackspace": "DeleteWordLeft",
+    "OldBackspace": "DeleteWordLeft",  // Ctrl-Backspace
     "Ctrl-Delete": "DeleteWordRight",
     "command": {
         "OldBackspace": "DeleteWordLeft",
