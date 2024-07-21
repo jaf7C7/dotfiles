@@ -40,7 +40,29 @@ function! SetTheme()
         set bg=dark
     endif
 
-    if !exists('$TERMINAL_THEME') || $TERMINAL_THEME =~ 'clean'
+    if !exists('$TERMINAL_THEME') || $TERMINAL_THEME =~ 'solarized'
+        hi Statement ctermfg=2
+        hi Identifier ctermfg=4
+        if $TERMINAL_THEME =~ 'light'
+            hi Comment ctermfg=14
+        else
+            hi Comment ctermfg=10
+        endif
+        hi Constant ctermfg=6
+        hi Special ctermfg=1
+        hi PreProc ctermfg=1
+        hi Type ctermfg=3
+        hi Todo ctermfg=5 ctermbg=none cterm=bold
+        hi MatchParen ctermfg=1 ctermbg=10 cterm=bold
+        hi ColorColumn ctermbg=0 ctermfg=10 cterm=none
+
+        hi pythonBuiltin ctermfg=13 cterm=none
+        hi! link vimCommand None
+        hi! link Delimiter None
+        hi! link vimGroup Identifier
+        hi! link vimHiGroup vimGroup
+
+    elseif $TERMINAL_THEME =~ 'clean'
         hi clear Statement
         hi clear Identifier
         hi Comment ctermfg=1
@@ -96,29 +118,6 @@ function! SetTheme()
 
         hi! link javaScriptBraces None
         hi! javaScriptType ctermfg=15
-
-
-    elseif $TERMINAL_THEME =~ 'solarized'
-        hi Statement ctermfg=2
-        hi Identifier ctermfg=4
-        if $TERMINAL_THEME =~ 'light'
-            hi Comment ctermfg=14
-        else
-            hi Comment ctermfg=10
-        endif
-        hi Constant ctermfg=6
-        hi Special ctermfg=1
-        hi PreProc ctermfg=1
-        hi Type ctermfg=3
-        hi Todo ctermfg=5 ctermbg=none cterm=bold
-        hi MatchParen ctermfg=1 ctermbg=10 cterm=bold
-        hi ColorColumn ctermbg=7
-
-        hi pythonBuiltin ctermfg=13 cterm=none
-        hi! link vimCommand None
-        hi! link Delimiter None
-        hi! link vimGroup Identifier
-        hi! link vimHiGroup vimGroup
 
     elseif $TERMINAL_THEME =~ 'gruvbox'
         hi SpecialKey ctermfg=0 ctermbg=7 cterm=bold
