@@ -1,6 +1,7 @@
 {
     "Alt-/": "lua:comment.comment",
-    "CtrlBackslash": "Suspend",
+    "CtrlBackslash": "Undo",
+    "Ctrl-z": "Suspend",
     "CtrlUnderscore": "lua:comment.comment",
     "OldBackspace": "DeleteWordLeft",
     "Ctrl-Delete": "DeleteWordRight",
