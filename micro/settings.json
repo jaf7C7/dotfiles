@@ -4,7 +4,6 @@
     },
     "colorcolumn": 80,
     "colorscheme": "solarized",
-    "diffgutter": true,
     "ruler": false,
     "softwrap": true,
     "statusformatr": "",
