@@ -4,7 +4,7 @@ packadd matchit           " Improve `%` behaviour.
 set nohlsearch
 set noshowmode
 set noincsearch
-set colorcolumn=80
+set colorcolumn=81
 
 " Make Ctrl-Backspace delete previous word.
 if &t_kb != ''
