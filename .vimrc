@@ -122,14 +122,18 @@ function! SetTheme()
 
     elseif $TERMINAL_THEME =~ 'gruvbox'
         hi SpecialKey ctermfg=0 ctermbg=7 cterm=bold
-        hi ColorColumn ctermbg=10 ctermfg=7 cterm=none
-        hi StatusLine ctermfg=0 ctermbg=7 cterm=none
+        hi ColorColumn ctermbg=10 ctermfg=14 cterm=none
+        hi StatusLine ctermfg=0 ctermbg=14 cterm=none
         hi! link StatusLineNC StatusLine
         hi MatchParen ctermfg=none ctermbg=10 cterm=bold
+        hi Question ctermfg=15
+        hi MoreMsg ctermfg=15
+        hi PMenuSel ctermfg=0 ctermbg=5
+        hi PMenu ctermfg=7 ctermbg=10
 
         hi Statement ctermfg=1
         hi Identifier ctermfg=6 cterm=none
-        hi Comment ctermfg=7
+        hi Comment ctermfg=12
         hi Constant ctermfg=2
         hi Number ctermfg=5
         hi Special ctermfg=3
@@ -142,9 +146,15 @@ function! SetTheme()
 
         hi! pythonInclude ctermfg=4
         hi! pythonBuiltin ctermfg=6
-        hi! javaScriptIdentifier ctermfg=3
+        hi! javaScriptIdentifier ctermfg=9
         hi! link javaScriptBraces None
         hi! link javaScriptOperator Statement
+        hi! htmlH1 ctermfg=2 cterm=bold
+        hi! htmlTagName ctermfg=6 cterm=bold
+        hi! link cssClassName cssTagName
+        hi! link cssClassNameDot cssClassName
+        hi! link cssIdentifier cssTagName
+        hi! link htmlSpecialTagName htmlTagName
         hi! link shOption None
         hi! link Delimiter None
         hi! link vimHiCtermFgBg None
