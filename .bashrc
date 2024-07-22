@@ -52,7 +52,7 @@ theme ()
 		local bg="$color15"
 		;;
 	'solarized')
-		# https://github.com/altercation/solarized/blob/master/xresources/solarized
+		# https://github.com/altercation/solarized
 		local base03='#002b36'
 		local base02='#073642'
 		local base01='#586e75'
@@ -77,37 +77,42 @@ theme ()
 		local color4="$blue"
 		local color5="$magenta"
 		local color6="$cyan"
-
 		local color9="$orange"
-		local color11="$base00"
-		local color12="$base0"
 		local color13="$violet"
-		local color14="$base1"
 
 		case "$2" in
 		'dark'|'')
 			export TERMINAL_THEME='solarized-dark'
 			local color0="$base03"
+			local color7="$base0"
 			local color8="$base01"
 			local color10="$base02"
-			local color7="$base01"
-			local color15="$base0"
+			local color11="$base00"
+			local color12="$base1"
+			local color14="$base2"
+			local color15="$base3"
+			local fg="$base0"
+			local bg="$base03"
+			local bold="$base1"
 			;;
 		'light')
 			export TERMINAL_THEME='solarized-light'
 			local color0="$base3"
-			local color8="$base01"
+			local color7="$base00"
+			local color8="$base1"
 			local color10="$base2"
-			local color7="$base1"
-			local color15="$base00"
+			local color11="$base0"
+			local color12="$base01"
+			local color14="$base02"
+			local color15="$base03"
+			local fg="$base00"
+			local bg="$base3"
+			local bold="$base01"
 			;;
 		*)
 			echo "Unknown theme: '$*'" >&2
 			return 1
 		esac
-
-		local fg="$color15"
-		local bg="$color0"
 		;;
 	'gruvbox')
 		# https://github.com/morhetz/gruvbox-contrib/tree/master/xresources
