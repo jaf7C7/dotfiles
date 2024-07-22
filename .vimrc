@@ -42,13 +42,13 @@ function! SetTheme()
     endif
 
     if $TERMINAL_THEME =~ 'solarized'
-        hi ColorColumn ctermbg=10 ctermfg=7 cterm=none
-        hi StatusLine ctermfg=10 ctermbg=7 cterm=none
+        hi ColorColumn ctermbg=10 ctermfg=8 cterm=none
+        hi StatusLine ctermfg=10 ctermbg=8 cterm=none
         hi! link StatusLineNC StatusLine
 
         hi Statement ctermfg=2
         hi Identifier ctermfg=4 cterm=none
-        hi Comment ctermfg=7
+        hi Comment ctermfg=8
         hi Constant ctermfg=6
         hi Special ctermfg=1
         hi PreProc ctermfg=1

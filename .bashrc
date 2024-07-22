@@ -3,31 +3,7 @@
 theme ()
 {
 	case "$1" in
-	'vga'|'')
-		export TERMINAL_THEME='vga'
-
-		# 'Linux console' palette from gnome-terminal
-		local color0='#000000'
-		local color1='#AA0000'
-		local color2='#00AA00'
-		local color3='#AA5500'
-		local color4='#0000AA'
-		local color5='#AA00AA'
-		local color6='#00AAAA'
-		local color7='#AAAAAA'
-		local color8='#555555'
-		local color9='#FF5555'
-		local color10='#55FF55'
-		local color11='#FFFF55'
-		local color12='#5555FF'
-		local color13='#FF55FF'
-		local color14='#55FFFF'
-		local color15='#FFFFFF'
-
-		local fg="$color7"
-		local bg="$color0"
-		;;
-	'clean')
+	'clean'|'')
 		export TERMINAL_THEME='clean'
 
 		# 'XTerm' palette from gnome-terminal
@@ -50,6 +26,30 @@ theme ()
 
 		local fg="$color0"
 		local bg="$color15"
+		;;
+	'vga')
+		export TERMINAL_THEME='vga'
+
+		# 'Linux console' palette from gnome-terminal
+		local color0='#000000'
+		local color1='#AA0000'
+		local color2='#00AA00'
+		local color3='#AA5500'
+		local color4='#0000AA'
+		local color5='#AA00AA'
+		local color6='#00AAAA'
+		local color7='#AAAAAA'
+		local color8='#555555'
+		local color9='#FF5555'
+		local color10='#55FF55'
+		local color11='#FFFF55'
+		local color12='#5555FF'
+		local color13='#FF55FF'
+		local color14='#55FFFF'
+		local color15='#FFFFFF'
+
+		local fg="$color7"
+		local bg="$color0"
 		;;
 	'solarized')
 		# https://github.com/altercation/solarized
@@ -115,11 +115,11 @@ theme ()
 		esac
 		;;
 	'gruvbox')
-		# https://github.com/morhetz/gruvbox-contrib/tree/master/xresources
-		local black0='#282828' # 0
-		local black1='#3c3836' # 8
-		local black3='#665c54' # 10
-		local black4='#7c6f64' # 11
+		# https://github.com/morhetz
+		local black0='#282828'
+		local black1='#3c3836'
+		local black3='#665c54'
+		local black4='#7c6f64'
 		local red='#9d0006'
 		local green='#79740e'
 		local yellow='#b57614'
@@ -127,8 +127,7 @@ theme ()
 		local blue='#076678'
 		local purple='#8f3f71'
 		local aqua='#427b58'
-		local lightgray='#a89984' # 7
-		local darkgray='#928374' # 12
+		local gray='#928374'
 		local brightred='#fb4934'
 		local brightgreen='#b8bb26'
 		local brightyellow='#fabd2f'
@@ -136,10 +135,10 @@ theme ()
 		local brightblue='#83a598'
 		local brightpurple='#d3869b'
 		local brightaqua='#8ec07c'
-		local white0='#fbf1c7' # 15
-		local white1='#ebdbb2' # 7
-		local white3='#bdae93' # 14
-		local white4='#a89984' # 13
+		local white0='#fbf1c7'
+		local white1='#ebdbb2'
+		local white3='#bdae93'
+		local white4='#a89984'
 
 		case "$2" in
 		'dark'|'')
@@ -156,7 +155,7 @@ theme ()
 			local color9="$brightorange"
 			local color10="$black1"
 			local color11="$black4"
-			local color12="$darkgray"
+			local color12="$gray"
 			local color13="$white4"
 			local color14="$white3"
 			local color15="$white0"
@@ -177,7 +176,7 @@ theme ()
 			local color9="$orange"
 			local color10="$white1"
 			local color11="$white4"
-			local color12="$darkgray"
+			local color12="$gray"
 			local color13="$black4"
 			local color14="$black3"
 			local color15="$black0"
@@ -218,6 +217,7 @@ theme ()
 
 	printf '\033]10;%s\007' "$fg"  # Text fg
 	printf '\033]11;%s\007' "$bg"  # Text bg
+	printf '\033]5;0;%s\007' "${bold:-"$fg"}" # Bold color
 	printf '\033]17;%s\007' "$fg"  # Selection fg
 	printf '\033]19;%s\007' "$bg"  # Selection bg
 	printf '\033[%d q' 1           # Cursor type (1=blinking block)
@@ -277,4 +277,4 @@ else
 	stty werase '^?'
 fi
 
-theme solarized light
+theme solarized
