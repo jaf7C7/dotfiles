@@ -19,3 +19,14 @@ XTerm.vt100.on4Clicks: regex [^[:space:]].*$
 XTerm.vt100.translations: #override \
     Shift Ctrl <Key> C: copy-selection(CLIPBOARD) \n\
     Shift Ctrl <Key> V: insert-selection(CLIPBOARD)
+
+! XXX: Cannot support emojis.
+URxvt.font: xft:CommitMono:size=12
+URxvt.geometry: 80x43
+URxvt.internalBorder: 0
+URxvt.scrollBar: False
+URxvt.intensityStyles: False
+! Make Ctrl-Left/Right work as you expect.
+URxvt.altSendsEscape: True
+URxvt.keysym.C-Left: \033[1;5D
+URxvt.keysym.C-Right: \033[1;5C
