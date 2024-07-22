@@ -262,4 +262,4 @@ else
 	stty werase '^?'
 fi
 
-theme
+theme solarized
