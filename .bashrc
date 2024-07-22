@@ -248,8 +248,7 @@ __git_ps1 ()
 # TODO: Make terminal title more informative (use bash PS1 escapes)
 PS1='\$ '
 PROMPT_COMMAND='printf "\e]0;%s\a" "${USER}@${HOSTNAME}:${PWD//$HOME/\~}$(__git_ps1)"'
-export EDITOR='micro'
-export MICRO_TRUECOLOR=1
+export EDITOR='vi'
 if [[ -d "$HOME/.local/bin" && "$PATH" != "$HOME/.local/bin":* ]]
 then
 	PATH="$HOME/.local/bin:$PATH"
