@@ -41,28 +41,7 @@ function! SetTheme()
         let $TERMINAL_THEME = 'clean'
     endif
 
-    if $TERMINAL_THEME =~ 'solarized'
-        hi ColorColumn ctermbg=10 ctermfg=8 cterm=none
-        hi StatusLine ctermfg=10 ctermbg=8 cterm=none
-        hi! link StatusLineNC StatusLine
-
-        hi Statement ctermfg=2
-        hi Identifier ctermfg=4 cterm=none
-        hi Comment ctermfg=8
-        hi Constant ctermfg=6
-        hi Special ctermfg=1
-        hi PreProc ctermfg=1
-        hi Type ctermfg=3
-        hi Todo ctermfg=5 ctermbg=none cterm=bold
-        hi MatchParen ctermfg=1 ctermbg=8 cterm=bold
-
-        hi pythonBuiltin ctermfg=13 cterm=none
-        hi! link vimCommand None
-        hi! link Delimiter None
-        hi! link vimGroup Identifier
-        hi! link vimHiGroup vimGroup
-
-    elseif $TERMINAL_THEME =~ 'clean'
+    if $TERMINAL_THEME =~ 'clean'
         hi SpecialKey ctermfg=none ctermbg=none cterm=reverse
         hi ColorColumn ctermfg=8 ctermbg=7
 
@@ -75,7 +54,7 @@ function! SetTheme()
         hi clear PreProc
         hi clear Type
         hi Todo ctermfg=none ctermbg=none cterm=reverse
-        hi Title ctermfg=none cterm=bold
+        hi Title ctermfg=none cterm=none
         hi Error ctermbg=1 ctermfg=15
         hi Added ctermfg=2
 
@@ -119,6 +98,27 @@ function! SetTheme()
 
         hi! link javaScriptBraces None
         hi! javaScriptType ctermfg=15
+
+    elseif $TERMINAL_THEME =~ 'solarized'
+        hi ColorColumn ctermbg=10 ctermfg=8 cterm=none
+        hi StatusLine ctermfg=10 ctermbg=8 cterm=none
+        hi! link StatusLineNC StatusLine
+
+        hi Statement ctermfg=2
+        hi Identifier ctermfg=4 cterm=none
+        hi Comment ctermfg=8
+        hi Constant ctermfg=6
+        hi Special ctermfg=1
+        hi PreProc ctermfg=1
+        hi Type ctermfg=3
+        hi Todo ctermfg=5 ctermbg=none cterm=bold
+        hi MatchParen ctermfg=1 ctermbg=8 cterm=bold
+
+        hi pythonBuiltin ctermfg=13 cterm=none
+        hi! link vimCommand None
+        hi! link Delimiter None
+        hi! link vimGroup Identifier
+        hi! link vimHiGroup vimGroup
 
     elseif $TERMINAL_THEME =~ 'gruvbox'
         hi SpecialKey ctermfg=0 ctermbg=7 cterm=bold
