@@ -53,8 +53,7 @@ theme ()
 		;;
 	'solarized')
 		# https://github.com/altercation/solarized/blob/master/xresources/solarized
-		local base03='#002b36'  # official
-		# local base03='#002833'  # darker bg (https://github.com/zyedidia/micro/blob/d173e527acc3b08060cbb6d2d72f6f7098c29ff4/runtime/colorschemes/solarized-tc.micro)
+		local base03='#002b36'
 		local base02='#073642'
 		local base01='#586e75'
 		local base00='#657b83'
@@ -62,6 +61,7 @@ theme ()
 		local base1='#93a1a1'
 		local base2='#eee8d5'
 		local base3='#fdf6e3'
+
 		local yellow='#b58900'
 		local orange='#cb4b16'
 		local red='#dc322f'
@@ -71,38 +71,42 @@ theme ()
 		local cyan='#2aa198'
 		local green='#859900'
 
-		local color0="$base02"
 		local color1="$red"
 		local color2="$green"
 		local color3="$yellow"
 		local color4="$blue"
 		local color5="$magenta"
 		local color6="$cyan"
-		local color7="$base0"
-		local color8="$base03"
+
 		local color9="$orange"
 		local color10="$base01"
 		local color11="$base00"
 		local color12="$base0"
 		local color13="$violet"
 		local color14="$base1"
-		local color15="$base3"
 
 		case "$2" in
 		'dark'|'')
 			export TERMINAL_THEME='solarized-dark'
-			local bg="$color8"
-			local fg="$color12"
+			local color0="$base03"  # default bg
+			local color8="$base02"  # bright bg
+			local color7="$base01"  # dim fg
+			local color15="$base0"  # default fg
 			;;
 		'light')
 			export TERMINAL_THEME='solarized-light'
-			local bg="$color15"
-			local fg="$color11"
+			local color0="$base3"  # default bg
+			local color8="$base2"  # bright bg
+			local color7="$base1" # dim fg
+			local color15="$base00" # default fg
 			;;
 		*)
 			echo "Unknown theme: '$*'" >&2
 			return 1
 		esac
+
+		local fg="$color15"
+		local bg="$color0"
 		;;
 	'gruvbox')
 		# https://github.com/morhetz/gruvbox-contrib/tree/master/xresources
@@ -288,4 +292,4 @@ else
 	stty werase '^?'
 fi
 
-theme solarized
+theme solarized light

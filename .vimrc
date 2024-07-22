@@ -43,21 +43,17 @@ function! SetTheme()
 
     if !exists('$TERMINAL_THEME') || $TERMINAL_THEME =~ 'solarized'
         hi Statement ctermfg=2
-        hi Identifier ctermfg=4
-        if $TERMINAL_THEME =~ 'light'
-            hi Comment ctermfg=14
-        else
-            hi Comment ctermfg=10
-        endif
+        hi Identifier ctermfg=4 cterm=none
+        hi Comment ctermfg=7
         hi Constant ctermfg=6
         hi Special ctermfg=1
         hi PreProc ctermfg=1
         hi Type ctermfg=3
         hi Todo ctermfg=5 ctermbg=none cterm=bold
         hi MatchParen ctermfg=1 ctermbg=10 cterm=bold
-        hi ColorColumn ctermbg=0 ctermfg=10 cterm=none
-        hi StatusLine ctermfg=8 ctermbg=12 cterm=none
-        hi StatusLineNC ctermfg=8 ctermbg=12 cterm=none
+        hi ColorColumn ctermbg=8 ctermfg=7 cterm=none
+        hi StatusLine ctermfg=8 ctermbg=7 cterm=none
+        hi! link StatusLineNC StatusLine
 
         hi pythonBuiltin ctermfg=13 cterm=none
         hi! link vimCommand None
