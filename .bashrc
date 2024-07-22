@@ -3,7 +3,7 @@
 theme ()
 {
 	case "$1" in
-	'clean'|'vga'|'')
+	'vga'|'')
 		# 'Linux console' palette from gnome-terminal
 		local color0='#000000'
 		local color1='#AA0000'
@@ -22,14 +22,14 @@ theme ()
 		local color14='#55FFFF'
 		local color15='#FFFFFF'
 
-		case "$1" in
-		'clean'|'')
-			export TERMINAL_THEME='clean'
+		case "$2" in
+		'light'|'')
+			export TERMINAL_THEME='vga-light'
 			local fg="$color0"
 			local bg="$color15"
 			;;
-		'vga')
-			export TERMINAL_THEME='vga'
+		'dark')
+			export TERMINAL_THEME='vga-dark'
 			local fg="$color7"
 			local bg="$color0"
 			;;

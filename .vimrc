@@ -41,66 +41,36 @@ function! SetTheme()
     set notermguicolors
 
     if !exists('$TERMINAL_THEME')
-        let $TERMINAL_THEME = 'clean'
+        let $TERMINAL_THEME = 'vga-light'
     endif
 
-    if $TERMINAL_THEME =~ 'clean'
+    if $TERMINAL_THEME =~ 'vga'
         hi SpecialKey ctermfg=none ctermbg=none cterm=reverse
-        hi ColorColumn ctermfg=8 ctermbg=255 cterm=none
+        hi Todo ctermfg=0 ctermbg=1 cterm=none
+
+
+        if $TERMINAL_THEME =~ 'light'
+            hi Comment ctermfg=1
+            hi String ctermfg=4
+            hi ColorColumn ctermfg=none ctermbg=255
+        else
+            hi Comment ctermfg=2
+            hi String ctermfg=12
+            hi ColorColumn ctermfg=none ctermbg=234
+        endif
 
         hi clear Statement
         hi clear Identifier
-        hi Comment ctermfg=1
         hi clear Constant
-        hi String ctermfg=4
         hi clear Special
         hi clear PreProc
         hi clear Type
-        hi Todo ctermfg=1 ctermbg=none cterm=reverse
         hi Title ctermfg=none cterm=none
         hi Error ctermbg=1 ctermfg=15
         hi Added ctermfg=2
 
-    elseif $TERMINAL_THEME =~ 'vga'
-        hi SpecialKey ctermfg=9 ctermbg=none cterm=bold
-        hi ColorColumn ctermfg=7 ctermbg=8
-
-        hi Statement ctermfg=12 cterm=bold
-        hi Identifier ctermfg=12 cterm=bold
-        hi Function ctermfg=10 cterm=bold
-        hi Comment ctermfg=8
-        hi Constant ctermfg=6
-        hi clear Number
-        hi clear Special
-        hi PreProc ctermfg=14
-        hi clear Type
-        hi Title ctermfg=none cterm=bold
-        hi Todo ctermfg=9 ctermbg=none cterm=bold
-        hi Error ctermbg=1 ctermfg=7
-
-        hi! shVariable ctermfg=15 cterm=none
-        hi! shAlias ctermfg=15 cterm=none
-        hi! link shOperator None
-        hi! link shTestOpr None
-        hi! link bashAdminStatement None
-        hi! link bashStatement None
-        syn keyword shStatement command
-        hi! link Delimiter None
-        hi! link shOption None
-        hi! link shCommandSub None
-
-        hi! link vimHiCtermFgBg None
-        hi! link vimHiCterm None
-        hi! vimFuncName ctermfg=15
-        hi! link vimFunction Function
-        hi! link vimHiAttrib None
-
-        hi! pythonBuiltin ctermfg=15
-        hi! link pythonInclude pythonStatement
-        hi! pythonExceptions ctermfg=15 cterm=bold
-
-        hi! link javaScriptBraces None
-        hi! javaScriptType ctermfg=15
+        hi htmlStatement ctermfg=6
+        hi htmlSpecialChar ctermfg=3
 
     elseif $TERMINAL_THEME =~ 'solarized'
         hi ColorColumn ctermbg=10 ctermfg=8 cterm=none
