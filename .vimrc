@@ -33,7 +33,7 @@ endfunc
 nnoremap gs :call SynStack()<CR>
 
 " Syntax overrides
-autocmd FileType sh syn clear shFunctionOne
+"autocmd FileType sh syn clear shFunctionOne
 
 function! SetTheme()
     set bg=dark
@@ -47,7 +47,6 @@ function! SetTheme()
     if $TERMINAL_THEME =~ 'vga'
         hi SpecialKey ctermfg=none ctermbg=none cterm=reverse
         hi Todo ctermfg=0 ctermbg=1 cterm=none
-
 
         if $TERMINAL_THEME =~ 'light'
             hi Comment ctermfg=1
@@ -73,6 +72,7 @@ function! SetTheme()
         hi htmlSpecialChar ctermfg=3
 
     elseif $TERMINAL_THEME =~ 'solarized'
+        hi Question ctermfg=2
         hi ColorColumn ctermbg=10 ctermfg=8 cterm=none
         hi StatusLine ctermfg=10 ctermbg=7 cterm=none
         hi! link StatusLineNC StatusLine

@@ -1,7 +1,7 @@
 XTerm.vt100.faceName: CommitMono:size=12
 XTerm.vt100.faceNameDoublesize: Noto Color Emoji:size=12
 XTerm.vt100.boldColors: False
-XTerm.vt100.geometry:80x43
+XTerm.vt100.geometry: 80x43
 XTerm.vt100.cursorOnTime: 500
 XTerm.vt100.cursorOffTime: 500
 XTerm.vt100.scrollBar: False
