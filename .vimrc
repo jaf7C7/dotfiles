@@ -32,6 +32,9 @@ function! SynStack()
 endfunc
 nnoremap gs :call SynStack()<CR>
 
+" Syntax overrides
+autocmd FileType sh syn clear shFunctionOne
+
 function! SetTheme()
     set bg=dark
     set t_Co=16
@@ -101,24 +104,19 @@ function! SetTheme()
 
     elseif $TERMINAL_THEME =~ 'solarized'
         hi ColorColumn ctermbg=10 ctermfg=8 cterm=none
-        hi StatusLine ctermfg=10 ctermbg=8 cterm=none
+        hi StatusLine ctermfg=10 ctermbg=7 cterm=none
         hi! link StatusLineNC StatusLine
         hi MatchParen ctermfg=1 ctermbg=8 cterm=bold
 
         hi Statement ctermfg=2
-        hi Identifier ctermfg=4 cterm=none
+        hi clear Identifier
+        hi Function ctermfg=4
         hi Comment ctermfg=8
         hi Constant ctermfg=6
-        hi Special ctermfg=1
-        hi PreProc ctermfg=1
-        hi Type ctermfg=3
+        hi Special ctermfg=4
+        hi PreProc ctermfg=4
+        hi clear Type ctermfg=3
         hi Todo ctermfg=5 ctermbg=none cterm=bold
-
-        hi pythonBuiltin ctermfg=13 cterm=none
-        hi! link vimCommand None
-        hi! link Delimiter None
-        hi! link vimGroup Identifier
-        hi! link vimHiGroup vimGroup
 
     elseif $TERMINAL_THEME =~ 'gruvbox'
         hi SpecialKey ctermfg=0 ctermbg=7 cterm=bold
