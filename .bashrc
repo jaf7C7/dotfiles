@@ -240,7 +240,8 @@ __git_ps1 ()
 	command -v git &>/dev/null || return
 	if git status -s &>/dev/null
 	then
-		printf ' (%s)' "$(git branch --show-current)"
+		local branch=$(git branch --show-current)
+		printf ' (%s)' "${branch:-'???'}"
 		# TODO: Display 'rebasing...' if currently rebasing
 	fi
 }

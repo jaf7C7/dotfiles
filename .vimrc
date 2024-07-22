@@ -53,7 +53,7 @@ function! SetTheme()
         hi clear Special
         hi clear PreProc
         hi clear Type
-        hi Todo ctermfg=none ctermbg=none cterm=reverse
+        hi Todo ctermfg=1 ctermbg=none cterm=reverse
         hi Title ctermfg=none cterm=none
         hi Error ctermbg=1 ctermfg=15
         hi Added ctermfg=2
@@ -103,6 +103,7 @@ function! SetTheme()
         hi ColorColumn ctermbg=10 ctermfg=8 cterm=none
         hi StatusLine ctermfg=10 ctermbg=8 cterm=none
         hi! link StatusLineNC StatusLine
+        hi MatchParen ctermfg=1 ctermbg=8 cterm=bold
 
         hi Statement ctermfg=2
         hi Identifier ctermfg=4 cterm=none
@@ -112,7 +113,6 @@ function! SetTheme()
         hi PreProc ctermfg=1
         hi Type ctermfg=3
         hi Todo ctermfg=5 ctermbg=none cterm=bold
-        hi MatchParen ctermfg=1 ctermbg=8 cterm=bold
 
         hi pythonBuiltin ctermfg=13 cterm=none
         hi! link vimCommand None
@@ -125,6 +125,7 @@ function! SetTheme()
         hi ColorColumn ctermbg=10 ctermfg=7 cterm=none
         hi StatusLine ctermfg=0 ctermbg=7 cterm=none
         hi! link StatusLineNC StatusLine
+        hi MatchParen ctermfg=none ctermbg=10 cterm=bold
 
         hi Statement ctermfg=1
         hi Identifier ctermfg=6 cterm=none
@@ -135,11 +136,10 @@ function! SetTheme()
         hi PreProc ctermfg=6
         hi Type ctermfg=5
         hi Todo ctermfg=7 ctermbg=0 cterm=bold
-        hi MatchParen ctermfg=none ctermbg=10 cterm=bold
         hi Error ctermfg=7 ctermbg=1
-
         hi Boolean ctermfg=8
         hi! link Operator None
+
         hi! pythonInclude ctermfg=4
         hi! pythonBuiltin ctermfg=6
         hi! javaScriptIdentifier ctermfg=3
