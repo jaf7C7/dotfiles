@@ -3,7 +3,7 @@
         "commenttype": "// %s"
     },
     "colorcolumn": 80,
-    "colorscheme": "solarized",
+    "colorscheme": "solarized-tc",
     "ruler": false,
     "softwrap": true,
     "statusformatr": "",
