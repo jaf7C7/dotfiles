@@ -3,33 +3,7 @@
 theme ()
 {
 	case "$1" in
-	'clean'|'')
-		export TERMINAL_THEME='clean'
-
-		# 'XTerm' palette from gnome-terminal
-		local color0='#000000'
-		local color1='#CD0000'
-		local color2='#00CD00'
-		local color3='#CDCD00'
-		local color4='#0000EE'
-		local color5='#CD00CD'
-		local color6='#00CDCD'
-		local color7='#E5E5E5'
-		local color8='#7F7F7F'
-		local color9='#FF0000'
-		local color10='#00FF00'
-		local color11='#FFFF00'
-		local color12='#5C5CFF'
-		local color13='#FF00FF'
-		local color14='#00FFFF'
-		local color15='#FFFFFF'
-
-		local fg="$color0"
-		local bg="$color15"
-		;;
-	'vga')
-		export TERMINAL_THEME='vga'
-
+	'clean'|'vga'|'')
 		# 'Linux console' palette from gnome-terminal
 		local color0='#000000'
 		local color1='#AA0000'
@@ -48,8 +22,18 @@ theme ()
 		local color14='#55FFFF'
 		local color15='#FFFFFF'
 
-		local fg="$color7"
-		local bg="$color0"
+		case "$1" in
+		'clean'|'')
+			export TERMINAL_THEME='clean'
+			local fg="$color0"
+			local bg="$color15"
+			;;
+		'vga')
+			export TERMINAL_THEME='vga'
+			local fg="$color7"
+			local bg="$color0"
+			;;
+		esac
 		;;
 	'solarized')
 		# https://github.com/altercation/solarized
@@ -278,4 +262,4 @@ else
 	stty werase '^?'
 fi
 
-theme solarized
+theme

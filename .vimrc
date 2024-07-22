@@ -43,7 +43,7 @@ function! SetTheme()
 
     if $TERMINAL_THEME =~ 'clean'
         hi SpecialKey ctermfg=none ctermbg=none cterm=reverse
-        hi ColorColumn ctermfg=8 ctermbg=7
+        hi ColorColumn ctermfg=8 ctermbg=255 cterm=none
 
         hi clear Statement
         hi clear Identifier
