@@ -79,7 +79,6 @@ theme ()
 		local color6="$cyan"
 
 		local color9="$orange"
-		local color10="$base01"
 		local color11="$base00"
 		local color12="$base0"
 		local color13="$violet"
@@ -88,17 +87,19 @@ theme ()
 		case "$2" in
 		'dark'|'')
 			export TERMINAL_THEME='solarized-dark'
-			local color0="$base03"  # default bg
-			local color8="$base02"  # bright bg
-			local color7="$base01"  # dim fg
-			local color15="$base0"  # default fg
+			local color0="$base03"
+			local color8="$base01"
+			local color10="$base02"
+			local color7="$base01"
+			local color15="$base0"
 			;;
 		'light')
 			export TERMINAL_THEME='solarized-light'
-			local color0="$base3"  # default bg
-			local color8="$base2"  # bright bg
-			local color7="$base1" # dim fg
-			local color15="$base00" # default fg
+			local color0="$base3"
+			local color8="$base01"
+			local color10="$base2"
+			local color7="$base1"
+			local color15="$base00"
 			;;
 		*)
 			echo "Unknown theme: '$*'" >&2
@@ -110,52 +111,73 @@ theme ()
 		;;
 	'gruvbox')
 		# https://github.com/morhetz/gruvbox-contrib/tree/master/xresources
+		local black0='#282828' # 0
+		local black1='#3c3836' # 8
+		local black3='#665c54' # 10
+		local black4='#7c6f64' # 11
+		local red='#9d0006'
+		local green='#79740e'
+		local yellow='#b57614'
+		local orange='#af3a03'
+		local blue='#076678'
+		local purple='#8f3f71'
+		local aqua='#427b58'
+		local lightgray='#a89984' # 7
+		local darkgray='#928374' # 12
+		local brightred='#fb4934'
+		local brightgreen='#b8bb26'
+		local brightyellow='#fabd2f'
+		local brightorange='#fe8019'
+		local brightblue='#83a598'
+		local brightpurple='#d3869b'
+		local brightaqua='#8ec07c'
+		local white0='#fbf1c7' # 15
+		local white1='#ebdbb2' # 7
+		local white3='#bdae93' # 14
+		local white4='#a89984' # 13
+
 		case "$2" in
 		'dark'|'')
 			export TERMINAL_THEME='gruvbox-dark'
-			local color0='#282828'
-			local color1='#cc241d'
-			local color2='#98971a'
-			local color3='#d79921'
-			local color4='#458588'
-			local color5='#b16286'
-			local color6='#689d6a'
-			local color7='#a89984'
-			local color8='#928374'
-			local color9='#fb4934'
-			local color10='#b8bb26'
-			local color11='#fabd2f'
-			local color12='#83a598'
-			local color13='#d3869b'
-			local color14='#8ec07c'
-			local color15='#ebdbb2'
-			local bg='#1d2021'  # hard contrast
-			#local bg='#32302f'  # soft contrast
-			#local bg='#282828'  # normal contrast
-			local fg='#ebdbb2'
+			local color0="$black0"
+			local color1="$brightred"
+			local color2="$brightgreen"
+			local color3="$brightyellow"
+			local color4="$brightblue"
+			local color5="$brightpurple"
+			local color6="$brightaqua"
+			local color7="$white1"
+			local color8="$black3"
+			local color9="$brightorange"
+			local color10="$black1"
+			local color11="$black4"
+			local color12="$darkgray"
+			local color13="$white4"
+			local color14="$white3"
+			local color15="$white0"
+			local bg="$black0"
+			local fg="$white0"
 			;;
 		'light')
 			export TERMINAL_THEME='gruvbox-light'
-			local color0='#fdf4c1'
-			local color1='#cc241d'
-			local color2='#98971a'
-			local color3='#d79921'
-			local color4='#458588'
-			local color5='#b16286'
-			local color6='#689d6a'
-			local color7='#7c6f64'
-			local color8='#928374'
-			local color9='#9d0006'
-			local color10='#79740e'
-			local color11='#b57614'
-			local color12='#076678'
-			local color13='#8f3f71'
-			local color14='#427b58'
-			local color15='#3c3836'
-			#local bg='#f9f5d7'  # hard contrast
-			#local bg='#f2e5bc'  # soft contrast
-			local bg='#fbf1c7'  # normal contrast
-			local fg='#3c3836'
+			local color0="$black0"
+			local color1="$brightred"
+			local color2="$brightgreen"
+			local color3="$brightyellow"
+			local color4="$brightblue"
+			local color5="$brightpurple"
+			local color6="$brightaqua"
+			local color7="$white1"
+			local color8="$black3"
+			local color9="$brightorange"
+			local color10="$black1"
+			local color11="$black4"
+			local color12="$darkgray"
+			local color13="$white4"
+			local color14="$white3"
+			local color15="$white0"
+			local bg="$black0"
+			local fg="$white0"
 			;;
 		*)
 			echo "Unknown theme: '$*'" >&2

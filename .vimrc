@@ -33,15 +33,19 @@ endfunc
 nnoremap gs :call SynStack()<CR>
 
 function! SetTheme()
+    set bg=dark
     set t_Co=16
+    set notermguicolors
 
-    if $TERMINAL_THEME =~ 'light'
-        set bg=light
-    else
-        set bg=dark
+    if !exists('$TERMINAL_THEME')
+        let $TERMINAL_THEME = 'clean'
     endif
 
-    if !exists('$TERMINAL_THEME') || $TERMINAL_THEME =~ 'solarized'
+    if $TERMINAL_THEME =~ 'solarized'
+        hi ColorColumn ctermbg=10 ctermfg=7 cterm=none
+        hi StatusLine ctermfg=10 ctermbg=7 cterm=none
+        hi! link StatusLineNC StatusLine
+
         hi Statement ctermfg=2
         hi Identifier ctermfg=4 cterm=none
         hi Comment ctermfg=7
@@ -50,10 +54,7 @@ function! SetTheme()
         hi PreProc ctermfg=1
         hi Type ctermfg=3
         hi Todo ctermfg=5 ctermbg=none cterm=bold
-        hi MatchParen ctermfg=1 ctermbg=10 cterm=bold
-        hi ColorColumn ctermbg=8 ctermfg=7 cterm=none
-        hi StatusLine ctermfg=8 ctermbg=7 cterm=none
-        hi! link StatusLineNC StatusLine
+        hi MatchParen ctermfg=1 ctermbg=8 cterm=bold
 
         hi pythonBuiltin ctermfg=13 cterm=none
         hi! link vimCommand None
@@ -62,6 +63,9 @@ function! SetTheme()
         hi! link vimHiGroup vimGroup
 
     elseif $TERMINAL_THEME =~ 'clean'
+        hi SpecialKey ctermfg=none ctermbg=none cterm=reverse
+        hi ColorColumn ctermfg=8 ctermbg=7
+
         hi clear Statement
         hi clear Identifier
         hi Comment ctermfg=1
@@ -71,13 +75,14 @@ function! SetTheme()
         hi clear PreProc
         hi clear Type
         hi Todo ctermfg=none ctermbg=none cterm=reverse
-        hi SpecialKey ctermfg=none ctermbg=none cterm=reverse
         hi Title ctermfg=none cterm=bold
         hi Error ctermbg=1 ctermfg=15
-        hi ColorColumn ctermfg=8 ctermbg=7
         hi Added ctermfg=2
 
     elseif $TERMINAL_THEME =~ 'vga'
+        hi SpecialKey ctermfg=9 ctermbg=none cterm=bold
+        hi ColorColumn ctermfg=7 ctermbg=8
+
         hi Statement ctermfg=12 cterm=bold
         hi Identifier ctermfg=12 cterm=bold
         hi Function ctermfg=10 cterm=bold
@@ -88,11 +93,8 @@ function! SetTheme()
         hi PreProc ctermfg=14
         hi clear Type
         hi Title ctermfg=none cterm=bold
-        hi Error ctermbg=1 ctermfg=7
-
         hi Todo ctermfg=9 ctermbg=none cterm=bold
-        hi SpecialKey ctermfg=9 ctermbg=none cterm=bold
-        hi ColorColumn ctermfg=7 ctermbg=8
+        hi Error ctermbg=1 ctermfg=7
 
         hi! shVariable ctermfg=15 cterm=none
         hi! shAlias ctermfg=15 cterm=none
@@ -120,23 +122,25 @@ function! SetTheme()
 
     elseif $TERMINAL_THEME =~ 'gruvbox'
         hi SpecialKey ctermfg=0 ctermbg=7 cterm=bold
-        hi ColorColumn ctermfg=8 ctermbg=0
+        hi ColorColumn ctermbg=10 ctermfg=7 cterm=none
+        hi StatusLine ctermfg=0 ctermbg=7 cterm=none
+        hi! link StatusLineNC StatusLine
+
+        hi Statement ctermfg=1
+        hi Identifier ctermfg=6 cterm=none
+        hi Comment ctermfg=7
+        hi Constant ctermfg=2
+        hi Number ctermfg=5
+        hi Special ctermfg=3
+        hi PreProc ctermfg=6
+        hi Type ctermfg=5
+        hi Todo ctermfg=7 ctermbg=0 cterm=bold
+        hi MatchParen ctermfg=none ctermbg=10 cterm=bold
         hi Error ctermfg=7 ctermbg=1
 
-        hi Statement ctermfg=9
-        hi Identifier ctermfg=14 cterm=bold
-        hi Comment ctermfg=8
-        hi Constant ctermfg=10
-        hi Number ctermfg=13
-        hi Special ctermfg=3
-        hi PreProc ctermfg=14
-        hi Type ctermfg=13
-        hi Todo ctermfg=15 ctermbg=0 cterm=bold
-        hi MatchParen ctermfg=none ctermbg=8 cterm=bold
-
-        hi Boolean ctermfg=13
+        hi Boolean ctermfg=8
         hi! link Operator None
-        hi! pythonInclude ctermfg=12
+        hi! pythonInclude ctermfg=4
         hi! pythonBuiltin ctermfg=6
         hi! javaScriptIdentifier ctermfg=3
         hi! link javaScriptBraces None
@@ -145,28 +149,6 @@ function! SetTheme()
         hi! link Delimiter None
         hi! link vimHiCtermFgBg None
         hi! link vimHiCterm None
-
-    elseif $TERMINAL_THEME =~ 'nord'
-        hi Statement ctermfg=4
-        hi Function ctermfg=6
-        hi Identifier ctermfg=4
-        hi Comment ctermfg=8
-        hi Constant ctermfg=5
-        hi String ctermfg=2
-        hi clear Special
-        hi PreProc ctermfg=4
-        hi Type ctermfg=4
-        hi Todo ctermfg=1 ctermbg=none cterm=bold
-
-        hi! link javaScriptBraces None
-        hi! link pythonBuiltin Identifier
-        hi! link shDerefSimple None
-        hi! link shCmdSubRegion None
-        hi! link shDerefVar None
-        hi! link shVariable None
-        hi! link shAlias None
-        hi! link vimVar None
-        hi! link vimUserFunc Function
     endif
 endfunc
 
