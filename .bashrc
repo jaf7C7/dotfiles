@@ -226,15 +226,15 @@ __git_ps1 ()
 	then
 		local branch=$(git branch --show-current)
 		printf ' (%s)' "${branch:-'???'}"
-		# TODO: Display 'rebasing...' if currently rebasing
 	fi
 }
 
-# TODO: Make terminal title more informative (use bash PS1 escapes)
 PS1='\$ '
 PROMPT_COMMAND='printf "\e]0;%s\a" "${USER}@${HOSTNAME}:${PWD//$HOME/\~}$(__git_ps1)"'
 CDPATH=.:~:~/Projects:~/Courses
+HISTFILESIZE=999999999
 export EDITOR='vi'
+export MICRO_TRUECOLOR=1
 if [[ -d "$HOME/.local/bin" && "$PATH" != "$HOME/.local/bin":* ]]
 then
 	PATH="$HOME/.local/bin:$PATH"
