@@ -7,15 +7,18 @@ set noincsearch
 set colorcolumn=81
 set rulerformat=%40(%{&ft}\ \ %{&et==1?'spaces:'.&sw:'tabs:'.&ts}\ \ %{&ff}\ \ %{&fenc}%=%l,%v%)
 
+" Indentation
+set tabstop=8
+set shiftwidth=4
+set expandtab
+autocmd FileType sh,go setlocal ts=8 sw=8 noet
+
 " Make Ctrl-Backspace delete previous word.
 if &t_kb != ''
     noremap!  
 else
     noremap!  
 endif
-
-autocmd FileType javascript,vim setlocal sw=4 et
-autocmd FileType html setlocal sw=2 et
 
 " Mark trailing whitespace as an error when not in insert mode.
 3match Error /\s\+$/
