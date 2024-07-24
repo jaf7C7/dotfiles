@@ -1,4 +1,7 @@
 {
+    "*.html": {
+        "tabsize": 2
+    },
     "*.json": {
         "commenttype": "// %s"
     },
