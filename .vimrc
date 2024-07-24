@@ -32,9 +32,6 @@ function! SynStack()
 endfunc
 nnoremap gs :call SynStack()<CR>
 
-" Syntax overrides
-"autocmd FileType sh syn clear shFunctionOne
-
 function! SetTheme()
     set bg=dark
     set t_Co=16
