@@ -90,6 +90,7 @@ function! SetTheme()
         hi ColorColumn ctermbg=10 ctermfg=14 cterm=none
         hi StatusLine ctermfg=0 ctermbg=14 cterm=none
         hi! link StatusLineNC StatusLine
+        hi! link VertSplit StatusLine
         hi MatchParen ctermfg=none ctermbg=10 cterm=bold
         hi Question ctermfg=15
         hi MoreMsg ctermfg=15
