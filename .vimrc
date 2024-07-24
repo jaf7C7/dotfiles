@@ -5,7 +5,7 @@ set nohlsearch
 set noshowmode
 set noincsearch
 set colorcolumn=81
-set statusline=%f\ %m\ %r\ %y\ %l:%v\ ts=%{&ts}\ et=%{&et}\ (%n)
+set rulerformat=%40(%{&ft}\ \ %{&et==1?'spaces:'.&sw:'tabs:'.&ts}\ \ %{&ff}\ \ %{&fenc}%=%l,%v%)
 
 " Make Ctrl-Backspace delete previous word.
 if &t_kb != ''
