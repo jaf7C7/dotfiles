@@ -88,6 +88,9 @@ function! SetTheme()
         hi PreProc ctermfg=4
         hi clear Type ctermfg=3
         hi Todo ctermfg=5 ctermbg=none cterm=bold
+        hi Added ctermfg=2
+        hi diffLine ctermfg=6
+        hi gitcommitFile ctermfg=1
 
     elseif $TERMINAL_THEME =~ 'gruvbox'
         hi SpecialKey ctermfg=0 ctermbg=7 cterm=bold
