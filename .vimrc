@@ -73,6 +73,7 @@ function! SetTheme()
 
     elseif $TERMINAL_THEME =~ 'solarized'
         hi Question ctermfg=2
+        hi MoreMsg ctermfg=2
         hi ColorColumn ctermbg=10 ctermfg=8 cterm=none
         hi StatusLine ctermfg=10 ctermbg=7 cterm=none
         hi! link StatusLineNC StatusLine
