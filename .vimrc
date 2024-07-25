@@ -1,4 +1,3 @@
-filetype plugin indent on " See :help 'indent.txt'
 packadd comment           " Comment text with `gc{motion}` or `gcc`.
 packadd matchit           " Improve `%` behaviour.
 set nohlsearch
@@ -8,6 +7,7 @@ set colorcolumn=81
 set rulerformat=%40(%{&ft}\ \ %{&et==1?'spaces:'.&sw:'tabs:'.&ts}\ \ %{&ff}\ \ %{&fenc}%=%l,%v%)
 
 " Indentation
+set autoindent
 set tabstop=8
 set shiftwidth=4
 set expandtab
