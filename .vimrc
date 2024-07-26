@@ -77,7 +77,7 @@ function! SetTheme()
     elseif $TERMINAL_THEME =~ 'solarized'
         hi Question ctermfg=2
         hi MoreMsg ctermfg=2
-        hi ColorColumn ctermbg=10 ctermfg=8 cterm=none
+        hi ColorColumn ctermbg=10 ctermfg=none cterm=none
         hi StatusLine ctermfg=10 ctermbg=7 cterm=none
         hi! link StatusLineNC StatusLine
         hi MatchParen ctermfg=1 ctermbg=8 cterm=bold
@@ -94,6 +94,7 @@ function! SetTheme()
         hi Added ctermfg=2
         hi diffLine ctermfg=6
         hi gitcommitFile ctermfg=1
+        hi markdownCode ctermfg=4
 
     elseif $TERMINAL_THEME =~ 'gruvbox'
         hi SpecialKey ctermfg=0 ctermbg=7 cterm=bold
