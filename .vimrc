@@ -9,9 +9,10 @@ set rulerformat=%40(%{&ft}\ \ %{&et==1?'spaces:'.&sw:'tabs:'.&ts}\ \ %{&ff}\ \ %
 " Indentation
 set autoindent
 set tabstop=8
+set softtabstop=-1 " Follow 'shiftwidth'
+set smarttab
 set shiftwidth=4
 set expandtab
-autocmd FileType sh,go setlocal ts=8 sw=8 noet
 
 " Make Ctrl-Backspace delete previous word.
 if &t_kb != ''
