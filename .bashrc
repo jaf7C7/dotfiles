@@ -263,4 +263,7 @@ else
 	stty werase '^?'
 fi
 
+# Use vi mode line-editing
+set -o vi
+
 theme solarized
