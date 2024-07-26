@@ -14,6 +14,8 @@ set smarttab
 set shiftwidth=4
 set expandtab
 
+autocmd BufNewFile *.html 0r ~/Templates/boilerplate.html
+
 " Make Ctrl-Backspace delete previous word.
 if &t_kb != ''
     noremap!  
