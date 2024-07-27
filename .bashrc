@@ -1,3 +1,6 @@
+# Do nothing if not interactive.
+[[ $- == *i* ]] || return
+
 [[ -f /etc/bashrc ]] && . /etc/bashrc
 
 theme ()
