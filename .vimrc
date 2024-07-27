@@ -14,6 +14,11 @@ set shiftwidth=4
 set softtabstop=-1  " <Tab> inserts 'shiftwidth' spaces.
 set expandtab
 
+" Enable/disable alternate screen scrolling when entering/exiting vim
+" https://www.invisible-island.net/xterm/ctlseqs/ctlseqs.html
+let &t_ti = "\e[?1007l" . &t_ti
+let &t_te = &t_te . "\e[?1007h"
+
 " Make Ctrl-Backspace delete previous word.
 if &t_kb != ''
     noremap!  
