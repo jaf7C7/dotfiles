@@ -1,20 +1,18 @@
-packadd comment           " Comment text with `gc{motion}` or `gcc`.
-packadd matchit           " Improve `%` behaviour.
 set nohlsearch
-set noshowmode
 set noincsearch
 set colorcolumn=81
+set hidden
 set rulerformat=%40(%{&ft}\ \ %{&et==1?'spaces:'.&sw:'tabs:'.&ts}\ \ %{&ff}\ \ %{&fenc}%=%l,%v%)
+set noshowmode
+set fo+=j  " Remove comment leader when joining lines
+packadd comment  " Comment text with `gc{motion}` or `gcc`.
+packadd matchit  " Improve `%` behaviour.
 
-" Indentation
 set autoindent
-set tabstop=8
-set softtabstop=-1 " Follow 'shiftwidth'
-set smarttab
+set tabstop=8  " A tab char still displays as 8 cells.
 set shiftwidth=4
+set softtabstop=-1  " <Tab> inserts 'shiftwidth' spaces.
 set expandtab
-
-autocmd BufNewFile *.html 0r ~/Templates/boilerplate.html
 
 " Make Ctrl-Backspace delete previous word.
 if &t_kb != ''
@@ -23,13 +21,37 @@ else
     noremap!  
 endif
 
+" Auto-fill new html files with boilerplate.
+if filereadable(expand('~/Templates/boilerplate.html'))
+    autocmd BufNewFile *.html 0r ~/Templates/boilerplate.html
+endif
+
 " Mark trailing whitespace as an error when not in insert mode.
+" https://vim.fandom.com/wiki/Highlight_unwanted_spaces
 3match Error /\s\+$/
 autocmd BufWinEnter * 3match Error /\s\+$/
 autocmd InsertEnter * 3match Error /\s\+\%#\@<!$/
 autocmd InsertLeave * 3match Error /\s\+$/
 
+" Enable automatic bracketed paste (no more `:set paste`)
+" https://stackoverflow.com/questions/5585129/pasting-code-into-terminal-window-into-vim-on-mac-os-x
+" if &term =~ "xterm.*"
+"     let &t_ti = &t_ti . "\e[?2004h"
+"     let &t_te = "\e[?2004l" . &t_te
+"     function! XTermPasteBegin(ret)
+"         set pastetoggle=<Esc>[201~
+"         set paste
+"         return a:ret
+"     endfunction
+"     map <expr> <Esc>[200~ XTermPasteBegin("i")
+"     imap <expr> <Esc>[200~ XTermPasteBegin("")
+"     vmap <expr> <Esc>[200~ XTermPasteBegin("c")
+"     cmap <Esc>[200~ <nop>
+"     cmap <Esc>[201~ <nop>
+" endif
+
 " Check syntax item under cursor with `gs`
+" https://stackoverflow.com/questions/9464844/how-to-get-group-name-of-highlighting-under-cursor-in-vim
 function! SynStack()
     if !exists("*synstack")
         return
@@ -81,6 +103,8 @@ function! SetTheme()
         hi StatusLine ctermfg=10 ctermbg=7 cterm=none
         hi! link StatusLineNC StatusLine
         hi MatchParen ctermfg=1 ctermbg=8 cterm=bold
+        hi PMenu ctermfg=11 ctermbg=10
+        hi PMenuSel ctermfg=0 ctermbg=13
 
         hi Statement ctermfg=2
         hi clear Identifier
@@ -140,4 +164,3 @@ function! SetTheme()
 endfunc
 
 autocmd VimEnter * call SetTheme()
-autocmd ColorScheme default call SetTheme()
