@@ -1,7 +1,7 @@
 XTerm.vt100.faceName: CommitMono:size=12
 XTerm.vt100.faceNameDoublesize: Noto Color Emoji:size=12
 XTerm.vt100.boldColors: False
-XTerm.vt100.geometry: 80x43
+XTerm.vt100.geometry: 80x25
 XTerm.vt100.cursorOnTime: 500
 XTerm.vt100.cursorOffTime: 500
 XTerm.vt100.scrollBar: False
@@ -14,19 +14,6 @@ XTerm.vt100.tiXtraScroll: True
 ! Trim trailing blanks and newlines from selection.
 XTerm.vt100.cutNewline: False
 XTerm.vt100.trimSelection: True
-XTerm.vt100.on3Clicks: regex (http[^[:space:]]*)|(['"`][^'"`]*['"`])
-XTerm.vt100.on4Clicks: regex [^[:space:]].*$
 XTerm.vt100.translations: #override \
     Shift Ctrl <Key> C: copy-selection(CLIPBOARD) \n\
     Shift Ctrl <Key> V: insert-selection(CLIPBOARD)
-
-! XXX: Cannot support emojis.
-URxvt.font: xft:CommitMono:size=12
-URxvt.geometry: 80x43
-URxvt.internalBorder: 0
-URxvt.scrollBar: False
-URxvt.intensityStyles: False
-! Make Ctrl-Left/Right work as you expect.
-URxvt.altSendsEscape: True
-URxvt.keysym.C-Left: \033[1;5D
-URxvt.keysym.C-Right: \033[1;5C
