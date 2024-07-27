@@ -257,16 +257,4 @@ fi
 # Disable Ctrl-S pausing input.
 stty -ixon
 
-# Make Ctrl-Backspace delete previous word, depending on the terminal's
-# default setting.
-if ! stty -a | grep -q '; erase = ^H;'
-then
-	stty werase '^H'
-else
-	stty werase '^?'
-fi
-
-# Use vi mode line-editing
-set -o vi
-
 theme solarized

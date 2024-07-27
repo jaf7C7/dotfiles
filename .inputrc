@@ -1,0 +1,3 @@
+set editing-mode vi
+# Ctrl-Backspace
+"\C-h": backward-kill-word
