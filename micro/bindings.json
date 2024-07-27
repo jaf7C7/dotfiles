@@ -1,12 +1,15 @@
 {
     "Alt-/": "lua:comment.comment",
-    "CtrlBackslash": "Undo",
-    "Ctrl-z": "Suspend",
-    "CtrlUnderscore": "lua:comment.comment",
-    "OldBackspace": "DeleteWordLeft",  // Ctrl-Backspace
+    "Alt-e": "command:textfilter emmet",
+    "Alt-s": "command-edit:replaceall ",
+    "Alt-|": "command-edit:textfilter ",
     "Ctrl-Delete": "DeleteWordRight",
+    "Ctrl-z": "Suspend",
+    "CtrlBackslash": "Undo",
+    "CtrlUnderscore": "lua:comment.comment",
+    "OldBackspace": "DeleteWordLeft",
     "command": {
-        "OldBackspace": "DeleteWordLeft",
         "Ctrl-Delete": "DeleteWordRight",
+        "OldBackspace": "DeleteWordLeft"
     }
 }
