@@ -1,13 +1,6 @@
 {
-    "*.html": {
-        "tabsize": 2
-    },
     "*.json": {
         "commenttype": "// %s"
-    },
-    "*.sh": {
-        "tabsize": 8,
-        "tabstospaces": false
     },
     "colorcolumn": 80,
     "colorscheme": "solarized-tc",
