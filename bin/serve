@@ -1,0 +1,29 @@
+#!/bin/sh
+#
+# Usage: serve <directory> [browser-sync options]
+#
+# Serve contents of <directory>, watching all files.  Any long options will be
+# passed to browser-sync.
+#
+# Example:
+#   serve my_site &>serve.out &
+#
+main() {
+    local arg
+    for arg; do
+        shift
+        if [[ "$arg" == --* ]]; then
+            set -- "$@" "$arg"
+            continue
+        fi
+        local dir="$arg"
+        if [[ ! -d "$dir" ]]; then
+            echo "not a directory: '$dir'" >&2
+            return 1
+        fi
+        break
+    done
+    browser-sync start --server "$dir" --files "$dir" "$@"
+}
+
+main "$@"

@@ -1,0 +1,44 @@
+#!/bin/sh
+#
+# Usage: gitcheck
+#
+# Reports on all dirty git repositories under $HOME. Clean repos are
+# not reported.
+#
+main() {
+    find ~ -type d -name .git -exec sh -c '
+        cd "$(dirname $0)" || exit
+
+        __git_controlled() {
+            git status -s
+        } &>/dev/null
+
+        __untracked_files() {
+            git ls-files --other --directory --exclude-standard | grep -q '.'
+        } &>/dev/null
+
+        __uncommitted_changes() {
+            ! git diff --quiet >/dev/null
+        } &>/dev/null
+
+        __ahead_of_master() {
+            git log --oneline origin/master..@ | grep -q '.'
+        } &>/dev/null
+
+        __print_status() {
+            printf "\e[1;34m%s\e[m\n" "$PWD"
+            git status
+        }
+
+        if __git_controlled && {
+                __uncommitted_changes ||
+                __untracked_files ||
+                __ahead_of_master
+            }
+        then
+            __print_status
+        fi
+    ' {} \; 2>/dev/null
+}
+
+main "$@"

@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+# Usage: uridecode <encoded_URI>
+#
+# Decodes an entire URI string.
+#
+# Example:
+#   $ uridecode 'https://example.com?param=echo%20%22hello,%20world!%22'
+#   https://example.com?param=echo "hello, world!"
+#
+main() {
+    node -p "decodeURI('$1')"
+}
+
+main "$@"

@@ -1,0 +1,28 @@
+#!/bin/sh
+#
+# Usage: mdprev <markdown_file>
+#
+# Renders the markdown file as html, opening the rendered html in the browser
+# and reloading the page when the file changes.
+#
+# Example:
+#   mdprev foo.md &>mdprev.out &
+#
+main() {
+    if ! command -v entr &>/dev/null; then
+        echo 'entr required' >&2
+        return 1
+    fi
+    if ! command -v browser-sync &>/dev/null; then
+        echo 'browser-sync required' >&2
+        return 1
+    fi
+    local tmpdir=$(mktemp -d ${TMP}/mdprev_${1:?}_XXXXXXXX)
+    local in=$1
+    local out=${tmpdir}/index.html
+    entr -n pandoc -so "$out" -M title:"$1" /_ <<<"$1" &
+    trap "kill $!" RETURN
+    browser-sync start -s "$tmpdir" -f "$out"
+}
+
+main "$@"
