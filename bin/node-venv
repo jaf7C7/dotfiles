@@ -1,0 +1,81 @@
+#!/bin/sh
+#
+# node-venv: Add locally-installed node binaries to your shell's PATH.
+#
+# Usage:
+#
+# Create the 'activate' script. Run this from the root of your project.
+#
+#   $ node-venv
+#
+# Source the 'activate' script to update your 'PATH'.
+#
+#   $ . node_modules/.bin/activate
+#
+# Check the new 'PATH' value to check it's correct.
+#
+#   $ echo $PATH
+#
+# When you're done, type 'deactivate' to restore your old 'PATH'.
+#
+#   $ deactivate
+#
+# This script is based on the python 'venv' module.
+
+
+if [ ! -d ./node_modules/.bin ]; then
+    mkdir -p ./node_modules/.bin
+fi
+
+cat >node_modules/.bin/activate <<'EOF'
+# This file must be sourced from your interactive shell.
+# You cannot run it directly.
+#
+# This script is adapted from 'activate' script in the python 'venv' module.
+
+deactivate() {
+    # Reset old environment variables.
+    if [ -n "${_OLD_PATH:-}" ]; then
+        PATH="$_OLD_PATH"
+        export PATH
+        unset _OLD_PATH
+    fi
+
+    # Call hash to forget past commands. Without forgetting
+    # past commands the $PATH changes we made may not be respected.
+    hash -r 2> /dev/null
+
+    if [ -n "${_OLD_PS1:-}" ]; then
+        PS1="$_OLD_PS1"
+        export PS1
+        unset _OLD_PS1
+    fi
+
+    unset VIRTUAL_ENV
+    unset VIRTUAL_ENV_PROMPT
+    if [ "${1:-}" != "nondestructive" ]; then
+        # Self destruct!
+        unset -f deactivate
+    fi
+}
+
+
+# Unset irrelevant variables.
+deactivate nondestructive
+
+export VIRTUAL_ENV="$PWD"
+
+_OLD_PATH="$PATH"
+PATH="$VIRTUAL_ENV/node_modules/.bin:$PATH"
+export PATH
+
+VIRTUAL_ENV_PROMPT="(venv)"
+export VIRTUAL_ENV_PROMPT
+_OLD_PS1="$PS1"
+PS1="${VIRTUAL_ENV_PROMPT}${PS1}"
+export PS1
+
+# Call hash to forget past commands. Without forgetting
+# past commands the $PATH changes we made may not be respected.
+hash -r 2> /dev/null
+EOF
