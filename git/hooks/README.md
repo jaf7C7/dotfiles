@@ -26,12 +26,12 @@ test -d "$GIT_HOOKS"
 # Format all staged python files with `black`.
 #
 hooks='
-pre-commit/formatters/black
 pre-commit/no_commit_to_master
+pre-commit/formatters/black
 '
 
 # Run all hooks.
 for hook in $hooks; do
-    "$hook"
+    "$GIT_HOOKS/$hook"
 done
 ```
