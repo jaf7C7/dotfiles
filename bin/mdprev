@@ -21,7 +21,7 @@ main() {
     local in=$1
     local out=${tmpdir}/index.html
     entr -n pandoc -so "$out" -M title:"$1" /_ <<<"$1" &
-    trap "kill $!" RETURN
+    trap "kill $!; rm -rf $tmpdir" RETURN
     browser-sync start -s "$tmpdir" -f "$out"
 }
 
