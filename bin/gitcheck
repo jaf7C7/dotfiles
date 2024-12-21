@@ -7,7 +7,9 @@
 #
 main() {
     find ~ -type d -name .git -exec sh -c '
-        cd "$(dirname $0)" || exit
+        dir="$(dirname $0)"
+
+        cd "$dir" || exit
 
         __git_controlled() {
             git status -s
@@ -36,9 +38,13 @@ main() {
                 __ahead_of_master
             }
         then
-            __print_status
+            if [ "$1" = "-n" ]; then
+                echo "$dir"
+            else
+                __print_status
+            fi
         fi
-    ' {} \; 2>/dev/null
+    ' {} "$@" \; 2>/dev/null
 }
 
 main "$@"
