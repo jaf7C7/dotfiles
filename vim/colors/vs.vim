@@ -117,3 +117,8 @@ hi helpExample ctermfg=4
 hi helpHyperTextJump ctermfg=4
 hi helpExample ctermfg=1
 hi helpHyperTextEntry ctermfg=2
+
+hi diffFile cterm=bold
+hi diffOldFile cterm=bold
+hi diffNewFile cterm=bold
+hi diffLine ctermfg=6

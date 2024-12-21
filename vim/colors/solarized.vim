@@ -112,3 +112,8 @@ hi Todo cterm=bold,reverse ctermfg=1
 hi! def link Include Statement
 
 hi! def link javaScriptIdentifier Statement
+
+hi diffFile cterm=bold
+hi diffOldFile cterm=bold
+hi diffNewFile cterm=bold
+hi diffLine ctermfg=6

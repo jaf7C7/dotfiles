@@ -106,3 +106,8 @@ hi Error cterm=underline
 hi Removed ctermfg=1
 hi Todo cterm=bold,reverse
 hi! def link Include Statement
+
+hi diffFile cterm=bold
+hi diffOldFile cterm=bold
+hi diffNewFile cterm=bold
+hi diffLine ctermfg=6
