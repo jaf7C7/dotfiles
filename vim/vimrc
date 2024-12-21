@@ -20,7 +20,7 @@ set shiftwidth=0  " 'shiftwidth' follows 'tabstop'.
 set shortmess=aoOsTcC
 set titleold=
 set title
-set titlestring=%f%{%&ft=='help'?'\ (help)':'\ %m%h'%}\ -\ VIM%{mode()=='i'?'\ (insert)':''}"
+set titlestring=%f%{%&ft=='help'?'\ (help)':'\ %m%h'%}\ -\ VIM%{mode()=='i'?'\ (insert)':''}
 set wildmode=longest,list
 
 filetype plugin indent on
