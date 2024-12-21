@@ -4,20 +4,16 @@
 #
 # Usage:
 #
-# Create the 'activate' script. Run this from the root of your project.
-#
+#   # Create the 'activate' script. Run this from the root of your project.
 #   $ node-venv
 #
-# Source the 'activate' script to update your 'PATH'.
-#
+#   # Source the 'activate' script to update your 'PATH'.
 #   $ . node_modules/.bin/activate
 #
-# Check the new 'PATH' value to check it's correct.
-#
+#   # Check the new 'PATH' value to check it's correct.
 #   $ echo $PATH
 #
-# When you're done, type 'deactivate' to restore your old 'PATH'.
-#
+#   # When you're done, type 'deactivate' to restore your old 'PATH'.
 #   $ deactivate
 #
 # This script is based on the python 'venv' module.
