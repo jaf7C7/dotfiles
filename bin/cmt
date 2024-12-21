@@ -1,0 +1,95 @@
+#!/bin/sh
+#
+# `cmt`: Filter which toggles comments.
+
+: "${CMT:=#}"
+
+parse_opts() {
+    line_open="$CMT "
+    while [ $# -gt 0 ]; do
+        case $1 in
+            -c)
+                shift
+                line_open='/* '
+                line_close=' */'
+                ;;
+            -C)
+                shift
+                block_open='/*'
+                line_open=' * '
+                block_close=' */'
+                ;;
+            -f)
+                # Format existing comment
+                shift
+                exec fmt -p "${1:-$CMT} "
+                ;;
+            -F)
+                # Format and comment
+                shift
+                exec "$0" "$@" | fmt -p "${1:-$CMT} " -w 80
+                ;;
+            -h)
+                shift
+                line_open='<!-- '
+                line_close=' -->'
+                ;;
+            *)
+                if [ -f "$1" ]; then
+                    exec 0<"$1"
+                    shift
+                    continue
+                fi
+                line_open="$1 "
+                shift
+                ;;
+        esac
+    done
+}
+
+main() {
+    parse_opts "$@"
+    while IFS= read -r line; do
+        if [ -z "$first" ]; then
+            if [ -z "$line" ]; then
+                printf '\n'
+                continue
+            fi
+            first="$line"
+            indent="${line%%[![:space:]]*}"
+            if [ "$line" = "${indent}${block_open}" ]; then
+                continue
+            fi
+            if [ -n "$block_open" ]; then
+                printf '%s\n' "${indent}${block_open}"
+            fi
+            if [ -n "$block_close" ]; then
+                trap 'printf "%s\n" "${indent}${block_close}"' 0
+            fi
+        fi
+        line="${line#"$indent"}"
+        case $line in
+            '')
+                line="${line_open%%[[:space:]]}${line}${line_close}"
+                ;;
+            "$block_close")
+                trap - 0
+                continue
+                ;;
+            "${line_open%%[[:space:]]}")
+                printf '\n'
+                continue
+                ;;
+            "$line_open"*"$line_close")
+                line="${line#"$line_open"}"
+                line="${line%"$line_close"}"
+                ;;
+            *)
+                line="${line_open}${line}${line_close}"
+                ;;
+        esac
+        printf '%s\n' "${indent}${line}"
+    done
+}
+
+main "$@"
