@@ -57,6 +57,7 @@ while (argv.length > 0 ) {
         case '-i':
             argv.shift()
             let indent = Number(argv.shift())
+            // TODO: Specify indentation by number, with 0 being tabs.
             if (Number.isInteger(indent)) {
                 indent = ' '.repeat(indent);
             } else if (indent !== '\t') {
@@ -77,8 +78,9 @@ if (argv.length > 0) {
     });
     rl.on('line', (line) => {
         const indent = line.replace(/\S.*/, '');
-        for (let l of expand(line.trim(), config).split('\n'))
+        for (let l of expand(line.trim(), config).split('\n')) {
             process.stdout.write(indent + l + '\n');
+        }
     }).on('close', () => {
         process.exit(0);
     });
