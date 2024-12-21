@@ -9,15 +9,15 @@
 #   serve my_site &>serve.out &
 #
 main() {
-    local arg
     for arg; do
         shift
-        if [[ "$arg" == --* ]]; then
-            set -- "$@" "$arg"
-            continue
-        fi
-        local dir="$arg"
-        if [[ ! -d "$dir" ]]; then
+        case $arg in
+            --*)
+                set -- "$@" "$arg"
+                continue
+        esac
+        dir="$arg"
+        if ! test -d "$dir"; then
             echo "not a directory: '$dir'" >&2
             return 1
         fi

@@ -220,7 +220,7 @@ main() {
     local seq
     case $1 in
         title)
-            if [[ -n $2 ]]; then
+            if test -n "$2"; then
                 __OLD_PROMPT_COMMAND=$PROMPT_COMMAND
                 PROMPT_COMMAND="__set_terminal_title '$2'"
             else
@@ -285,11 +285,10 @@ main() {
                 *)
                     echo "Unknown theme: $@" >&2
                     return 1
-                    ;;
             esac
             ;;
         size)
-            if [[ $# -lt 3 ]]; then
+            if test $# -lt 3; then
                 echo "Usage: termctl size <lines> <columns>" >&2
                 return 1
             fi
@@ -298,9 +297,8 @@ main() {
         *)
             echo "Unknown command: $1" >&2
             return 1
-            ;;
     esac
-    if [[ -n $TMUX ]]; then
+    if test -n "$TMUX"; then
         __tmux_passthrough '%s' "$seq"
     else
         printf '%s' "$seq"

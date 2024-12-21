@@ -9,19 +9,11 @@
 #   mdprev foo.md &>mdprev.out &
 #
 main() {
-    if ! command -v entr &>/dev/null; then
-        echo 'entr required' >&2
-        return 1
-    fi
-    if ! command -v browser-sync &>/dev/null; then
-        echo 'browser-sync required' >&2
-        return 1
-    fi
-    local tmpdir=$(mktemp -d ${TMP}/mdprev_${1:?}_XXXXXXXX)
-    local in=$1
-    local out=${tmpdir}/index.html
-    entr -n pandoc -so "$out" -M title:"$1" /_ <<<"$1" &
-    trap "kill $!; rm -rf $tmpdir" RETURN
+    tmpdir=$(mktemp -d ${TMP}/mdprev_${1:?}_XXXXXXXX)
+    in=$1
+    out=${tmpdir}/index.html
+    printf '%s\n' "$1" | entr -n pandoc -so "$out" -M title:"$1" /_ &
+    trap "kill $!; rm -rf $tmpdir" EXIT
     browser-sync start -s "$tmpdir" -f "$out"
 }
 
