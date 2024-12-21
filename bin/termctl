@@ -35,8 +35,10 @@
 #   theme <theme>
 #       Sets the terminal theme to <theme>. <theme> can be:
 #       - 'linux'
+#       - 'xterm'
 #       - 'solarized'
-#       - 'light' (alias for 'linux')
+#       - 'vs'
+#       - 'light' (alias for 'xterm')
 #       - 'dark' (alias for 'solarized')
 #       Themes set the foreground, background, color palette, and
 #       selection foreground and background.
@@ -222,7 +224,8 @@ main() {
         title)
             if test -n "$2"; then
                 __OLD_PROMPT_COMMAND=$PROMPT_COMMAND
-                PROMPT_COMMAND="__set_terminal_title '$2'"
+                seq=$(__set_terminal_title "$2")
+                PROMPT_COMMAND="printf '%s' '$seq'"
             else
                 shift
                 PROMPT_COMMAND=$__OLD_PROMPT_COMMAND
@@ -253,7 +256,6 @@ main() {
                 *)
                     echo "Unknown color keyword: $2" >&2
                     return 1
-                    ;;
             esac
             ;;
         palette)
@@ -267,7 +269,7 @@ main() {
                     export TERMINAL_THEME='linux-console'
                     eval $(dircolors)
                     ;;
-                xterm)
+                xterm | light)
                     seq=$(__set_xterm_theme)
                     export TERMINAL_THEME='xterm'
                     eval $(dircolors)
