@@ -34,7 +34,7 @@ export EXINIT='set nocp tm=10 ul=0 bs= ai ci sw=0 hidden cpo+=n backup backupdir
 export LESSOPEN='||/usr/bin/lesspipe.sh %s'
 export INPUTRC=~/.config/readline/inputrc
 export NPM_CONFIG_PREFIX=~/.local
-export GIT_HOOKS=~/Projects/dotfiles/git-hooks
+export GIT_HOOKS=~/.config/git/hooks
 : "${TMP=${TEMP:=/tmp}}"
 export TMP TEMP
 
