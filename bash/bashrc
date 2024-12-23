@@ -57,8 +57,9 @@ stty -ixon # Disable Ctrl-S pausing input.
 
 # Readline options
 
-set -o vi
-if [[ ! -r "$INPUTRC" ]]; then
+# If not running in an IDE.
+if [[ -z $TERM_PROGRAM ]]; then
+    set -o vi
     bind '"\C-h": backward-kill-word' # Ctrl-Backspace.
 fi
 
