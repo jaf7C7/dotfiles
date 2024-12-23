@@ -57,8 +57,8 @@ stty -ixon # Disable Ctrl-S pausing input.
 
 # Readline options
 
-# If not running in an IDE.
-if [[ -z $TERM_PROGRAM ]]; then
+# If not running in VSCode or a JetBrains IDE.
+if [[ -z $TERM_PROGRAM && -z $TERMINAL_EMULATOR ]]; then
     set -o vi
     bind '"\C-h": backward-kill-word' # Ctrl-Backspace.
 fi
