@@ -17,7 +17,7 @@ main() {
         ln -s "$x" ~/.local/bin/
     done
 
-    for dir in git tmux vim VSCodium; do
+    for dir in readline git tmux vim VSCodium; do
         ln -s "$PWD/$dir" ~/.config/
     done
 }
