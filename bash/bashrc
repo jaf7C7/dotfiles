@@ -37,6 +37,7 @@ export NPM_CONFIG_PREFIX=~/.local
 export GIT_HOOKS=~/.config/git/hooks
 : "${TMP=${TEMP:=/tmp}}"
 export TMP TEMP
+export GOPATH=~/.local
 
 
 # Shell options
