@@ -1,21 +1,15 @@
 {
-    "breadcrumbs.enabled": false,
     "editor.bracketPairColorization.enabled": false,
-    "editor.find.autoFindInSelection": "multiline",
-    "editor.fontFamily": "'DejaVu Sans Mono', 'IBM Plex Mono', monospace",
-    "editor.fontSize": 14.5,
-    "editor.guides.indentation": false,
-    "editor.minimap.enabled": false,
+    "editor.fontFamily": "Input, 'DejaVu Sans Mono', monospace",
     "editor.rulers": [80],
-    "editor.stickyScroll.enabled": false,
     "editor.wordWrap": "on",
     "files.hotExit": "off",
     "files.trimTrailingWhitespace": true ,
     "git.openRepositoryInParentFolders": "always",
     "security.workspace.trust.untrustedFiles": "open",
-    "terminal.integrated.allowChords": false,
     "terminal.integrated.defaultProfile.windows": "Powershell (VSCode)",
     "terminal.integrated.defaultProfile.linux": "bash",
+    "terminal.integrated.persistentSessionReviveProcess": "never",
     "terminal.integrated.profiles.linux": {
         "pwsh": {
             "path": "/opt/microsoft/powershell/7/pwsh",
@@ -36,14 +30,7 @@
             ]
         }
     },
-    "window.commandCenter": false,
-    "window.customTitleBarVisibility": "auto",
-    "window.menuBarVisibility": "toggle",
     "window.restoreWindows": "none",
-    "workbench.activityBar.location": "hidden",
     "workbench.colorTheme": "Visual Studio Light",
-    "workbench.editor.editorActionsLocation": "hidden",
-    "workbench.layoutControl.enabled": false,
     "workbench.startupEditor": "none",
-    "workbench.statusBar.visible": false,
 }
