@@ -88,11 +88,15 @@ let &t_te = s:AppendIfNotContains(s:enable_altscroll, &t_te)
 
 " Change cursor shape depending on mode, set bar cursor on exit.
 " https://www.invisible-island.net/xterm/ctlseqs/ctlseqs.html
-" let s:bar_cursor = "\e[5 q"
-" let s:block_cursor = "\e[1 q"
-" let &t_SI = s:bar_cursor
-" let &t_EI = s:block_cursor
-" let &t_ti = s:AppendIfNotContains(s:block_cursor, &t_ti)
+let s:bar_cursor = "\e[5 q"
+let s:block_cursor = "\e[1 q"
+let &t_SI = s:bar_cursor
+let &t_EI = s:block_cursor
+let &t_ti = s:AppendIfNotContains(s:block_cursor, &t_ti)
+
+" Highlight current line when in insert mode
+autocmd InsertEnter * setlocal cursorline
+autocmd InsertLeave * setlocal nocursorline
 
 " Get syntax group under cursor with `gs`.
 function! SynStack()
