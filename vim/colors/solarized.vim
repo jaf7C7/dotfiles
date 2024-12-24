@@ -1,6 +1,8 @@
 hi clear
 let g:colors_name = 'solarized'
 
+set notermguicolors
+
 hi clear SpecialKey
 hi clear EndOfBuffer
 hi clear NonText
