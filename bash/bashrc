@@ -62,8 +62,8 @@ stty -ixon # Disable Ctrl-S pausing input.
 # If not running in VSCode or a JetBrains IDE.
 if [[ -z $TERM_PROGRAM && -z $TERMINAL_EMULATOR ]]; then
     set -o vi
-    bind '"\C-h": backward-kill-word' # Ctrl-Backspace.
 fi
+bind '"\C-h": backward-kill-word' # Ctrl-Backspace.
 
 
 # Shell aliases
