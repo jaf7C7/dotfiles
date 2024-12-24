@@ -1,0 +1,22 @@
+# vs theme
+fg='#000000'  # 0
+bg='#FFFFFF'  # 15
+selection_fg='#FFFFFF'  # 15
+selection_bg='#0000FF'  # 12
+color0='#000000'
+color1='#AA0000'
+color2='#008000'
+color3='#AA5500'
+#color4='#0000AA'
+color4='#0000FF'
+color5='#AA00AA'
+color6='#00AAAA'
+color7='#F0F0F0'
+color8='#999999'
+color9='#FF5555'
+color10='#55FF55'
+color11='#CDCD00'
+color12='#0000FF'
+color13='#FF55FF'
+color14='#55FFFF'
+color15='#FFFFFF'
