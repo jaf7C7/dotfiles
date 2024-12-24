@@ -1,38 +1,36 @@
 #!/bin/sh
 
+configs='
+bash
+git
+readline
+tmux
+vim
+VSCodium
+'
 
 create_symlink() {
     # $1: full path to file
     # $2: full path to link
-    ln -s "$1" "$2" && echo "symlinked $1 -> $2"
+    ln -s "$1" "$2" && echo "symlinked ~${1#"$HOME"} -> ~${2#"$HOME"}"
 }
 
 remove_symlink() {
-    if test -h "$1";then
-        rm "$1" && echo "removed symlink $1"
+    if test -h "$1"; then
+        rm "$1" && echo "removed symlink ~${1#"$HOME"}"
     fi
 }
 
-for_each_config() {
-    func=$1
-    shift
-    for d in *; do
-        case $d in
-            bin | lib | install)
-                continue
-        esac
-        "$func" "$d"
+install_config() {
+    for c in $configs; do
+        create_symlink "$PWD/$c" "$HOME/.config/$c"
     done
 }
 
-install_config() {
-    # $1: name of application, e.g. `bash`.
-    create_symlink "$PWD/$1" "$HOME/.config/$1"
-}
-
 uninstall_config() {
-    # $1: name of application, e.g. `bash`.
-    remove_symlink "$HOME/.config/$1"
+    for c in $configs; do
+        remove_symlink "$HOME/.config/$c"
+    done
 }
 
 install_bin() {
@@ -66,7 +64,7 @@ uninstall_lib() {
 uninstall() {
     remove_symlink ~/.bashrc
 
-    for_each_config uninstall_config
+    uninstall_config
     uninstall_bin
     uninstall_lib
 }
@@ -74,7 +72,7 @@ uninstall() {
 install() {
     create_symlink "$PWD/bash/bashrc" ~/.bashrc
 
-    for_each_config install_config
+    install_config
     install_bin
     install_lib
 }
