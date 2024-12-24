@@ -77,8 +77,12 @@ alias sh='PS1=sh\$\  sh'
 alias dash='PS1=dash\$\  dash'
 alias p='printf "%s\\n"'
 alias args='i=0 ; for _ ; do printf "%4d %s\\n" $((++i)) "$_" ; done ; unset i'
-if [[ $TERM_PROGRAM == 'vscode' ]] && command -v codium &>/dev/null; then
-    alias code=codium
+if [[ $TERM_PROGRAM == 'vscode' ]]; then
+    alias e=code
+    command -v codium &>/dev/null && alias e=codium
+fi
+if [[ $TERMINAL_EMULATOR == JetBrains* ]] && command -v webstorm &>/dev/null; then
+    alias e=webstorm
 fi
 if [[ $OS == 'Windows_NT' ]]; then
     alias python='winpty python'
