@@ -113,3 +113,4 @@ hi diffFile cterm=bold
 hi diffOldFile cterm=bold
 hi diffNewFile cterm=bold
 hi diffLine ctermfg=6
+hi diffIndexLine cterm=bold
