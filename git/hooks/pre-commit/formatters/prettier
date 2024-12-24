@@ -2,6 +2,8 @@
 #
 # Reformats staged files with `prettier`, and prompts to review changes.
 
+set -e
+
 format () {
 	for f in "$@"
 	do
@@ -29,6 +31,6 @@ format () {
 }
 
 staged_files=$(git diff --staged --name-only)
-unformatted_files=$(prettier --list-different .)
+unformatted_files=$(prettier --list-different .) || :
 
 format $staged_files

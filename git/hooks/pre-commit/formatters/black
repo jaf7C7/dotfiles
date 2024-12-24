@@ -3,6 +3,8 @@
 # Reformats any staged python files with `black`, and prompts to review
 # changes.
 
+set -e
+
 format () {
 	for f in "$@"
 	do
