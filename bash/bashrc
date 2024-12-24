@@ -165,6 +165,11 @@ theme() {
         echo "Unknown theme: $1" >&2
         return 1
     fi
+    local fg bg selection_fg selection_bg \
+        color0 color1 color2 color3 \
+        color4 color5 color6 color7 \
+        color8 color9 color10 color11 \
+        color12 color13 color14 color15
     source "$TERMINAL_THEMES_DIR/$1.sh"
     __set_terminal_fg "$fg"
     __set_terminal_bg "$bg"
@@ -188,9 +193,4 @@ theme() {
         14 "$color14" \
         15 "$color15"
     export TERMINAL_THEME=$1
-    unset fg bg selection_fg selection_bg \
-        color1 color2 color3 color4 \
-        color5 color6 color7 color8 \
-        color9 color10 color11 color12 \
-        color13 color14 color15
 }
