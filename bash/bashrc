@@ -90,6 +90,11 @@ fi
 
 # Shell functions
 
+# Source library functions.
+if [[ -r ~/.local/lib/sh/termctl.sh ]]; then
+    . ~/.local/lib/sh/termctl.sh
+fi
+
 # Usage: PROMPT_COMMAND='__prompt_command'
 #
 # Sets terminal title - e.g. `jfox@fedora:~/.config/bash (master)`
