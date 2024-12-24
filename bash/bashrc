@@ -97,7 +97,7 @@ fi
 
 # Usage: PROMPT_COMMAND='__prompt_command'
 #
-# Sets terminal title - e.g. `jfox@fedora:~/.config/bash (master)`
+# Sets terminal title - e.g. `jfox@fedora:~/.config/bash (master)`.
 #
 __prompt_command() {
     printf '\e]0;%s\a' "${USER}@${HOSTNAME}:${PWD//$HOME/\~}$(__git_ps1)"
