@@ -1,25 +1,107 @@
 #!/bin/sh
 
+
+create_symlink() {
+    # $1: full path to file
+    # $2: full path to link
+    ln -s "$1" "$2" && echo "symlinked $1 -> $2"
+}
+
+remove_symlink() {
+    if test -h "$1";then
+        rm "$1" && echo "removed symlink $1"
+    fi
+}
+
+for_each_config() {
+    func=$1
+    shift
+    for d in *; do
+        case $d in
+            bin | lib | install)
+                continue
+        esac
+        "$func" "$d"
+    done
+}
+
+install_config() {
+    # $1: name of application, e.g. `bash`.
+    create_symlink "$PWD/$1" "$HOME/.config/$1"
+}
+
+uninstall_config() {
+    # $1: name of application, e.g. `bash`.
+    remove_symlink "$HOME/.config/$1"
+}
+
+install_bin() {
+    test -d ~/.local/bin || mkdir ~/.local/bin
+
+    for f in bin/*; do
+        create_symlink "$PWD/$f" "$HOME/.local/$f"
+    done
+}
+
+uninstall_bin() {
+    for f in bin/*; do
+        remove_symlink "$HOME/.local/$f"
+    done
+}
+
+install_lib() {
+    test -d ~/.local/lib || mkdir -p ~/.local/lib
+
+    for d in lib/*; do
+        create_symlink "$PWD/$d" "$HOME/.local/$d"
+    done
+}
+
+uninstall_lib() {
+    for d in lib/*; do
+        remove_symlink "$HOME/.local/$d"
+    done
+}
+
+uninstall() {
+    remove_symlink ~/.bashrc
+
+    for_each_config uninstall_config
+    uninstall_bin
+    uninstall_lib
+}
+
+install() {
+    create_symlink "$PWD/bash/bashrc" ~/.bashrc
+
+    for_each_config install_config
+    install_bin
+    install_lib
+}
+
 main() {
-    case "$1" in
-        -f|--force)
+    case $1 in
+        '')
+            ;;
+        -f | --force)
             shift
             ln() {
                 command ln -f "$@"
             }
+            ;;
+        -u | --uninstall)
+            cmd=uninstall
+            ;;
+        -r | --reinstall)
+            uninstall
+            ;;
+        *)
+            echo "Usage: ./install [-f|--force]" >&2
+            echo "       ./install [-u|--uninstall]" >&2
+            exit 1
     esac
 
-    ln -s "$PWD/bash/bashrc" ~/.bashrc
-
-    test -d ~/.local/bin/ || mkdir ~/.local/bin
-
-    for x in "$PWD"/bin/*; do
-        ln -s "$x" ~/.local/bin/
-    done
-
-    for dir in readline git tmux vim VSCodium; do
-        ln -s "$PWD/$dir" ~/.config/
-    done
+    "${cmd:-install}"
 }
 
 main "$@"
