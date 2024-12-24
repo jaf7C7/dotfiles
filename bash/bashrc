@@ -17,7 +17,7 @@ if [[ $TERM_PROGRAM == 'vscode' ]]; then
     PS1='\w \$ '
     unset PROMPT_COMMAND
 fi
-CDPATH=.:~:~/.config:~/Projects:~/Courses
+CDPATH=.:~:~/.config:~/Projects
 HISTFILESIZE=1000000
 HISTSIZE=10000
 HISTIGNORE='[fb]g*:%*'
@@ -26,17 +26,19 @@ HISTCONTROL=ignoreboth
 
 # Environment variables (global; exported to subprocesses)
 
-if [[ -d "$HOME/.local/bin" && "$PATH" != "$HOME/.local/bin":* ]]; then
-    export PATH="$HOME/.local/bin:$PATH"
+export BIN=~/.local/bin
+if [[ -d $BIN && $PATH != $BIN:* ]]; then
+    export PATH=$BIN:$PATH
 fi
+export LIB=~/.local/lib/
+export GIT_HOOKS=~/.config/git/hooks
+export TERMINAL_THEMES_DIR=~/.config/bash/themes
+: "${TMP=${TEMP:=/tmp}}"
+export TMP TEMP
 export EDITOR='vi'
 export EXINIT='set nocp tm=10 ul=0 bs= ai ci sw=0 hidden cpo+=n backup backupdir=~/.config/vim/backups,.,~/ nosmd noru hl=8r,~i,@b,dn,eb,mb,Mb,nb,rb,sr,Ss,tn,cr,vr,wb,Wn,+r,=n | map!  '
 export LESSOPEN='||/usr/bin/lesspipe.sh %s'
-export INPUTRC=~/.config/readline/inputrc
 export NPM_CONFIG_PREFIX=~/.local
-export GIT_HOOKS=~/.config/git/hooks
-: "${TMP=${TEMP:=/tmp}}"
-export TMP TEMP
 export GOPATH=~/.local
 
 
