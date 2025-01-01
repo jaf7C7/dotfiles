@@ -1,0 +1,20 @@
+#!/bin/sh
+#
+# Usage: char2hex <string> [<zero padding width>]
+#
+# Examples:
+#     $ char2hex ›
+#     0x203a
+#
+#     $ char2hex › 8
+#     0x0000203a
+#
+#     $ char2hex hello
+#     0x68 0x65 0x6c 0x6c 0x6f
+#
+main() {
+    python=$(command -v python || command -v python3)
+    "$python" -c "print(*['0x{:0${2:-}x}'.format(ord(c)) for c in '${1:?}'])"
+}
+
+main "$@"

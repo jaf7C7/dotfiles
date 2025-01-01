@@ -1,0 +1,21 @@
+#!/bin/sh
+#
+# Usage: hex2char <hexcode> [<hexcode>...]
+#
+# Examples:
+#     $ hex2char 0x68 0x65 0x6c 0x6c 0x6f
+#     hello
+#
+#     $ hex2char 0x0000203a
+#     ›
+#
+main() {
+    python=$(command -v python || command -v python3)
+    OLDIFS="$IFS"
+    IFS=', '
+    "$python" -c "print(''.join(chr(c) for c in [${*}]))"
+    IFS="$OLDIFS"
+    unset OLDIFS
+}
+
+main "$@"

@@ -1,0 +1,87 @@
+#!/usr/bin/node
+
+import expand from 'emmet';
+import readline from 'node:readline';
+
+function usage() {
+    process.stdout.write(
+      'USAGE: emmet [OPTIONS] [EXPRESSION]\n' +
+      'OPTIONS:\n' +
+      '    -h|--help\n' +
+      '        Display this message\n' +
+      '    -i|--indent [<integer>|"\\t"]\n' +
+      '        Set indentation to <integer> spaces or `\\t` (default)\n' +
+      '    -s|--stylesheet\n' +
+      '        Interpret expression as stylesheet\n' +
+      '    -m|--markup\n' +
+      '        Interpret expression as markup (default)\n' +
+      'EXPRESSION:\n' +
+      '    For expression syntax, see:\n' +
+      '    https://docs.emmet.io/cheat-sheet/\n'
+    );
+    process.exit(1);
+}
+
+// TODO: Use `util.parseArgs()` to parse cli arguments.  See:
+//       https://exploringjs.com/nodejs-shell-scripting/ch_node-util-parseargs.html
+// TODO: Add command-line options
+//       For configuration options, see:
+//       https://github.com/emmetio/emmet/blob/master/src/config.ts
+const config = {
+    'type': 'markup',
+    'options': {
+        'output.indent': '\t',
+        'output.attributeQuotes': 'single',
+        'output.selfClosingStyle': 'html',
+    }
+};
+
+const argv = process.argv.slice(2);
+
+while (argv.length > 0 ) {
+    switch (argv[0]) {
+        case '--help':
+        case '-h':
+            usage();
+        case '--markup':
+        case '-m':
+            argv.shift()
+            config.type = 'markup';
+            continue;
+        case '--stylesheet':
+        case '-s':
+            argv.shift()
+            config.type = 'stylesheet';
+            continue;
+        case '--indent':
+        case '-i':
+            argv.shift()
+            let indent = Number(argv.shift())
+            // TODO: Specify indentation by number, with 0 being tabs.
+            if (Number.isInteger(indent)) {
+                indent = ' '.repeat(indent);
+            } else if (indent !== '\t') {
+                usage();
+            }
+            config.options['output.indent'] = indent;
+            continue;
+    }
+    break
+}
+
+if (argv.length > 0) {
+    argv.forEach(arg => process.stdout.write(expand(arg.trim(), config) + '\n'));
+} else {
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: null,
+    });
+    rl.on('line', (line) => {
+        const indent = line.replace(/\S.*/, '');
+        for (let l of expand(line.trim(), config).split('\n')) {
+            process.stdout.write(indent + l + '\n');
+        }
+    }).on('close', () => {
+        process.exit(0);
+    });
+}
