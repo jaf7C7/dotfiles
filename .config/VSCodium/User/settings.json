@@ -1,0 +1,10 @@
+{
+    "editor.fontFamily": "Inconsolata, monospace",
+    "editor.fontSize": 16,
+    "terminal.integrated.fontSize": 16,
+    "editor.bracketPairColorization.enabled": false,
+    "window.menuBarVisibility": "compact",
+    "window.titleBarStyle": "custom",
+    "files.autoSave":  "afterDelay",
+    "workbench.colorTheme": "Default Light Modern"
+}
