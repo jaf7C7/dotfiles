@@ -1,3 +1,5 @@
+;; Emacs tutorials: http://xahlee.info/emacs/index.html
+
 ;; (require 'server)
 ;; (if (display-graphic-p)
 ;;     (unless (server-running-p)
