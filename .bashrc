@@ -47,7 +47,7 @@ then
 else
 	EDITOR=$(command -v nano || command -v vi)
 fi
-EXINIT='set nocp tm=10 ul=0 bs= ai ci sw=0 hidden cpo+=n nosmd noru hl=8r,~i,@b,dn,eb,mb,Mb,nb,rb,sr,Ss,tn,cr,vr,wb,Wn,+r,=n | map!  '
+EXINIT='set nocp tm=10 ai ci sw=0 noet hidden noru ls=2 hl=8r,~i,@b,dn,eb,mb,Mb,nb,rb,sr,Ss,tn,cr,vr,wb,Wn,+r,=n' 
 LESSOPEN='||/usr/bin/lesspipe.sh %s'
 NPM_CONFIG_PREFIX=~/.local
 GOPATH=~/.local
