@@ -3,7 +3,8 @@
 # Check the themes directory for available themes.
 #
 theme() {
-	if ! test -r "$HOME/.bashrc.d/themes/$1.sh"; then
+	if ! test -r "$HOME/.bashrc.d/themes/$1.sh"
+	then
 		echo "Unknown theme: $1" >&2
 		return 1
 	fi

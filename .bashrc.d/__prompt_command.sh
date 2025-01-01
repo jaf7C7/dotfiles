@@ -3,7 +3,8 @@
 # Sets terminal title - e.g. `jfox@fedora:~/.config/bash (master)`.
 #
 __prompt_command() {
-	if test -z "$INSIDE_EMACS"; then
+	if test -z "$INSIDE_EMACS"
+	then
 		case $PWD in
 			$HOME*)
 				PWD=\~${PWD#$HOME}

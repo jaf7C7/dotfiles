@@ -1,15 +1,20 @@
+# https://github.com/git/git/blob/master/Documentation/CodingGuidelines
+
 # Do nothing if not interactive.
-if [[ $- != *i* ]]; then
+if [[ $- != *i* ]]
+then
 	return
 fi
 
 # Source system defaults if they exist.
-if [[ -f /etc/bashrc ]]; then
+if [[ -f /etc/bashrc ]]
+then
 	. /etc/bashrc
 fi
 
 # Source user functions.
-for _ in ~/.bashrc.d/*.{sh,bash}; do
+for _ in ~/.bashrc.d/*.{sh,bash}
+do
 	test -f "$_" && . "$_"
 done
 
@@ -30,12 +35,14 @@ HISTCONTROL=ignoreboth
 set -a
 
 BIN=~/.local/bin
-if [[ -d $BIN && $PATH != $BIN:* ]]; then
+if [[ -d $BIN && $PATH != $BIN:* ]]
+then
 	PATH=$BIN:$PATH
 fi
 GIT_HOOKS=~/.config/git/hooks
 TERMINAL_THEMES_DIR=~/.config/bash/themes
-if [[ -n $INSIDE_EMACS ]]; then
+if [[ -n $INSIDE_EMACS ]]
+then
 	EDITOR=emacsclient
 else
 	EDITOR=$(command -v nano || command -v vi)
