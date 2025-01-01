@@ -1,0 +1,21 @@
+# xterm theme
+fg='#000000'  # 0
+bg='#FFFFFF'  # 15
+selection_fg='#FFFFFF'  # 15
+selection_bg='#0000EE'  # 12
+color0='#000000'
+color1='#CD0000'
+color2='#00CD00'
+color3='#CDCD00'
+color4='#0000EE'
+color5='#CD00CD'
+color6='#00CDCD'
+color7='#E5E5E5'
+color8='#7F7F7F'
+color9='#FF0000'
+color10='#00FF00'
+color11='#FFFF00'
+color12='#5C5CFF'
+color13='#FF00FF'
+color14='#00FFFF'
+color15='#FFFFFF'
