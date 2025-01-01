@@ -1,16 +1,16 @@
 # Do nothing if not interactive.
 if [[ $- != *i* ]]; then
-    return
+	return
 fi
 
 # Source system defaults if they exist.
 if [[ -f /etc/bashrc ]]; then
-    . /etc/bashrc
+	. /etc/bashrc
 fi
 
 # Source user functions.
 for _ in ~/.bashrc.d/*.{sh,bash}; do
-    test -f "$_" && . "$_"
+	test -f "$_" && . "$_"
 done
 
 
@@ -31,14 +31,14 @@ set -a
 
 BIN=~/.local/bin
 if [[ -d $BIN && $PATH != $BIN:* ]]; then
-    PATH=$BIN:$PATH
+	PATH=$BIN:$PATH
 fi
 GIT_HOOKS=~/.config/git/hooks
 TERMINAL_THEMES_DIR=~/.config/bash/themes
 if [[ -n $INSIDE_EMACS ]]; then
-    EDITOR=emacsclient
+	EDITOR=emacsclient
 else
-    EDITOR=$(command -v nano || command -v vi)
+	EDITOR=$(command -v nano || command -v vi)
 fi
 EXINIT='set nocp tm=10 ul=0 bs= ai ci sw=0 hidden cpo+=n nosmd noru hl=8r,~i,@b,dn,eb,mb,Mb,nb,rb,sr,Ss,tn,cr,vr,wb,Wn,+r,=n | map!  '
 LESSOPEN='||/usr/bin/lesspipe.sh %s'
