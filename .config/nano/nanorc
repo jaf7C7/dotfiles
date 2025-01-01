@@ -1,0 +1,5 @@
+set nohelp
+# Define new syntax theme for all files matching "."
+syntax "quiet" "."
+# No-op highlight command (turns off all highlighting)
+color white "^"
