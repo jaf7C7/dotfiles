@@ -1,10 +1,5 @@
 ;; Emacs tutorials: http://xahlee.info/emacs/index.html
 
-;; (require 'server)
-;; (if (display-graphic-p)
-;;     (unless (server-running-p)
-;;       (server-start)))
-
 (let ((dir (expand-file-name "backups" user-emacs-directory)))
   (setq backup-directory-alist `(("." . ,dir))))
 
