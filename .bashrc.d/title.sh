@@ -6,12 +6,12 @@
 #
 title() {
 	case $1 in
-		-u | --unset)
-			PROMPT_COMMAND=$__OLD_PROMPT_COMMAND
-			unset __OLD_PROMPT_COMMAND
-			;;
-		*)
-			__OLD_PROMPT_COMMAND=$PROMPT_COMMAND
-			PROMPT_COMMAND="__set_terminal_title \"$1\""
+	-u | --unset)
+		PROMPT_COMMAND=$__OLD_PROMPT_COMMAND
+		unset __OLD_PROMPT_COMMAND
+		;;
+	*)
+		__OLD_PROMPT_COMMAND=$PROMPT_COMMAND
+		PROMPT_COMMAND="__set_terminal_title \"$1\""
 	esac
 }
