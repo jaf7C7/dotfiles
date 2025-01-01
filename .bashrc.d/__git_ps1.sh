@@ -4,12 +4,12 @@
 # with `git`.
 #
 __git_ps1() {
-    if ! git status -s >/dev/null 2>&1; then
-        return
-    fi
-    local current=$(git branch --show-current)
-    if test -z "$current"; then
-        current=$(git rev-parse --short HEAD)
-    fi
-    printf ' (%s)' "$current"
+	if ! git status -s >/dev/null 2>&1; then
+		return
+	fi
+	local current=$(git branch --show-current)
+	if test -z "$current"; then
+		current=$(git rev-parse --short HEAD)
+	fi
+	printf ' (%s)' "$current"
 }
