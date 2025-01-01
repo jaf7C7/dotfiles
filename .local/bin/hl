@@ -1,0 +1,30 @@
+#!/bin/sh
+#
+# Usage: hl <regex>  [<file>]
+#        hl '/<regex>/,/<regex>/' [<file>]
+#
+# Highlights words in the first form (like `grep --color`).
+# Highlights lines in the second form.
+#
+main() {
+	case "$1" in
+	*,*)
+		address="$1"
+		regexp=".*"
+		;;
+	*)
+		address="/./"
+		regexp="$(printf '%s\n' "$1" | sed 's/"/\\"/g')"
+	esac
+	shift
+	awk '
+	'"$address"' {
+		gsub("'"$regexp"'", "\033[1;31m&\033[m")
+	}
+	{
+		print()
+	}
+	' "$@"
+}
+
+main "$@"
