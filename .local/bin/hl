@@ -14,10 +14,14 @@ main() {
 		;;
 	*)
 		address="/./"
-		regexp="$(printf '%s\n' "$1" | sed 's/"/\\"/g')"
+		regexp="$1"
 	esac
 	shift
 	awk -v address="$address" -v regexp="$regexp" '
+	BEGIN {
+		# Make sure `regexp` does not contain an unescaped `"`.
+		gsub("\"", "\\\&", regexp)
+	}
 	address {
 		gsub(regexp, "\033[1;31m&\033[m")
 	}
