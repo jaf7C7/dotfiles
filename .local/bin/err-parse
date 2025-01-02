@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+# err-parse
+#
+# Parse node test output into the form:
+#
+#	<path-to-file>:<line>:<col>
+#
+# Usage:
+#
+#	$ node --test | err-parse >.err
+#
+exec sed -En 's,.*\(((/[^/]+)+:([[:digit:]]+):([[:digit:]]+))\).*,\1,p'
