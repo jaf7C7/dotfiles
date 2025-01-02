@@ -35,37 +35,29 @@ prompt_to_open() {
 }
 
 codium() {
-	for err
-	do
-		prompt_to_open "$err" || continue
-		command codium --wait --goto "$err"
-	done
+	command codium --wait --goto "$err"
 }
 
 nano() {
-	for err
-	do
-		prompt_to_open "$err" || continue
-		get_file "$err"
-		get_line "$err"
-		get_col "$err"
-		command nano --constantshow +"${line},${col}" "$file"
-	done
+	get_file "$err"
+	get_line "$err"
+	get_col "$err"
+	command nano --constantshow +"${line},${col}" "$file"
 }
 
 vi() {
-	for err
-	do
-		prompt_to_open "$err"
-		get_file "$err"
-		get_line "$err"
-		get_col "$err"
-		command vi +"$line" "$file"
-	done
+	get_file "$err"
+	get_line "$err"
+	get_col "$err"
+	command vi +"$line" "$file"
 }
 
 main() {
-	"$EDITOR" $(cat "${1?}")
+	for err in $(cat "${1?}")
+	do
+		prompt_to_open "$err" || continue
+		"$EDITOR" "$err"
+	done
 }
 
 main "$@"
