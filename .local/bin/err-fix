@@ -1,5 +1,15 @@
 #!/bin/sh
 
+blk='\033[30m'
+red='\033[31m'
+grn='\033[32m'
+yel='\033[33m'
+blu='\033[34m'
+mgt='\033[35m'
+cyn='\033[36m'
+wht='\033[37m'
+clr='\033[0m'
+
 get_file() {
 	file="${1%:*:*}"
 }
@@ -14,7 +24,8 @@ get_col() {
 }
 
 prompt_to_open() {
-	printf '%s: Open in $EDITOR (%s)? [y]es/[n]o/[q]uit) ' "$1" "$EDITOR" >&2
+	printf "${mgt}%s${clr}: Open in ${cyn}\$EDITOR${clr}? ${blu}[y]es/[n]o/[q]uit)${clr} " \
+		"${1:-$err}" >&2
 	while :
 	do
 		read -r reply
@@ -29,7 +40,7 @@ prompt_to_open() {
 			exit 1
 			;;
 		*)
-			echo "Please respond `y`, `n` or `q`" >&2
+			echo 'Please respond `y`, `n` or `q`' >&2
 		esac
 	done
 }
