@@ -24,8 +24,8 @@ get_col() {
 }
 
 prompt_to_open() {
-	printf "${mgt}%s${clr}: Open in ${cyn}\$EDITOR${clr}? ${blu}[y]es/[n]o/[q]uit)${clr} " \
-		"${1:-$err}" >&2
+	printf "${mgt}%s${clr}: Open in ${cyn}%s${clr}? ${blu}%s${clr} " \
+		"${1:-$err}" '$EDITOR' 'y]es/[n]o/[q]uit)' >&2
 	while :
 	do
 		read -r reply
