@@ -5,10 +5,12 @@
 __prompt_command() {
 	if test -z "$INSIDE_EMACS"
 	then
-		case $PWD in
+		__PWD="$PWD"
+		case $__PWD in
 		$HOME*)
-			PWD=\~${PWD#$HOME}
+			__PWD=\~${__PWD#$HOME}
 		esac
-		printf '\033]0;%s\007' "${USER}@${HOSTNAME}:${PWD}$(__git_ps1)"
+		printf '\033]0;%s\007' "${USER}@${HOSTNAME}:${__PWD}$(__git_ps1)"
+		unset __PWD
 	fi
 }
