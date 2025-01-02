@@ -1,5 +1,8 @@
 ;; Emacs tutorials: http://xahlee.info/emacs/index.html
 
+(setq custom-file (expand-file-name "emacs-custom.el" user-emacs-directory))
+(load custom-file)
+
 (let ((dir (expand-file-name "backups" user-emacs-directory)))
   (setq backup-directory-alist `(("." . ,dir))))
 
@@ -15,5 +18,10 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
-;; (eval-when-compile
-;;   (require 'use-package))
+(eval-when-compile
+  (require 'use-package))
+
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
