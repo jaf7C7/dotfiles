@@ -38,6 +38,7 @@ if [[ -d ~/.local/bin && $PATH != ~/.local/bin:* ]]
 then
 	PATH=~/.local/bin:$PATH
 fi
+EDITOR=nano
 GIT_HOOKS=~/.config/git/hooks
 LESSOPEN='||/usr/bin/lesspipe.sh %s'
 NPM_CONFIG_PREFIX=~/.local
