@@ -1,6 +1,7 @@
 # solarized theme
 fg='#839496'  # 12
 bg='#002B36'  # 0
+bold_fg='#93A1A1' # 14
 selection_fg='#EEE8D5'  # 7
 selection_bg='#6C71C4'  # 13
 color0='#002B36'

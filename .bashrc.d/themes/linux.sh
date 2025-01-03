@@ -1,6 +1,7 @@
 # linux console theme
 fg='#000000'  # 0
 bg='#FFFFFF'  # 15
+bold_fg='#000000'  # 0
 selection_fg='#FFFFFF'  # 15
 selection_bg='#5555FF'  # 12
 color0='#000000'

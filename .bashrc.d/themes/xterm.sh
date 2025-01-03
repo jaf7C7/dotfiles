@@ -1,6 +1,7 @@
 # xterm theme
 fg='#000000'  # 0
 bg='#FFFFFF'  # 15
+bold_fg='#000000'  # 0
 selection_fg='#FFFFFF'  # 15
 selection_bg='#0000EE'  # 12
 color0='#000000'
