@@ -22,15 +22,31 @@
 #
 def_errfile='.err'
 
-blk='\033[30m'
-red='\033[31m'
-grn='\033[32m'
-yel='\033[33m'
-blu='\033[34m'
-mgt='\033[35m'
-cyn='\033[36m'
-wht='\033[37m'
-clr='\033[0m'
+main() {
+	for err in $(cat "${1:-$def_errfile}")
+	do
+		prompt_to_open "$err" || continue
+		"$EDITOR" "$err"
+	done
+}
+
+nano() {
+	get_file "$err"
+	get_line "$err"
+	get_col "$err"
+	command nano --constantshow +"${line},${col}" "$file"
+}
+
+vi() {
+	get_file "$err"
+	get_line "$err"
+	get_col "$err"
+	command vi +"$line" "$file"
+}
+
+codium() {
+	command codium --goto "$err"
+}
 
 get_file() {
 	file="${1%:*:*}"
@@ -44,6 +60,16 @@ get_line() {
 get_col() {
 	col="${1##*:}"
 }
+
+blk='\033[30m'
+red='\033[31m'
+grn='\033[32m'
+yel='\033[33m'
+blu='\033[34m'
+mgt='\033[35m'
+cyn='\033[36m'
+wht='\033[37m'
+clr='\033[0m'
 
 prompt_to_open() {
 	printf "${mgt}%s${clr}: Open in ${cyn}%s${clr}? ${blu}%s${clr} " \
@@ -64,32 +90,6 @@ prompt_to_open() {
 		*)
 			echo 'Please respond `y`, `n` or `q`' >&2
 		esac
-	done
-}
-
-codium() {
-	command codium --goto "$err"
-}
-
-nano() {
-	get_file "$err"
-	get_line "$err"
-	get_col "$err"
-	command nano --constantshow +"${line},${col}" "$file"
-}
-
-vi() {
-	get_file "$err"
-	get_line "$err"
-	get_col "$err"
-	command vi +"$line" "$file"
-}
-
-main() {
-	for err in $(cat "${1:-$def_errfile}")
-	do
-		prompt_to_open "$err" || continue
-		"$EDITOR" "$err"
 	done
 }
 
