@@ -20,10 +20,14 @@
 #	- vi (can only jump to line, not column)
 #	- codium
 #
-def_errfile='.err'
-
 main() {
-	for err in $(cat "${1:-$def_errfile}")
+	error_file="$1"
+	if test -z "$error_file"
+	then
+		echo "usage: ${0##*/} <error_file>" >&2
+		exit 1
+	fi
+	for err in $(cat "$error_file")
 	do
 		prompt_to_open "$err" || continue
 		"$EDITOR" "$err"
