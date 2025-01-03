@@ -11,4 +11,9 @@
 #
 #	$ node --test | err-parse >.err
 #
-exec sed -En 's,.*\(((/[^/]+)+:([[:digit:]]+):([[:digit:]]+))\).*,\1,p'
+main() {
+	error_regex='(/[^/]+)+:([[:digit:]]+):([[:digit:]]+)'
+	exec sed -En "s,.*\((${error_regex})\).*,\1,p"
+}
+
+main "$@"
