@@ -48,7 +48,7 @@ prompt_to_open() {
 }
 
 codium() {
-	command codium --wait --goto "$err"
+	command codium --goto "$err"
 }
 
 nano() {
