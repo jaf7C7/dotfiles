@@ -21,7 +21,7 @@ done
 
 # Shell variables (local to shell; not exported)
 
-PS1="${INSIDE_EMACS+\[\e[34m\]\W\[\e[33m\]\$(__git_ps1)\[\e[m\] }\\\$ "
+PS1='\$ '
 PROMPT_COMMAND='__prompt_command'
 CDPATH=.:~:~/.config:~/.local:~/Projects
 HISTFILESIZE=1000000
