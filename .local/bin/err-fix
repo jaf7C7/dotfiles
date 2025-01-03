@@ -1,5 +1,25 @@
 #!/bin/sh
-
+#
+# err-fix
+#
+# Loops through errors in an error file, invoking $EDITOR on each one in
+# turn, jumping to the specific line and column where the error was
+# reported.
+#
+# The error file can be made using `err-parse` (see that file for more
+# information).
+#
+# The command-line option to jump to <file>:<line>:<col> is
+# unfortunately not consistent between all editors, so special handling
+# for each editor is required.  To add another editor, just add a
+# function with the same name as the editor, adapted from the existing
+# functions below.
+#
+# Currently supported editors:
+#	- nano
+#	- vi (can only jump to line, not column)
+#	- codium
+#
 def_errfile='.err'
 
 blk='\033[30m'
