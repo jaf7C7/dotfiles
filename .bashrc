@@ -52,7 +52,11 @@ set +a
 shopt -s globstar  # Allow recursive globbing with '**'.
 shopt -s extglob  # Allow extended pattern matching.
 shopt -s histappend  # Append to history file, don't overwrite.
-shopt -s lithist  # Preserve formatting of multiline commands in history.
+# XXX: Instead of this, try using readline's `operate-and-get-next
+# command:  Scroll back in your history using `↑` or `"\C-n"`, then
+# press `"\C-o"` to execute the current history line and load the next
+# one for editing.
+#shopt -s lithist  # Preserve formatting of multiline commands in history.
 shopt -s no_empty_cmd_completion  # Don't try to complete empty lines.
 shopt -s checkjobs  # Warn about background jobs when exiting the shell.
 
