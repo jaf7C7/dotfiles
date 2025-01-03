@@ -17,12 +17,14 @@ main() {
 		regexp="$1"
 	esac
 	shift
-	awk -v address="$address" -v regexp="$regexp" '
+	# `$address` is not passed as a variable to awk as awk doesn't
+	# recognise a single variable as an address range.
+	awk -v regexp="$regexp" '
 	BEGIN {
 		# Make sure `regexp` does not contain an unescaped `"`.
 		gsub("\"", "\\\&", regexp)
 	}
-	address {
+	'"$address"' {
 		gsub(regexp, "\033[1;31m&\033[m")
 	}
 	{
