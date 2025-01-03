@@ -2,7 +2,8 @@
 #
 # err-parse
 #
-# Parse node test output into the form:
+# Extracts filename, line and column information from test output.  It
+# writes a line for each error in the form below:
 #
 #	<path-to-file>:<line>:<col>
 #
