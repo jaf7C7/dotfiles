@@ -2,14 +2,17 @@
 #
 # grepedit
 #
-# Like grep, but opens $EDITOR on each file at the matching line.
+# Like `grep -E`, but opens $EDITOR on each file at the matching line.
 #
 exec awk '
+function usage() {
+	print("Usage: grepedit <regex> [<file>...] ") | "cat >&2"
+	exit 1
+}
+
 BEGIN {
-	cmd = "grep --color=always"
-	for (i = 1; i < ARGC; i++)
-		cmd = cmd " " ARGV[i]
-	while (cmd | getline > 0)
-		print()
+	regex = ARGV[1]
+	if (regex == "")
+		usage()
 }
 ' "$@"
