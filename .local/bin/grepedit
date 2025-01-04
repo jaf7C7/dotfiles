@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+# grepedit
+#
+# Like grep, but opens $EDITOR on each file at the matching line.
+#
+exec awk '
+BEGIN {
+	args = ""
+	for (i = 1; i < ARGC; i++)
+		args = args " " ARGV[i]
+	system("grep --color=always" args)
+}
+' "$@"
