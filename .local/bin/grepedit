@@ -2,22 +2,55 @@
 #
 # grepedit
 #
-# Like `grep -E`, but opens $EDITOR on each file at the matching line.
+# Like `grep -nE`, but opens $EDITOR on each file at the matching line.
 #
 exec awk '
 function usage() {
-	print("Usage: grepedit <regex> [<file>...] ") | "cat >&2"
+	print("Usage: grepedit <regex> <file> [<file>...] ") | "cat >&2"
 	exit 1
 }
 
+function magenta(str) {
+	return "\033[35m" str "\033[m"
+}
+
+function cyan(str) {
+	return "\033[36m" str "\033[m"
+}
+
+function green(str) {
+	return "\033[32m" str "\033[m"
+}
+
+function bold_red(str) {
+	return "\033[1;31m" str "\033[m"
+}
+
+function highlight_match(regex, str) {
+	gsub(regex, bold_red("&"), str)
+	return str
+}
+
 BEGIN {
+	if (ARGC < 2)
+		usage()
 	regex = ARGV[1]
-	if (regex == "")
-		usage()
-	file = ARGV[2]
-	if (file == "")
-		usage()
-	if (system("test -r " file) > 0)
-		usage()
+	ARGV[1] = ""
+	i = 0
+	fname = FILENAME
+	line = NR
+}
+
+{
+	if (FILENAME != filename) {
+		filename = FILENAME
+		line = 0
+	}
+	line++
+}
+
+$0 ~ regex {
+	matches[i++] = fname ":" line
+	print(magenta(filename) cyan(":") green(line) cyan(":") highlight_match(regex, $0))
 }
 ' "$@"
