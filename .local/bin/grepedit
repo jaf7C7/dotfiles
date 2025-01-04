@@ -14,5 +14,10 @@ BEGIN {
 	regex = ARGV[1]
 	if (regex == "")
 		usage()
+	file = ARGV[2]
+	if (file == "")
+		usage()
+	if (system("test -r " file) > 0)
+		usage()
 }
 ' "$@"
