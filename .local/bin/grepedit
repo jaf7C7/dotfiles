@@ -6,9 +6,10 @@
 #
 exec awk '
 BEGIN {
-	args = ""
+	cmd = "grep --color=always"
 	for (i = 1; i < ARGC; i++)
-		args = args " " ARGV[i]
-	system("grep --color=always" args)
+		cmd = cmd " " ARGV[i]
+	while (cmd | getline > 0)
+		print()
 }
 ' "$@"
