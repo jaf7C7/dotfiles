@@ -7,12 +7,20 @@
 # 	<file_path>:<line_number>[:<line_text>]
 #
 main() {
-	set --
+	if test $# -gt 0
+	then
+		exec 0<<-EOF
+		$(grep -n --color=always "$@")
+		EOF
+		set --
+	fi
 	newline=$(printf '\n')
 	while IFS="$newline" read -r location
 	do
+		echo "$location"
 		set -- "$@" "$location"
 	done
+	echo "$# results found"
 	for location
 	do
 		match=${location#*:*:}
