@@ -1,9 +1,11 @@
-# Usage: grepedit TODO *.py
+# Usage: grep -n <regex> <file> [<file>...] | grepedit
 #
-# Opens $EDITOR at each matching line.
+# Parses output of `grep -n` and opens $EDITOR at each matching line.
+#
+# Required input format:
+# 	<file_path>:<line_number>[:<line_text>]
 #
 grepedit() {
-	grep -n "$@" |
 	while IFS=: read -r file line _
 	do
 		"$EDITOR" +"$line" "$file" </dev/tty || break
