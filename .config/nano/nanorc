@@ -1,0 +1,5 @@
+extendsyntax sh formatter "shfmt --write"
+extendsyntax sh linter "shellcheck --format=gcc"
+extendsyntax javascript formatter "prettier --write --use-tabs --single-quote"
+extendsyntax html formatter "prettier --write --use-tabs --single-quote"
+extendsyntax css formatter "prettier --write --use-tabs --single-quote"
