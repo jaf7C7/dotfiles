@@ -2,8 +2,10 @@
 #
 # Wrapper for shfmt to get rid of semicolons.
 #
+shfmt=/usr/bin/shfmt
+
 main() {
-	if ! shfmt=$(command -p shfmt)
+	if ! test -x "$shfmt"
 	then
 		echo 'package shfmt is required for this script'
 		echo 'https://github.com/mvdan/sh?tab=readme-ov-file#shfmt'
