@@ -3,14 +3,15 @@
 edgrep() {
 	regex="$1"
 	nl=$(printf '\n')
-	while IFS="$nl" read -r f
-	do
-		test -n "$file" || set --
-		file="$f"
-		set -- "$@" "$file"
-	done <<-EOF
+	command exec 0<<-EOF
 	$(grep -l "$@")
 	EOF
+	set --
+	while IFS="$nl" read -r file
+	do
+		set -- "$@" "$file"
+	done
+	command exec 0<&1
 	case $EDITOR in
 	nano*)
 		$EDITOR +cr/"$regex" "$@"
