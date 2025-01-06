@@ -14,8 +14,7 @@ main() {
 		EOF
 		set --
 	fi
-	newline=$(printf '\n')
-	while IFS="$newline" read -r location
+	while IFS= read -r location
 	do
 		echo "$location"
 		set -- "$@" "$location"
