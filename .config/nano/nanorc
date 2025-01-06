@@ -1,7 +1,8 @@
-set fill 80
 set afterends
 set cutfromcursor
+set fill 80
 set trimblanks
 bind M-F nextword main
 bind M-B prevword main
+bind M-D chopwordright main
 bind ^Z suspend main
