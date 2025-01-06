@@ -1,6 +1,6 @@
-# Usage: edgrep <regex> <file> [<file>...]
-# Greps for matching lines, and opens ed on each file at the first match.
-edgrep() {
+# Usage: goto <regex> <file> [<file>...]
+# Greps for matching lines, and opens $EDITOR on each file at the first match.
+goto() {
 	regex="$1"
 	nl=$(printf '\n')
 	command exec 0<<-EOF
@@ -19,5 +19,5 @@ edgrep() {
 	*)
 		$EDITOR +/"$regex" "$@"
 	esac
-	unset nl file f regex
+	unset nl file regex
 }
