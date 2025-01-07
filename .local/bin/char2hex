@@ -3,14 +3,32 @@
 # Usage: char2hex <string>
 #
 # Examples:
-#     $ char2hex › 8
-#     0x0000203a
+#     $ char2hex ›
+#     0x203a
 #
 #     $ char2hex hello
 #     0x68 0x65 0x6c 0x6c 0x6f
 #
 main() {
-	printf '0x%08x\n' "'$1"
+	if test $# -eq 0
+	then
+		while IFS= read -r line
+		do
+			# Split the line into tokens.
+			set -- $line
+		done
+	fi
+	for arg
+	do
+		shift
+		while test ${#arg} -gt 0
+		do
+			set -- "$@" "${arg%${arg#?}}"
+			arg=${arg#?}
+		done
+	done
+	set -- $(printf '0x%x\n' "${@/#/\'}")
+	echo "$@"
 }
 
 main "$@"
