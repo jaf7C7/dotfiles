@@ -34,7 +34,7 @@ then
 fi
 EDITOR=nano
 GIT_HOOKS=~/.config/git/hooks
-LESSOPEN='||/usr/bin/lesspipe.sh %s'
+LESSOPEN='||/usr/bin/lesspipe %s'
 NPM_CONFIG_PREFIX=~/.local
 GOPATH=~/.local
 
