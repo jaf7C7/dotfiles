@@ -10,7 +10,7 @@
 #     0x68 0x65 0x6c 0x6c 0x6f
 #
 main() {
-	if test $# -eq 0
+	if [[ $# -eq 0 ]]
 	then
 		while IFS= read -r line
 		do
