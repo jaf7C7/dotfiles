@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 #
-# Usage: char2hex <string>
+# Usage: char2hex <string> [<string>...]
 #
 # Examples:
 #     $ char2hex ›
