@@ -4,10 +4,12 @@
 #
 # Control sequences from xterm:
 # https://www.invisible-island.net/xterm/ctlseqs/ctlseqs.html
-#
 
 # Usage: resize <height> <width>
-#        resize ((s|small)|(m|tall)|(l|large))
+#        resize ((s|small)|(t|tall)|(l|large))
+#
+# Resizes the terminal to the given dimensions.
+#
 resize() {
 	read -r LINES COLUMNS <<-EOF
 	$(stty size)
@@ -16,7 +18,7 @@ resize() {
 	s|small)
 		set -- 24 80
 		;;
-	m|tall)
+	t|tall)
 		set -- 43 80
 		;;
 	l|large)
@@ -28,7 +30,8 @@ resize() {
 
 # Usage: theme <theme>
 #
-# Check the themes directory for available themes.
+# Sets the terminal color scheme.  Check the themes directory for
+# available themes.
 #
 theme() {
 	if ! test -r "$HOME/.bashrc.d/themes/$1.sh"
@@ -41,6 +44,7 @@ theme() {
 
 	__set_terminal_fg "${fg?}"
 	__set_terminal_bg "${bg?}"
+	__set_terminal_bold_fg "${bold_fg?}"
 	__set_terminal_selection_fg "${selection_fg?}"
 	__set_terminal_selection_bg "${selection_bg?}"
 	__set_terminal_palette \
@@ -95,7 +99,7 @@ __set_terminal_bg() {
 	printf '\033]11;%s\007' "${1:?}"
 }
 
-__set_terminal_bold_color() {
+__set_terminal_bold_fg() {
 	printf '\033]5;0;%s\007' "$1"
 }
 
