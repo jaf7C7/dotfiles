@@ -39,10 +39,11 @@ __git_ps1() {
 	then
 		return
 	fi
-	local current=$(git branch --show-current)
-	if test -z "$current"
+	_current=$(git branch --show-current)
+	if test -z "$_current"
 	then
-		current=$(git rev-parse --short HEAD)
+		_current=$(git rev-parse --short HEAD)
 	fi
-	printf ' (%s)' "$current"
+	printf ' (%s)' "$_current"
+	unset _current
 }

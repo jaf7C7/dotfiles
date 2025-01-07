@@ -6,14 +6,8 @@ then
 	return
 fi
 
-# Source system defaults if they exist.
-if [[ -f /etc/bashrc ]]
-then
-	. /etc/bashrc
-fi
-
-# Source user functions.
-for _ in ~/.bashrc.d/*.{sh,bash}
+# Source completion scripts and user functions.
+for _ in /etc/bash_completion{,.d/*} ~/.bashrc.d/*
 do
 	test -f "$_" && . "$_"
 done
