@@ -1,7 +1,7 @@
 # gruvbox theme
-fg='#ebdbb2'  # 12
+fg='#d5c4a1'  # 12
 bg='#282828'  # 0
-bold_fg='#fbf1c7' # 14
+bold_fg='#ebdbb2' # 14
 selection_fg='#ebdbb2'  # 7
 selection_bg='#689d6a'  # 13
 color0='#282828'
@@ -12,7 +12,7 @@ color4='#458588'
 color5='#b16286'
 color6='#689d6a'
 color7='#a89984'
-color8='#928374'
+color8='#7c6f64'
 color9='#fb4934'
 color10='#b8bb26'
 color11='#fabd2f'
