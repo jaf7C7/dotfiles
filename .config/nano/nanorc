@@ -1,3 +1,4 @@
+set autoindent
 set afterends
 set cutfromcursor
 set fill 80
