@@ -1,6 +1,8 @@
-#!/bin/sh
+#!/usr/bin/bash
 #
 # Usage: hex2char <hexcode> [<hexcode>...]
+#
+# Leading `0x` may be omitted.
 #
 # Examples:
 #     $ hex2char 0x68 0x65 0x6c 0x6c 0x6f
@@ -9,13 +11,14 @@
 #     $ hex2char 0x0000203a
 #     ›
 #
+#     $ hex2char 1f600
+#     😀
+#
 main() {
-    python=$(command -v python || command -v python3)
-    OLDIFS="$IFS"
-    IFS=', '
-    "$python" -c "print(''.join(chr(c) for c in [${*}]))"
-    IFS="$OLDIFS"
-    unset OLDIFS
+	set -- "${@/#0x/}"
+	set -- $(printf '\\U%08x\n' "${@/#/0x}")
+	printf '%b' "$@"
+	printf '\n'
 }
 
 main "$@"
