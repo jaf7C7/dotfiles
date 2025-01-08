@@ -3,6 +3,7 @@
 # Exits with non-zero status if any staged file has trailing whitespace.
 #
 # XXX: This script will break if filenames contain whitespace.
+# XXX: This script also does not work properly.
 #
 set -e
 
