@@ -1,9 +1,1 @@
-set autoindent
-set casesensitive
-set regexp
-set fill 80
-set trimblanks
-set nohelp
-bind M-F nextword main
-bind M-B prevword main
-bind ^H chopwordleft main
+readline.nanorc

@@ -1,0 +1,45 @@
+set autoindent
+set casesensitive
+set regexp
+set fill 80
+set trimblanks
+set nohelp
+
+# readline.nanorc
+set afterends
+set cutfromcursor
+set quickblank
+set zap
+bind ^G cancel all
+bind M-D chopwordright main
+bind M-# comment main
+bind M-| "{execute}{flipnewbuffer}{flippipe}" main
+bind M-X execute main
+bind ^Q exit all
+bind M-N findnext main
+bind M-S findnext main
+bind M-P findprevious main
+bind M-R findprevious main
+bind M-< firstline main
+bind ^O insert main
+bind M-> lastline main
+bind M-3 linenumbers main
+unbind M-O main
+unbind M-U main
+unbind M-W main
+bind ^U "{mark}{home}{zap}" main
+bind ^@ mark main
+bind M-F nextword main
+bind M-H nohelp main
+bind M-V pageup main
+bind ^Y paste main
+bind M-B prevword main
+bind ^Z suspend main
+bind M-T tabstospaces main
+bind ^/ undo main
+bind M-Q verbatim main
+bind ^S whereis main
+bind ^R wherewas main
+bind M-W whitespacedisplay main
+bind ^W writeout main
+bind ^X zap main
