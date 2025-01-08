@@ -1,11 +1,7 @@
 set autoindent
-set afterends
-set cutfromcursor
 set fill 80
 set trimblanks
-set smarthome
 set nohelp
 bind M-F nextword main
 bind M-B prevword main
-bind M-D chopwordright main
-bind ^Z suspend main
+bind ^H chopwordleft main
