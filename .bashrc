@@ -58,7 +58,6 @@ shopt -s checkjobs  # Warn about background jobs when exiting the shell.
 # TTY options
 
 stty -ixon # Disable Ctrl-S pausing input.
-stty werase ^H  # Ctrl-backspace deletes previous word
 
 
 # Shell aliases
