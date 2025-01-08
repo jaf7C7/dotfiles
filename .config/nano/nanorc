@@ -1,4 +1,6 @@
 set autoindent
+set casesensitive
+set regexp
 set fill 80
 set trimblanks
 set nohelp
