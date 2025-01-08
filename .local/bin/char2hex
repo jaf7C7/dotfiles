@@ -9,6 +9,8 @@
 #     $ char2hex hello
 #     0x68 0x65 0x6c 0x6c 0x6f
 #
+# FIXME: This doesn't work for control characters.
+#
 main() {
 	if [[ $# -eq 0 ]]
 	then
