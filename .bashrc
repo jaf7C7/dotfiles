@@ -63,6 +63,7 @@ stty -ixon # Disable Ctrl-S pausing input.
 
 # Shell aliases
 
+alias +='wl-paste --primary'
 alias args='i=0 ; for _ ; do printf "%4d %s\\n" $((++i)) "$_" ; done ; unset i'
 alias cfg='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias diff='diff --color'
