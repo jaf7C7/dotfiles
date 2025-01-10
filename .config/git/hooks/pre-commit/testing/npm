@@ -13,4 +13,4 @@ echo 'Testing...'
 #
 npm test
 
-echo 'Pushing...'
+echo 'Committing...'
