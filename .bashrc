@@ -35,9 +35,9 @@ fi
 EDITOR=nano
 VIMINIT='source $VIMRUNTIME/defaults.vim | set t_Co=8 | match Error /^\s\+$/'
 GIT_HOOKS=~/.config/git/hooks
-LESSOPEN='||/usr/bin/lesspipe %s'
 NPM_CONFIG_PREFIX=~/.local
 GOPATH=~/.local
+test -x lessfile && eval "$(lessfile)"
 
 set +a
 
