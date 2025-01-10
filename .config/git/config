@@ -3,6 +3,7 @@
 	email = jossappletonfox@protonmail.com
 [core]
 	sshCommand = ssh -i ~/.ssh/id_ed25519.pub
+	whitespace = blank-at-eol,space-before-tab,indent-with-non-tab,blank-at-eof
 [init]
 	defaultBranch = master
 [merge]
