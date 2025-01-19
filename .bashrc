@@ -12,7 +12,6 @@ do
 	test -f "$_" && . "$_"
 done
 
-
 # Shell variables (local to shell; not exported)
 
 PS1='\$ '
@@ -22,7 +21,6 @@ HISTFILESIZE=1000000
 HISTSIZE=10000
 HISTIGNORE='[fb]g*:%*'
 HISTCONTROL=ignoreboth
-
 
 # Environment variables (global; exported to subprocesses)
 
@@ -41,25 +39,17 @@ test -x lessfile && eval "$(lessfile)"
 
 set +a
 
-
 # Shell options
 
 shopt -s globstar  # Allow recursive globbing with '**'.
 shopt -s extglob  # Allow extended pattern matching.
 shopt -s histappend  # Append to history file, don't overwrite.
-# XXX: Instead of this, try using readline's `operate-and-get-next
-# command:  Scroll back in your history using `↑` or `"\C-n"`, then
-# press `"\C-o"` to execute the current history line and load the next
-# one for editing.
-#shopt -s lithist  # Preserve formatting of multiline commands in history.
 shopt -s no_empty_cmd_completion  # Don't try to complete empty lines.
 shopt -s checkjobs  # Warn about background jobs when exiting the shell.
-
 
 # TTY options
 
 stty -ixon # Disable Ctrl-S pausing input.
-
 
 # Shell aliases
 
