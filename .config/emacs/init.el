@@ -1,7 +1,3 @@
-;; Emacs tutorials:
-;; http://xahlee.info/emacs/index.html
-;; https://www.masteringemacs.org/reading-guide
-
 (setq custom-file (expand-file-name "emacs-custom.el" user-emacs-directory))
 (if (file-exists-p (symbol-value 'custom-file))
     (delete-file custom-file))
@@ -22,17 +18,26 @@
 
 (global-auto-revert-mode 1)
 
+(global-set-key (kbd "M-p") 'whitespace-mode)
+
+;; Disable emacs psychopathic auto-indent.
+(electric-indent-mode -1)
+
+;; Make enter start a new line and autoindent.
+(global-set-key (kbd "RET")
+  '(lambda ()
+    (interactive)
+    (electric-indent-just-newline 1)
+    (indent-relative-first-indent-point)))
+
 ;; Stop backspace converting tabs to spaces.
 (global-set-key (kbd "DEL") 'backward-delete-char)
 
-;; Indentation
-;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Indentation.html
-;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Program-Indent.html
+;; Make tab insert a tab without any bullshit.
+(global-set-key (kbd "TAB") 'tab-to-tab-stop)
 
-;; Shell indentation
-(setq-default sh-indentation 8
-	      sh-indent-for-case-label 0
-	      sh-indent-for-case-alt '+)
+;; Set tab-width for various filetypes:
+(add-hook 'python-mode-hook '(lambda () (setq tab-width 4)))
 
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
