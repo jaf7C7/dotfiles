@@ -37,7 +37,8 @@
 (global-set-key (kbd "TAB") 'tab-to-tab-stop)
 
 ;; Set tab-width for various filetypes:
-(add-hook 'python-mode-hook '(lambda () (setq tab-width 4)))
+(add-hook 'python-mode-hook '(lambda () (setq-local tab-width 4)))
+(add-hook 'js-mode-hook '(lambda () (setq-local tab-width 4)))
 
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
