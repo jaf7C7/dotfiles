@@ -1,8 +1,10 @@
-;; Emacs tutorials: http://xahlee.info/emacs/index.html
+;; Emacs tutorials:
+;; http://xahlee.info/emacs/index.html
+;; https://www.masteringemacs.org/reading-guide
 
 (setq custom-file (expand-file-name "emacs-custom.el" user-emacs-directory))
 (if (file-exists-p (symbol-value 'custom-file))
-    (load custom-file))
+    (delete-file custom-file))
 
 (let ((dir (expand-file-name "backups" user-emacs-directory)))
   (setq backup-directory-alist `(("." . ,dir))))
@@ -15,12 +17,22 @@
 
 (unless (display-graphic-p)
   (menu-bar-mode -1))
+
 (setq inhibit-splash-screen t)
 
 (global-auto-revert-mode 1)
 
 ;; Stop backspace converting tabs to spaces.
 (global-set-key (kbd "DEL") 'backward-delete-char)
+
+;; Indentation
+;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Indentation.html
+;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Program-Indent.html
+
+;; Shell indentation
+(setq-default sh-indentation 8
+	      sh-indent-for-case-label 0
+	      sh-indent-for-case-alt '+)
 
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
