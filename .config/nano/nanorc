@@ -1,6 +1,7 @@
 set afterends
 set autoindent
 set fill 80
+set nohelp
 set tabsize 4
 set trimblanks
 set zap
