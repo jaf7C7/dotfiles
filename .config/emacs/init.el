@@ -19,6 +19,7 @@
 (global-auto-revert-mode 1)
 
 (global-set-key (kbd "M-p") 'whitespace-mode)
+(global-set-key (kbd "M-n") 'display-line-numbers-mode)
 
 ;; Disable emacs psychopathic auto-indent.
 (electric-indent-mode -1)
