@@ -2,10 +2,13 @@
 #
 # `cmt`: Filter which toggles comments.
 
+# TODO: Write this in AWK or Python
+
 : "${CMT:=#}"
 
 parse_opts() {
 	line_open="$CMT "
+	# TODO: Use `while getopts` to allow combining flags.
 	while test $# -gt 0
 	do
 		case $1 in
@@ -23,11 +26,15 @@ parse_opts() {
 		-f)
 			# Format existing comment
 			shift
+			# TODO: Don't use `exec`, it messes with option
+			# parsing.
 			exec fmt -p "${1:-$CMT} "
 			;;
 		-F)
 			# Format and comment
 			shift
+			# TODO: Don't use `exec`, it messes with option
+			# parsing.
 			exec "$0" "$@" | fmt -p "${1:-$CMT} " -w 80
 			;;
 		-h)
@@ -47,13 +54,14 @@ parse_opts() {
 			;;
 		esac
 	done
+	set -- $foo
 }
 
 main() {
 	parse_opts "$@"
 	while IFS= read -r line
 	do
-		if test -z "$first" ] && [ -z "$TODO"
+		if test -z "$first"
 		then
 			if test -z "$line"
 			then
