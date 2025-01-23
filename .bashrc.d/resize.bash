@@ -1,12 +1,12 @@
-# Usage: resize <height> <width>
+# Usage: resize <width> <height>
 #
 # Resizes the terminal to the given dimensions.  Empty arguments will leave
-# values unchanged.
+# values unchanged. E.g.
+#
+#	 $ resize 80
 #
 resize() {
-	read -r LINES COLUMNS <<-EOF
-		$(stty size)
-	EOF
-	printf '\033[8;%d;%dt' "${1:-$LINES}" "${2:-$COLUMNS}"
+	read LINES COLUMNS < <(stty size)
+	printf '\033[8;%d;%dt' "${2:-$LINES}" "${1:-$COLUMNS}"
 }
 

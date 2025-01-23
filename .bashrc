@@ -7,7 +7,7 @@ fi
 
 # Source completion scripts and user functions.
 for _ in /etc/bash_completion{,.d/*} ~/.bashrc.d/*; do
-	test -f "$_" && . "$_"
+	[[ -f $_ ]] && . "$_"
 done
 
 # Shell variables (local to shell; not exported)
@@ -33,11 +33,11 @@ command -v lessfile &>/dev/null && eval "$(lessfile)"
 
 # Shell options
 
-shopt -s globstar                # Allow recursive globbing with '**'.
-shopt -s extglob                 # Allow extended pattern matching.
-shopt -s histappend              # Append to history file, don't overwrite.
-shopt -s no_empty_cmd_completion # Don't try to complete empty lines.
-shopt -s checkjobs               # Warn about background jobs when exiting the shell.
+shopt -s globstar
+shopt -s extglob
+shopt -s histappend
+shopt -s no_empty_cmd_completion
+shopt -s checkjobs
 
 # TTY options
 
@@ -52,5 +52,5 @@ alias diff='diff --color'
 alias grep='grep --color'
 alias ls='ls --color'
 alias open='xdg-open'
-alias sh='PS1=sh\$\  sh'
+alias sh='PS1="sh\$ " sh'
 alias tree='tree -C --gitignore'
