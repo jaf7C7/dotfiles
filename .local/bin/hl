@@ -6,6 +6,8 @@
 # Highlights words in the first form (like `grep --color`).
 # Highlights lines in the second form.
 #
+# TODO: Write this in python !!!
+#
 main() {
 	case "$1" in
 	*,*)
@@ -15,6 +17,7 @@ main() {
 	*)
 		address="/./"
 		regexp="$1"
+		;;
 	esac
 	shift
 	# `$address` is not passed as a variable to awk as awk doesn't

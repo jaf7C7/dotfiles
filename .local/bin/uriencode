@@ -1,15 +1,10 @@
-#!/bin/sh
-#
-# Usage: uriencode <raw_URI>
-#
-# Encodes an entire URI string.
-#
-# Example:
-#   $ uriencode 'https://example.com?param=echo "hello, world!"'
-#   https://example.com?param=echo%20%22hello,%20world!%22
-#
-main() {
-    node -p "encodeURI('$1')"
-}
-
-main "$@"
+#!/usr/bin/node
+/* Usage: uriencode <raw_URI>
+ *
+ * Encodes an entire URI string.
+ *
+ * Example:
+ *   $ uriencode 'https://example.com?param=echo "hello, world!"'
+ *   https://example.com?param=echo%20%22hello,%20world!%22
+ */
+process.stdout.write(`${encodeURI(process.argv[2])}\n`);

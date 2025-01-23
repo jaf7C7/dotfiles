@@ -1,34 +1,34 @@
 #!/bin/sh
 #
-# Wrapper for shfmt to get rid of semicolons.
+# Wrapper for shfmt to make it format to git style:
+# https://github.com/git/git/blob/master/Documentation/CodingGuidelines
 #
 shfmt=/usr/bin/shfmt
 
 main() {
-	if ! test -x "$shfmt"
-	then
+	if ! test -x "$shfmt"; then
 		echo 'package shfmt is required for this script'
 		echo 'https://github.com/mvdan/sh?tab=readme-ov-file#shfmt'
 		echo 'try `apt install shfmt`'
 		exit 1
 	fi >&2
 	case $1 in
-	-w|--write)
+	-w | --write)
 		shift
 		write "$@"
 		;;
-	-d|--diff)
+	-d | --diff)
 		shift
 		diff "$@"
 		;;
 	*)
 		format "$@"
+		;;
 	esac
 }
 
 write() {
-	for arg
-	do
+	for arg; do
 		tmp=$(mktemp)
 		format "$arg" >"$tmp"
 		mv "$tmp" "$arg"
@@ -36,8 +36,7 @@ write() {
 }
 
 diff() {
-	for arg
-	do
+	for arg; do
 		tmp=$(mktemp)
 		format "$arg" >"$tmp"
 		command diff --unified --color "$arg" "$tmp"
@@ -46,7 +45,7 @@ diff() {
 }
 
 format() {
-	"$shfmt" "$1" |	sed -E 's/^([[:space:]]+)(.*); (then|do)/\1\2\n\1\3/'
+	"$shfmt" "$1" | sed -E 's/^([[:space:]]+)(.*); (then|do)/\1\2\n\1\3/'
 }
 
 main "$@"

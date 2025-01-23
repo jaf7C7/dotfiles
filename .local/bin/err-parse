@@ -11,6 +11,9 @@
 #
 #	$ node --test | err-parse >.err
 #
+# TODO: Find or write extensions for your linters to ouput errors in the
+#       correct format.
+#
 main() {
 	error_regex='(/[^/]+)+:([[:digit:]]+):([[:digit:]]+)'
 	exec sed -En "s,.*\((${error_regex})\).*,\1,p"

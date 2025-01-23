@@ -14,22 +14,19 @@
 #     $ hex2char 1f600
 #     😀
 #
+# TODO: Write this in Python !!!
+#
 main() {
-	if [[ $# -eq 0 ]]
-	then
-		while IFS= read -r line
-		do
+	if [[ $# -eq 0 ]]; then
+		while IFS= read -r line; do
 			# Split the line into tokens.
 			set -- $line
 		done
 	fi
-	for arg
-	do
-		if [[ $arg == *[!0-9a-fA-F]* ]]
-		then
+	for arg; do
+		if [[ $arg == *[!0-9a-fA-F]* ]]; then
 			echo "$0: not a valid hexadecimal number: $arg" >&2
-			if [[ ${0##*/} == u ]]
-			then
+			if [[ ${0##*/} == u ]]; then
 				echo 'did you want `U`?' >&2
 			fi
 			exit 1

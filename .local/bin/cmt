@@ -9,8 +9,7 @@
 parse_opts() {
 	line_open="$CMT "
 	# TODO: Use `while getopts` to allow combining flags.
-	while test $# -gt 0
-	do
+	while test $# -gt 0; do
 		case $1 in
 		-c)
 			shift
@@ -43,8 +42,7 @@ parse_opts() {
 			line_close=' -->'
 			;;
 		*)
-			if test -f "$1"
-			then
+			if test -f "$1"; then
 				exec 0<"$1"
 				shift
 				continue
@@ -54,32 +52,25 @@ parse_opts() {
 			;;
 		esac
 	done
-	set -- $foo
 }
 
 main() {
 	parse_opts "$@"
-	while IFS= read -r line
-	do
-		if test -z "$first"
-		then
-			if test -z "$line"
-			then
+	while IFS= read -r line; do
+		if test -z "$first"; then
+			if test -z "$line"; then
 				printf '\n'
 				continue
 			fi
 			first="$line"
 			indent="${line%%[![:space:]]*}"
-			if test "$line" = "${indent}${block_open}"
-			then
+			if test "$line" = "${indent}${block_open}"; then
 				continue
 			fi
-			if test -n "$block_open"
-			then
+			if test -n "$block_open"; then
 				printf '%s\n' "${indent}${block_open}"
 			fi
-			if test -n "$block_close"
-			then
+			if test -n "$block_close"; then
 				trap 'printf "%s\n" "${indent}${block_close}"' 0
 			fi
 		fi

@@ -10,21 +10,20 @@
 #     0x68 0x65 0x6c 0x6c 0x6f
 #
 # FIXME: This doesn't work for control characters.
+#        Could add option to read single bytes? (`read -r -N 1`)
+#
+# TODO: Write this in Python !!!
 #
 main() {
-	if [[ $# -eq 0 ]]
-	then
-		while IFS= read -r line
-		do
+	if [[ $# -eq 0 ]]; then
+		while IFS= read -r line; do
 			# Split the line into tokens.
 			set -- $line
 		done
 	fi
-	for arg
-	do
+	for arg; do
 		shift
-		while test ${#arg} -gt 0
-		do
+		while test ${#arg} -gt 0; do
 			set -- "$@" "${arg%${arg#?}}"
 			arg=${arg#?}
 		done

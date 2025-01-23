@@ -9,45 +9,23 @@
 # The error file can be made using `err-parse` (see that file for more
 # information).
 #
-# The command-line option to jump to <file>:<line>:<col> is
-# unfortunately not consistent between all editors, so special handling
-# for each editor is required.  To add another editor, just add a
-# function with the same name as the editor, adapted from the existing
-# functions below.
-#
-# Currently supported editors:
-#	- nano
-#	- vi (can only jump to line, not column)
-#	- codium
+# TODO: Write this in Python !!!
 #
 main() {
-	if test -r "$1"
-	then
+	if test -r "$1"; then
 		exec <"$1"
 	fi
-	while IFS= read -r err
-	do
+	while IFS= read -r err; do
 		prompt_to_open "$err" || continue
-		"$EDITOR" "$err" </dev/tty
+		edit "$err" </dev/tty
 	done
 }
 
-nano() {
+edit() {
 	get_file "$err"
 	get_line "$err"
 	get_col "$err"
-	command nano --constantshow +"${line},${col}" "$file"
-}
-
-vi() {
-	get_file "$err"
-	get_line "$err"
-	get_col "$err"
-	command vi +"$line" "$file"
-}
-
-codium() {
-	command codium --goto "$err"
+	nano --constantshow +"${line},${col}" "$file"
 }
 
 get_file() {
@@ -76,21 +54,21 @@ clr='\033[0m'
 prompt_to_open() {
 	printf "${mgt}%s${clr}: Open in ${cyn}%s${clr}? ${blu}%s${clr} " \
 		"${1:-$err}" "$EDITOR" 'y]es/[n]o/[q]uit)' >&2
-	while :
-	do
+	while :; do
 		read -r reply </dev/tty
 		case $reply in
-		[Yy]|[Yy]es)
+		[Yy] | [Yy]es)
 			return 0
 			;;
-		[Nn]|[Nn]o)
+		[Nn] | [Nn]o)
 			return 1
 			;;
-		[Qq]|[Qq]uit)
+		[Qq] | [Qq]uit)
 			exit 1
 			;;
 		*)
 			echo 'Please respond `y`, `n` or `q`' >&2
+			;;
 		esac
 	done
 }

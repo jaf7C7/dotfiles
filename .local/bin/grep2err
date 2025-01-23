@@ -5,8 +5,7 @@
 # Converts output of `grep -n` to errfile format: `<file>:<line>`
 #
 main() {
-	while IFS= read -r line
-	do
+	while IFS= read -r line; do
 		echo "${line%:*}"
 	done
 }
