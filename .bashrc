@@ -1,5 +1,3 @@
-# https://github.com/git/git/blob/master/Documentation/CodingGuidelines
-
 # Do nothing if not interactive.
 if [[ $- != *i* ]]; then
 	return
@@ -7,13 +5,15 @@ fi
 
 # Source completion scripts and user functions.
 for _ in /etc/bash_completion{,.d/*} ~/.bashrc.d/*; do
-	[[ -f $_ ]] && . "$_"
+	test -f "$_" && . "$_"
 done
 
 # Shell variables (local to shell; not exported)
 
 PS1='\$ '
-PROMPT_COMMAND='__prompt_command'
+if command -v __prompt_command &>/dev/null; then
+	PROMPT_COMMAND='__prompt_command'
+fi
 CDPATH=.:~:~/.config:~/.local:~/Projects
 HISTFILESIZE=1000000
 HISTSIZE=10000
@@ -33,11 +33,12 @@ command -v lessfile &>/dev/null && eval "$(lessfile)"
 
 # Shell options
 
-shopt -s globstar
+shopt -s checkjobs
+shopt -s extdebug
 shopt -s extglob
+shopt -s globstar
 shopt -s histappend
 shopt -s no_empty_cmd_completion
-shopt -s checkjobs
 
 # TTY options
 
