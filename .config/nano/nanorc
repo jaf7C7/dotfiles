@@ -1,15 +1,3 @@
-#set afterends
-set autoindent
-set fill 80
-set nohelp
-#set smarthome
-set tabsize 4
-set trimblanks
-#set zap
-
-bind M-F nextword main
-bind M-B prevword main
-#bind ^Space mark main
-#unbind M-Space all
-
-extendsyntax python tabgives "    "
+include "~/.config/nano/*.nanorc"
+extendsyntax sh linter "shellcheck --format=gcc"
+extendsyntax sh formatter "shfmt --indent=0 --write"
