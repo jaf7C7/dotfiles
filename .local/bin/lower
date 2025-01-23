@@ -1,0 +1,13 @@
+#!/usr/bin/bash
+#
+# lower: Lowercases input text char-by-char.
+#
+# For use with `nano` for lowercasing the region.
+
+main() {
+	while IFS= read -rN 1; do
+		set -- "$@" "${REPLY,,}"
+	done
+	printf '%s' "$@"
+}
+main "$@"

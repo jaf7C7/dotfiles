@@ -21,9 +21,10 @@ main() {
 			set -- $line
 		done
 	fi
+	local arg
 	for arg; do
 		shift
-		while test ${#arg} -gt 0; do
+		while [[ ${#arg} -gt 0 ]]; do
 			set -- "$@" "${arg%${arg#?}}"
 			arg=${arg#?}
 		done
