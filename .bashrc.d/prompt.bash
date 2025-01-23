@@ -15,7 +15,7 @@ ps1() {
 
 # Usage: PROMPT_COMMAND='__prompt_command'
 #
-# Sets terminal title - e.g. `jfox@fedora:~/.config/bash (master)`.
+# Sets terminal title to current directory, e.g.: `~/.bashrc.d`
 #
 __prompt_command() {
 	printf '\033]0;%s\007' "${PWD//~/\~}$(__git_ps1)"
@@ -31,7 +31,7 @@ __git_ps1() {
 		return
 	fi
 	local current=$(git branch --show-current)
-	if [[ -z "$current" ]]; then
+	if [[ -z $current ]]; then
 		current=$(git rev-parse --short HEAD)
 	fi
 	printf ' (%s)' "$current"

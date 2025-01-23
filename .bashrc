@@ -1,14 +1,12 @@
 # https://github.com/git/git/blob/master/Documentation/CodingGuidelines
 
 # Do nothing if not interactive.
-if [[ $- != *i* ]]
-then
+if [[ $- != *i* ]]; then
 	return
 fi
 
 # Source completion scripts and user functions.
-for _ in /etc/bash_completion{,.d/*} ~/.bashrc.d/*
-do
+for _ in /etc/bash_completion{,.d/*} ~/.bashrc.d/*; do
 	test -f "$_" && . "$_"
 done
 
@@ -24,28 +22,22 @@ HISTCONTROL=ignoreboth
 
 # Environment variables (global; exported to subprocesses)
 
-set -a
-
-if [[ -d ~/.local/bin && $PATH != ~/.local/bin:* ]]
-then
-	PATH=~/.local/bin:$PATH
+if [[ -d ~/.local/bin && $PATH != ~/.local/bin:* ]]; then
+	export PATH=~/.local/bin:$PATH
 fi
-EDITOR=nano
-VIMINIT='source $VIMRUNTIME/defaults.vim | set t_Co=8 | match Error /^\s\+$/'
-GIT_HOOKS=~/.config/git/hooks
-NPM_CONFIG_PREFIX=~/.local
-GOPATH=~/.local
-test -x lessfile && eval "$(lessfile)"
-
-set +a
+export EDITOR=nano
+export GIT_HOOKS=~/.config/git/hooks
+export NPM_CONFIG_PREFIX=~/.local
+export GOPATH=~/.local
+command -v lessfile &>/dev/null && eval "$(lessfile)"
 
 # Shell options
 
-shopt -s globstar  # Allow recursive globbing with '**'.
-shopt -s extglob  # Allow extended pattern matching.
-shopt -s histappend  # Append to history file, don't overwrite.
-shopt -s no_empty_cmd_completion  # Don't try to complete empty lines.
-shopt -s checkjobs  # Warn about background jobs when exiting the shell.
+shopt -s globstar                # Allow recursive globbing with '**'.
+shopt -s extglob                 # Allow extended pattern matching.
+shopt -s histappend              # Append to history file, don't overwrite.
+shopt -s no_empty_cmd_completion # Don't try to complete empty lines.
+shopt -s checkjobs               # Warn about background jobs when exiting the shell.
 
 # TTY options
 
