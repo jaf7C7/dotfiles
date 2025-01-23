@@ -4,11 +4,10 @@ goto() {
 	regex="$1"
 	nl=$(printf '\n')
 	command exec 0<<-EOF
-	$(grep -l "$@")
+		$(grep -l "$@")
 	EOF
 	set --
-	while IFS="$nl" read -r file
-	do
+	while IFS="$nl" read -r file; do
 		set -- "$@" "$file"
 	done
 	command exec 0<&1
@@ -18,6 +17,7 @@ goto() {
 		;;
 	*)
 		$EDITOR +/"$regex" "$@"
+		;;
 	esac
 	unset nl file regex
 }

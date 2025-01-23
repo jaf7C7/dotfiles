@@ -9,6 +9,7 @@ ps1() {
 		;;
 	*)
 		PS1='\$ '
+		;;
 	esac
 }
 
@@ -17,16 +18,7 @@ ps1() {
 # Sets terminal title - e.g. `jfox@fedora:~/.config/bash (master)`.
 #
 __prompt_command() {
-	if test -z "$INSIDE_EMACS"
-	then
-		__PWD="$PWD"
-		case $__PWD in
-		$HOME*)
-			__PWD=\~${__PWD#$HOME}
-		esac
-		printf '\033]0;%s\007' "${USER}@${HOSTNAME}:${__PWD}$(__git_ps1)"
-		unset __PWD
-	fi
+	printf '\033]0;%s\007' "${PWD//~/\~}$(__git_ps1)"
 }
 
 # Usage: PS1='\w$(__git_ps1)\$ '
@@ -35,15 +27,12 @@ __prompt_command() {
 # with `git`.
 #
 __git_ps1() {
-	if ! git status -s >/dev/null 2>&1
-	then
+	if ! git status -s >/dev/null 2>&1; then
 		return
 	fi
-	_current=$(git branch --show-current)
-	if test -z "$_current"
-	then
-		_current=$(git rev-parse --short HEAD)
+	local current=$(git branch --show-current)
+	if [[ -z "$current" ]]; then
+		current=$(git rev-parse --short HEAD)
 	fi
-	printf ' (%s)' "$_current"
-	unset _current
+	printf ' (%s)' "$current"
 }

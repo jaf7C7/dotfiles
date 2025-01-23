@@ -12,7 +12,7 @@
 #
 resize() {
 	read -r LINES COLUMNS <<-EOF
-	$(stty size)
+		$(stty size)
 	EOF
 	__set_terminal_size "${1:-$LINES}" "${2:-$COLUMNS}"
 }
@@ -32,6 +32,7 @@ title() {
 	*)
 		__OLD_PROMPT_COMMAND=$PROMPT_COMMAND
 		PROMPT_COMMAND="__set_terminal_title \"$1\""
+		;;
 	esac
 }
 
