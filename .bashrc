@@ -27,6 +27,7 @@ if [[ -d ~/.local/bin && $PATH != ~/.local/bin:* ]]; then
 fi
 export EDITOR=nano
 export GIT_HOOKS=~/.config/git/hooks
+export PYTHONPATH=~/.local/lib/python3.11/site-packages
 export NPM_CONFIG_PREFIX=~/.local
 export GOPATH=~/.local
 command -v lessfile &>/dev/null && eval "$(lessfile)"
