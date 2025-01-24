@@ -1,3 +1,4 @@
+bind ^H chopwordleft main
 include "~/.config/nano/*.nanorc"
 extendsyntax sh linter "shellcheck --format=gcc"
 extendsyntax sh formatter "shfmt --write"

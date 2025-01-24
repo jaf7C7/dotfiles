@@ -45,6 +45,10 @@ shopt -s no_empty_cmd_completion
 
 stty -ixon
 
+# Readline options
+
+bind '"\C-h": backward-kill-word'
+
 # Shell aliases
 
 alias args='i=0 ; for _ ; do printf "%4d %s\\n" $((++i)) "$_" ; done ; unset i'
