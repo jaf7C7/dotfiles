@@ -19,6 +19,8 @@ export VERSION_CONTROL='never' # Stop GNU indent making backup files
 
 PS1='\$ '
 PROMPT_COMMAND='printf "\e]0;%s\a" "${TERMINAL_TITLE:-${PWD//~/\~}$(__git_ps1)}"'
+HISTCONTROL='ignoreboth'
+HISTIGNORE='[fb]g:%*:ls'
 
 # Shell aliases
 
