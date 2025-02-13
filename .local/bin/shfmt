@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Wrapper for format to make it do what I want.
+# Wrapper for shfmt to make it do what I want.
 #
 
 sed_commands='
@@ -9,7 +9,7 @@ sed_commands='
 	/esac$/s/^.*\n//
 
 	# Remove indent from lines following a line ending in
-	# `&&`, `||` or `|`
+	# `&&`, `||` , `&` or `|`
 	:s
 	/(&&|\|)$/ {
 		n
@@ -27,7 +27,7 @@ git_style='
 '
 
 main() {
-	if ! command -pv format >/dev/null 2>&1; then
+	if ! command -pv shfmt dev/null 2>&1; then
 		complain_shfmt_not_found_and_exit_error
 	fi
 
@@ -83,9 +83,9 @@ EOF
 }
 
 complain_unknown_option_and_exit_error() {
-	echo "${0##*/}: unknown option: '$1'" >&2
+	echo "${0##*/}: unknown option: '$1'"
 	exit 1
-}
+} >&2
 
 complain_shfmt_not_found_and_exit_error() {
 	echo "${0##*/}: package shfmt is required for this script"
