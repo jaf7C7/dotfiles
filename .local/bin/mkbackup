@@ -1,0 +1,56 @@
+#!/bin/sh
+#
+# Usage: mkbackup [--shutdown]
+#
+# Back up `~/Data` dir to the network drive. A password for the network
+# share and the sudo password are required.
+#
+# `--shutdown` shuts the machine down after backing up.
+#
+set -e
+
+network_mountpoint=/mnt/network
+local_mountpoint=/media/jfox/BACKUPS
+
+main() {
+	if local_drive_mounted; then
+		mountpoint="$local_mountpoint"
+	elif network_drive_mounted; then
+		mountpoint="$network_mountpoint"
+	else
+		mount_network_drive
+	fi
+	backup "$mountpoint"
+	if test "$1" = "--shutdown"; then
+		shutdown
+	fi
+}
+
+local_drive_mounted() {
+	test -d "$local_mountpoint"
+}
+
+network_drive_mounted() {
+	findmnt "$network_mountpoint" >/dev/null 2>&1
+}
+
+mount_network_drive() {
+	sudo mount \
+		--types cifs \
+		--options vers=1.0,user=jfox \
+		//192.168.1.1/usb2_sda1 \
+		"$network_mountpoint"
+}
+
+backup() {
+	rsync \
+		--checksum \
+		--recursive \
+		--compress \
+		--verbose \
+		--backup \
+		/home/jfox/Data \
+		"$1"
+}
+
+main "$@"
