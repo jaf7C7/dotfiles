@@ -1,0 +1,9 @@
+# Options
+set fill 72
+set nohelp
+set spotlightcolor lightwhite,lightred
+set trimblanks
+
+# Syntax
+include ~/.config/nano/*.nanorc
+extendsyntax python tabgives "    "

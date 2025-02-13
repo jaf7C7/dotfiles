@@ -1,0 +1,30 @@
+## Syntax highlighting for git commit messages.
+
+syntax commitmsg "COMMIT_EDITMSG$"
+comment "#"
+
+# Comments
+color cyan "^[[:blank:]]*#.*"
+
+# Added lines.
+color green "^\+.*"
+# Context lines.
+color normal "^ .*"
+# Deleted lines.
+color red "^-.*"
+
+# Added lines with whitespace errors:
+# - space-before-tab
+# - trailing-space
+color ,red "^\+( +	+.*|.*[[:space:]]+)$"
+
+# Header lines.
+color bold,normal "^(index|diff)[[:blank:]].*"
+# File names and dates.
+color bold,normal "^---.*"
+color bold,normal "^\+\+\+.*"
+# Line numbers.
+color cyan "^@@.*@@"
+
+# Control codes.
+color orange "[[:cntrl:]]"
