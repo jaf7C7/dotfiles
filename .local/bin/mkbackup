@@ -15,12 +15,17 @@ local_mountpoint=/media/jfox/BACKUPS
 main() {
 	if local_drive_mounted; then
 		mountpoint="$local_mountpoint"
-	elif network_drive_mounted; then
+	elif network_drive_mounted || mount_network_drive; then
 		mountpoint="$network_mountpoint"
-	else
-		mount_network_drive
 	fi
+
+	if test -z "$mountpoint"; then
+		echo "${0##*/}: no mountpoint found" >&2
+		exit 1
+	fi
+
 	backup "$mountpoint"
+
 	if test "$1" = "--shutdown"; then
 		shutdown
 	fi
