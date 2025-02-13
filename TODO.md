@@ -2,7 +2,7 @@
 
 * Rewrite all shell scripts in python
 
-* Make a git alias to install hooks: e.g `$ git add-hook pre-push format/prettier`
+* Make a git alias to install hooks: e.g `$ git hook add pre-push format-prettier`
 
 * Complete Mozilla's [Learn Web Development Course](https://developer.mozilla.org/en-US/docs/Learn/JavaScript) all sections.
   - Continue:
