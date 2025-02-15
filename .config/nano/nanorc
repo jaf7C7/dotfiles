@@ -4,6 +4,9 @@ set nohelp
 set spotlightcolor lightwhite,lightred
 set trimblanks
 
+# Bindings
+bind ^H chopwordleft all
+
 # Syntax
 include ~/.config/nano/*.nanorc
 extendsyntax python tabgives "    "
