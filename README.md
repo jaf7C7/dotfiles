@@ -5,7 +5,8 @@ Manage dotfiles as a bare git repo, no more symlinking!
 To create your dotfiles repo:
 
 ```sh
-git init --bare $HOME/.dotfiles
+mkdir -p ~/.local/opt
+git init --bare ~/.local/opt/dotfiles
 alias cfg='git --git-dir=$HOME/.local/opt/dotfiles --work-tree=$HOME'
 cfg config status.showUntrackedFiles no
 ```
