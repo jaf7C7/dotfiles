@@ -1,61 +1,41 @@
 #!/bin/sh
 #
-# Usage: mkbackup [--shutdown]
+# Usage: mkbackup
 #
-# Back up `~/Data` dir to the network drive. A password for the network
-# share and the sudo password are required.
-#
-# `--shutdown` shuts the machine down after backing up.
+# Copy all non-hidden files in $HOME to the backup drive.
 #
 set -e
 
-network_mountpoint=/mnt/network
-local_mountpoint=/media/jfox/BACKUPS
+mountpoint=/media/jfox/BACKUPS
 
 main() {
-	if local_drive_mounted; then
-		mountpoint="$local_mountpoint"
-	elif network_drive_mounted || mount_network_drive; then
-		mountpoint="$network_mountpoint"
+	if ! test -d "$mountpoint"; then
+		die "could not find BACKUPS at $mountpoint"
 	fi
 
-	if test -z "$mountpoint"; then
-		echo "${0##*/}: no mountpoint found" >&2
-		exit 1
+	if ! command -v rsync >/dev/null 2>&1; then
+		die "\`rsync(1)' is required for this script to run"
 	fi
 
-	backup "$mountpoint"
-
-	if test "$1" = "--shutdown"; then
-		shutdown
-	fi
-}
-
-local_drive_mounted() {
-	test -d "$local_mountpoint"
-}
-
-network_drive_mounted() {
-	findmnt "$network_mountpoint" >/dev/null 2>&1
-}
-
-mount_network_drive() {
-	sudo mount \
-		--types cifs \
-		--options vers=1.0,user=jfox \
-		//192.168.1.1/usb2_sda1 \
-		"$network_mountpoint"
-}
-
-backup() {
 	rsync \
 		--checksum \
 		--recursive \
 		--compress \
 		--verbose \
 		--backup \
-		/home/jfox/Data \
-		"$1"
+		~/bookmarks \
+		~/books \
+		~/documents \
+		~/media \
+		~/notes \
+		~/projects \
+		~/workspace \
+		"$mountpoint"
+}
+
+die() {
+	echo "${0##*/}: $1" >&2
+	exit 1
 }
 
 main "$@"
