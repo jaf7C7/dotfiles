@@ -10,7 +10,6 @@ done
 
 export PATH=~/.local/bin:${PATH#~/.local/bin:}
 export GIT_HOOKS=~/.config/git/hooks
-export PYTHONPATH=~/.local/lib/python3.11/site-packages
 export NPM_CONFIG_PREFIX=~/.local
 export GOPATH=~/.local
 export VERSION_CONTROL='never' # Stop GNU indent making backup files
@@ -20,7 +19,7 @@ export VERSION_CONTROL='never' # Stop GNU indent making backup files
 PS1='\$ '
 PROMPT_COMMAND='printf "\e]0;%s\a" "${TERMINAL_TITLE:-${PWD//~/\~}$(__git_ps1)}"'
 HISTCONTROL='ignoreboth'
-HISTIGNORE='[fb]g:%*:ls'
+HISTIGNORE='[fb]g:%*:ls:jobs:clear'
 
 # Shell aliases
 
@@ -29,3 +28,7 @@ alias diff='diff --color'
 alias grep='grep --color'
 alias ls='ls --color'
 alias tree='tree -C --gitignore'
+
+# Readline bindings
+
+bind '"\C-h": backward-kill-word'
