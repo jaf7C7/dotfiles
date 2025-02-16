@@ -8,7 +8,8 @@ done
 
 # Environment variables (global - exported to subprocesses)
 
-export PATH=~/.local/bin:${PATH#~/.local/bin:}
+: ~/.local/bin:
+export PATH="${_}${PATH#${_}}"
 export GIT_HOOKS=~/.config/git/hooks
 export NPM_CONFIG_PREFIX=~/.local
 export GOPATH=~/.local
