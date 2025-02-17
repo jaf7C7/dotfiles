@@ -1,13 +1,5 @@
 # TODO
 
-* Answer these questions:
-  1. What is the difference between virtualenv and venv?
-  2. How does pip determine where to install packages?
-  3. What is the best way to install python packages for the current
-     user on Debian without interfering with the system python?
-
-* Rewrite all shell scripts in python
-
 * Work through `TDD By Example`
 
 * Work through `Modern C`
