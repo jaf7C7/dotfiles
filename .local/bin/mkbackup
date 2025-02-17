@@ -2,7 +2,7 @@
 #
 # Usage: mkbackup
 #
-# Copy all non-hidden files in $HOME to the backup drive.
+# Copy all non-hidden files and directories in $HOME to the backup drive.
 #
 set -e
 
@@ -23,14 +23,7 @@ main() {
 		--compress \
 		--verbose \
 		--backup \
-		~/bookmarks \
-		~/books \
-		~/documents \
-		~/media \
-		~/notes \
-		~/projects \
-		~/workspace \
-		"$mountpoint"
+		~/* "$mountpoint"
 }
 
 die() {
