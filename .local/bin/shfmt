@@ -102,7 +102,7 @@ diff() {
 			--unified \
 			--color \
 			--label "$arg (original)" "$arg" \
-			--label "${arg} (formatted)" "$tmp"
+			--label "$arg (formatted)" "$tmp"
 		rm "$tmp"
 	done
 }
