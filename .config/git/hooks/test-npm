@@ -1,0 +1,3 @@
+#!/bin/sh
+# Runs `npm run test` and doesn't push if a test fails.
+exec npm test

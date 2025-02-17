@@ -3,7 +3,11 @@
 # Reformats any staged python files with `black`, and prompts to review
 # changes.
 
-set -e
+main() {
+	set -e
+	staged_files=$(git diff --staged --name-only)
+	format $staged_files
+}
 
 format () {
 	for f in "$@"
@@ -18,7 +22,7 @@ format () {
 	if test $# -eq 0
 	then
 		# No python files being committed, so do nothing.
-		exit 0
+		return 0
 	fi
 
 	if ! black --check "$@" >/dev/null 2>&1
@@ -28,10 +32,8 @@ format () {
 		printf '\n%s\n\n\033[1m%s\033[m\n' \
 			"$diff" \
 			'Please review changes and re-stage'
-		exit 1
+		return 1
 	fi
 }
 
-staged_files=$(git diff --staged --name-only)
-
-format $staged_files
+main "$@"

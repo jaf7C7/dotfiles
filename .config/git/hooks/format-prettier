@@ -2,7 +2,20 @@
 #
 # Reformats staged files with `prettier`, and prompts to review changes.
 
-set -e
+main() {
+	set -e
+
+	staged_files=$(git diff --staged --name-only)
+	# Should it be `.` or `$staged_files` here?
+	unformatted_files=$(prettier --list-different . 2>/dev/null) || :
+
+	if test -z "$unformatted_files"
+	then
+		exit 0
+	fi
+
+	format $staged_files
+}
 
 format () {
 	for f in "$@"
@@ -30,12 +43,4 @@ format () {
 	exit 1
 }
 
-staged_files=$(git diff --staged --name-only)
-unformatted_files=$(prettier --list-different . 2>/dev/null) || :
-
-if test -z "$unformatted_files"
-then
-	exit 0
-fi
-
-format $staged_files
+main "$@"
