@@ -32,4 +32,10 @@ alias tree='tree -C --gitignore'
 
 # Readline bindings
 
-bind '"\C-h": backward-kill-word'
+bind '"\C-h": backward-kill-word'  # Ctrl-backspace
+bind '"\e[A": history-search-backward' # ↑
+bind '"\e[B": history-search-forward'  # ↓
+bind '"\C-p": history-search-backward'
+bind '"\C-n": history-search-forward'
+bind '"\e[5~": beginning-of-history'  # PgUp
+bind '"\e[6~": end-of-history'  # PgDn
