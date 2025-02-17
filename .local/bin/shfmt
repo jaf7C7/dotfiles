@@ -27,7 +27,7 @@ git_style='
 '
 
 main() {
-	if ! command -pv shfmt dev/null 2>&1; then
+	if ! test -x /usr/bin/shfmt; then
 		complain_shfmt_not_found_and_exit_error
 	fi
 
@@ -88,9 +88,9 @@ complain_unknown_option_and_exit_error() {
 } >&2
 
 complain_shfmt_not_found_and_exit_error() {
-	echo "${0##*/}: package shfmt is required for this script"
-	echo 'https://github.com/mvdan/sh'
-	echo 'try `apt install shfmt`'
+	echo "${0##*/}: could not find /usr/bin/shfmt"
+	echo "package shfmt is required for this script"
+	echo 'try `apt install shfmt` or visit https://github.com/mvdan/sh'
 	exit 1
 } >&2
 
