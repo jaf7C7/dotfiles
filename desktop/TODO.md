@@ -4,8 +4,6 @@
 
 * Work through `Modern C`
 
-* Make a git alias to install hooks: e.g `$ git hook add pre-push format-prettier`
-
 * Complete Mozilla's [Learn Web Development Course](https://developer.mozilla.org/en-US/docs/Learn/JavaScript) all sections.
   - Continue:
     - <https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/DOM_scripting>
