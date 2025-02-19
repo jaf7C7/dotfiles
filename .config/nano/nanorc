@@ -1,12 +1,13 @@
-# Options
+set afterends
 set fill 72
 set nohelp
 set spotlightcolor lightwhite,lightred
 set trimblanks
 
-# Bindings
 bind ^H chopwordleft all
+bind M-% "{execute}{flippipe}sed -E ""{left}" main
+bind M-! "{execute}{flippipe}$SHELL{enter}" main
+bind M-| "{execute}{flippipe}" main
 
-# Syntax
 include ~/.config/nano/*.nanorc
 extendsyntax python tabgives "    "
