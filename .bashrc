@@ -37,3 +37,4 @@ bind '"\e[1;5A": history-search-backward' # Ctrl-↑
 bind '"\e[1;5B": history-search-forward'  # Ctrl-↓
 bind '"\e[1;5H": beginning-of-history'  # Ctrl-Home
 bind '"\e[1;5F": end-of-history'  # Ctrl-End
+bind '"\e[3;3~": "\e>\er"'  # M-Delete (end-of-history + revert-line)
