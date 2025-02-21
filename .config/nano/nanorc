@@ -2,6 +2,7 @@ set afterends
 set fill 72
 set nohelp
 set spotlightcolor lightwhite,lightred
+set speller "aspell -x -c"
 set trimblanks
 set zap
 
