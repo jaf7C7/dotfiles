@@ -1,0 +1,21 @@
+#!/usr/bin/node
+/*
+ * Usage: inode <module> <import> [<import>...]
+ *
+ * See: https://stackoverflow.com/a/24111512
+ */
+(function(){
+	const repl = require('repl');
+	const module = process.argv[2];
+	const imports = process.argv.slice(3);
+
+	process.stdin.push(
+		`const { ${imports.join(", ")} } = await import("${module}");\n`
+	);
+
+	repl.start({
+		useGlobal:true,
+		ignoreUndefined:true,
+		prompt:'> '
+	});
+})();
