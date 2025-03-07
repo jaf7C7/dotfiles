@@ -14,7 +14,12 @@ export GIT_HOOKS=~/.config/git/hooks
 export NPM_CONFIG_PREFIX=~/.local
 export GOPATH=~/.local
 export VERSION_CONTROL='never' # Stop GNU indent making backup files
-export VIMINIT='so $VIMRUNTIME/defaults.vim | set t_Co=8 | set listchars=tab:»\ ,space:·'
+export VIMINIT='set ai ts=4 lcs=tab:»\ ,space:· t_Co=16'
+export LESS=-Rx4
+
+# Terminal settings
+
+tabs 4
 
 # Shell variables (local to shell - not exported)
 
