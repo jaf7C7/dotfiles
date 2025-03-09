@@ -15,7 +15,6 @@ export NPM_CONFIG_PREFIX=~/.local
 export GOPATH=~/.local
 export VERSION_CONTROL='never' # Stop GNU indent making backup files
 export VIMINIT='set ai ts=4 lcs=tab:»\ ,space:· t_Co=16'
-export LESS=-Rx4
 
 # Terminal settings
 
