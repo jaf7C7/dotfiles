@@ -1,16 +1,7 @@
-set afterends
 set fill 72
 set nohelp
 set spotlightcolor lightwhite,lightred
-set speller "aspell -x -c"
+set tabsize 4
 set trimblanks
-set zap
-
-bind ^H chopwordleft all
-bind M-% "{execute}{flippipe}sed -E ""{left}" main
-bind M-! "{execute}{flippipe}$SHELL{enter}" main
-bind M-| "{execute}{flippipe}" main
-bind M-* "{execute}{flippipe}cmt -C{enter}" main
-
 include ~/.config/nano/*.nanorc
 extendsyntax python tabgives "    "
