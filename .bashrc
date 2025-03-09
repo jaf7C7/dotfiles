@@ -16,10 +16,6 @@ export GOPATH=~/.local
 export VERSION_CONTROL='never' # Stop GNU indent making backup files
 export VIMINIT='set ai ts=4 lcs=tab:»\ ,space:· t_Co=16'
 
-# Terminal settings
-
-tabs 4
-
 # Shell variables (local to shell - not exported)
 
 PS1='${PROMPT_LONG+\[\e[1;32m\]\u@\h\[\e[m\]:\[\e[1;34m\]\w\[\e[m\]}\$ '
@@ -34,12 +30,3 @@ alias diff='diff --color'
 alias grep='grep --color'
 alias ls='ls --color'
 alias tree='tree -C --gitignore'
-
-# Readline bindings
-
-bind '"\C-h": backward-kill-word'  # Ctrl-backspace
-bind '"\e[1;5A": history-search-backward' # Ctrl-↑
-bind '"\e[1;5B": history-search-forward'  # Ctrl-↓
-bind '"\e[1;5H": beginning-of-history'  # Ctrl-Home
-bind '"\e[1;5F": end-of-history'  # Ctrl-End
-bind '"\e[3;3~": "\e>\er"'  # M-Delete (end-of-history + revert-line)
