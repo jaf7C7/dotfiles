@@ -1,0 +1,11 @@
+[user]
+	name = Joss Appleton-Fox
+	email = jossappletonfox@protonmail.com
+[core]
+	sshCommand = ssh -i ~/.ssh/id_ed25519.pub
+	whitespace = blank-at-eol,space-before-tab,blank-at-eof
+[init]
+	defaultBranch = master
+[alias]
+	# Print the graph of diverging branches, starting at the fork point.
+	divergence = "!f() { set -- $1 ${2:-$(git rev-parse HEAD)}; git log --oneline --graph \"$@\" ^$(git merge-base \"$@\")~; }; f"

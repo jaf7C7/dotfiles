@@ -1,0 +1,34 @@
+#!/bin/sh
+#
+# Usage: mkbackup
+#
+# Copy all non-hidden files and directories in $HOME to the backup drive.
+#
+set -e
+
+mountpoint=/media/jfox/BACKUPS
+
+main() {
+	if ! test -d "$mountpoint"; then
+		die "could not find BACKUPS at $mountpoint"
+	fi
+
+	if ! command -v rsync >/dev/null 2>&1; then
+		die "\`rsync(1)' is required for this script to run"
+	fi
+
+	rsync \
+		--checksum \
+		--recursive \
+		--compress \
+		--verbose \
+		--backup \
+		~/* "$mountpoint"
+}
+
+die() {
+	echo "${0##*/}: $1" >&2
+	exit 1
+}
+
+main "$@"

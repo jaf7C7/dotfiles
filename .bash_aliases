@@ -1,0 +1,6 @@
+alias cfg='git --git-dir=$HOME/.local/opt/dotfiles/ --work-tree=$HOME'
+alias diff='diff --color'
+alias grep='grep --color'
+alias ls='ls --color'
+alias nano='nano --nohelp --afterends --zap'
+alias tree='tree -C --gitignore'
