@@ -5,4 +5,4 @@ alias ls='ls --color=auto'
 alias nano='nano --nohelp --afterends --zap --autoindent --tabsize=4'
 alias tree='tree -C --gitignore'
 export EDITOR=vi
-export VIMINIT='set sw=0 ts=4 ai wc=<Tab> lcs=tab:»\ ,space:· hi=100 more hl==:StatusLine,+:WildMenu,x:IncSearch,v:IncSearch'
+export VIMINIT='set sw=0 ts=4 ai wc=<Tab> lcs=tab:»\ ,space:· hi=100 more t_Co=16 hl=+ir,=b,xr,X-'
