@@ -9,3 +9,4 @@
 [alias]
 	# Print the graph of diverging branches, starting at the fork point.
 	divergence = "!f() { set -- $1 ${2:-$(git rev-parse HEAD)}; git log --oneline --graph \"$@\" ^$(git merge-base \"$@\")~; }; f"
+  squash = "!f() { git reset --soft ${1:?}~ && git commit --edit --verbose -m \"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; }; f"
