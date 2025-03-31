@@ -1,8 +1,10 @@
 # TODO
 
-* Work through `TDD By Example`
+* Work through `Beck - TDD By Example`
 
-* Work through `Modern C`
+* Work through `Fowler - Refactoring`
+
+* Work through `Gustedt - Modern C`
 
 * Complete Mozilla's [Learn Web Development Course](https://developer.mozilla.org/en-US/docs/Learn/JavaScript) all sections.
   - Continue:
