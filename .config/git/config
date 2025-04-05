@@ -7,14 +7,14 @@
 [init]
 	defaultBranch = master
 [alias]
-	# Usage: git divergence <commit> [<commit>]
+	# Usage: git divergence <commit-ish> [<commit-ish>]
 	#
 	# Print the graph of diverging branches, starting at the fork point.
 	#
 	divergence = "!f() { set -- $1 ${2:-$(git rev-parse HEAD)}; git log --oneline --graph \"$@\" ^$(git merge-base \"$@\")~; }; f"
-	# Usage: git squash <commit>
+	# Usage: git squash <commit-ish>
 	#
-	# Squash commits since <commit> into a single commit. Old commit
+	# Squash commits since <commit-ish> into a single commit. Old commit
 	# messages are loaded into the new commit message buffer for editing.
 	#
 	squash = "!f() { git reset --soft ${1:?}~ && git commit --edit --verbose -m \"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; }; f"
