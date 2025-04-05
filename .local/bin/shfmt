@@ -3,7 +3,7 @@
 # Wrapper for shfmt to make it do what I want.
 #
 
-sed_commands='
+my_tweaks='
 	# Remove `;;` after last branch of `case` statement
 	/;;$/N
 	/esac$/s/^.*\n//
@@ -28,7 +28,9 @@ git_style='
 
 main() {
 	if ! test -x /usr/bin/shfmt; then
-		complain_shfmt_not_found_and_exit_error
+		err "could not find /usr/bin/shfmt" \
+			"package shfmt is required for this script" \
+			'try `apt install shfmt` or visit https://github.com/mvdan/sh'
 	fi
 
 	while test $# -gt 0; do
@@ -47,13 +49,13 @@ main() {
 			;;
 		--git)
 			shift
-			sed_commands="${sed_commands}${git_style}"
+			my_tweaks="${my_tweaks}${git_style}"
 			;;
 		--help)
-			print_help_and_exit
+			help
 			;;
 		-*)
-			complain_unknown_option_and_exit_error "$1"
+			err "unknown option: '$1'"
 			;;
 		*)
 			break
@@ -63,7 +65,7 @@ main() {
 	"${command:-format}" "$@"
 }
 
-print_help_and_exit() {
+help() {
 	cat >&2 <<EOF
 Usage: ${0##*/} [options] [file] [file...]
 
@@ -82,16 +84,9 @@ EOF
 	exit
 }
 
-complain_unknown_option_and_exit_error() {
-	echo "${0##*/}: unknown option: '$1'"
-	exit 1
-} >&2
-
-complain_shfmt_not_found_and_exit_error() {
-	echo "${0##*/}: could not find /usr/bin/shfmt"
-	echo "package shfmt is required for this script"
-	echo 'try `apt install shfmt` or visit https://github.com/mvdan/sh'
-	exit 1
+err() {
+	printf '%s' "${0##*/}: "
+	printf '%s\n' "$@"
 } >&2
 
 diff() {
@@ -117,7 +112,7 @@ write() {
 }
 
 format() {
-	command -p shfmt "$@" | sed -E "$sed_commands"
+	command -p shfmt "$@" | sed -E "$my_tweaks"
 }
 
 main "$@"
