@@ -13,12 +13,21 @@
 ;; Disable making `backup.files~`.
 (setq make-backup-files nil)
 
+;; Don't indent with tabs by default.
+(setq-default indent-tabs-mode nil)
+
+;; Delete trailing whitespace on save.
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; Set up default indentation for shell script.
 (defun jaf-sh-mode-indent ()
   "My shell mode customisations"
 
   ;; Don't indent labels for case statements.
   (setq-local sh-indent-for-case-label 0)
+
+  ;; Indent with tabs.
+  (setq-local indent-tabs-mode t)
 
   ;; Set indentation to 8 spaces (i.e. 1 tab)
   (setq-local sh-basic-offset 8)
