@@ -4,11 +4,14 @@
 ;; Disable the menu bar.
 (menu-bar-mode 0)
 
+;; Disable the splash screen.
+(setq inhibit-splash-screen t)
+
 ;; Disable syntax highlighting.
 (global-font-lock-mode 0)
 
 ;; Disable making `#auto_save.files#`.
-(auto-save-mode 0)
+(setq auto-save-default nil)
 
 ;; Disable making `backup.files~`.
 (setq make-backup-files nil)
@@ -18,6 +21,9 @@
 
 ;; Delete trailing whitespace on save.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; Automatically revert a buffer if the file on disk changes.
+(global-auto-revert-mode t)
 
 ;; Set up default indentation for shell script.
 (defun jaf-sh-mode-indent ()
