@@ -26,7 +26,7 @@
 (global-auto-revert-mode t)
 
 ;; Set up default indentation for shell script.
-(defun jaf-sh-mode-indent ()
+(defun jaf-sh-mode-hook ()
   "My shell mode customisations"
 
   ;; Don't indent labels for case statements.
@@ -42,4 +42,4 @@
   ;; to spaces and then deleting a space.
   (setq-local backward-delete-char-untabify-method 0))
 
-(add-hook 'sh-mode-hook 'jaf-sh-mode-indent)
+(add-hook 'sh-mode-hook 'jaf-sh-mode-hook)
