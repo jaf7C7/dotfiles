@@ -31,6 +31,7 @@
 
   ;; Don't indent labels for case statements.
   (setq-local sh-indent-for-case-label 0)
+  (setq-local sh-indent-for-case-alt '+)
 
   ;; Indent with tabs.
   (setq-local indent-tabs-mode t)
