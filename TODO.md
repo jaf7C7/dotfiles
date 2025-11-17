@@ -10,6 +10,10 @@
 
 - [ ] PROJECT: Use TDD (also for UI) to make `Conway's Game of Life` for web (front-end only)
 
+- [ ] Make sure projects hosted on github pages are up to date, working and well-presented:
+      - [ ] Calculator
+      - [ ] Game of Life
+
 - [ ] Complete [Introduction to Agile Development and Scrum](https://www.coursera.org/learn/agile-development-and-scrum)
 
 - [ ] Complete [Agile with Jira](https://www.coursera.org/learn/agile-atlassian-jira) and make sure you can use Jira to implement agile in your next project.
