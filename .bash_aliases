@@ -1,5 +1,5 @@
 export EDITOR=vi
-export VIMINIT='set sw=0 ts=4 ai hidden wc=<Tab> lcs=tab:»\ ,space:· hi=100 more t_Co=8 bg=dark hl=vr,+ri,=rb,x-,Xr fp=fmt\ -p'\''\\#\ '\'
+export VIMINIT='set sw=0 ts=8 ai hidden wc=<Tab> lcs=tab:»\ ,space:· hi=100 more t_Co=8 bg=dark hl=vr,+ri,=rb,x-,Xr fp=fmt\ -p'\''\\#\ '\'
 export NANO='-bMr79 -xiT4'
 
 PROMPT_COMMAND='printf "\e]0;${TERMINAL_TITLE:-${USER}@${HOSTNAME}: ${PWD/~/\~}}\a"'
