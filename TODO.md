@@ -1,5 +1,9 @@
 # TODO
 
+- [ ] Work out how to keep certain files (e.g. .bashrc etc.) saved in git history but excluded from main branch (see `.gitattributes` and https://stackoverflow.com/a/4520363)
+
+- [ ] Set up centralised git hooks (a.k.a. roll your own `pre-commit`)
+
 - [ ] PROJECT: Use TDD (also for UI) to make `Conway's Game of Life` for web (front-end only)
 
 - [ ] PROJECT: Make a `wordle` clone.
