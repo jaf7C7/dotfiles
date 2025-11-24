@@ -5,7 +5,11 @@ export VIMINIT='set compatible shiftwidth=0 autoindent hidden autoread wildchar=
 
 PROMPT_COMMAND='printf "\e]0;${TERMINAL_TITLE:-${USER}@${HOSTNAME}: ${PWD/~/\~}}\a"'
 PS1='\$ '
-CDPATH=.:~:~/Projects
+CDPATH=.:~:~/Projects:~/Documents
+
+shopt -s checkjobs
+shopt -s extglob
+shopt -s globstar
 
 alias cfg='git --git-dir=$HOME/.local/opt/dotfiles/ --work-tree=$HOME'
 alias diff='diff --color=auto'
