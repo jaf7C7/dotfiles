@@ -4,6 +4,7 @@
 [core]
 	sshCommand = ssh -i ~/.ssh/id_ed25519.pub
 	whitespace = blank-at-eol,space-before-tab,blank-at-eof
+	defaultBranch = main
 [init]
 	defaultBranch = master
 [alias]
