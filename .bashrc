@@ -1,7 +1,7 @@
 [[ $- == *i* ]] || return
 
 export EDITOR=vi
-export VIMINIT='set compatible shiftwidth=0 autoindent hidden autoread wildchar=<Tab> history=100 formatprg=fmt\ -p\\\\#\\\  more listchars=tab:»\ ,space:· t_Co=8 background=dark highlight=vr,+ri,=rb,x-,Xr'
+export VIMINIT='set compatible expandtab shiftwidth=4 softtabstop=-1 autoindent hidden autoread wildchar=<Tab> history=100 formatprg=fmt\ -p\\\\#\\\  more listchars=tab:»\ ,space:· t_Co=8 background=dark highlight=vr,+ri,=rb,x-,Xr'
 
 PROMPT_COMMAND='printf "\e]0;${TERMINAL_TITLE:-${USER}@${HOSTNAME}: ${PWD/~/\~}}\a"'
 PS1='\$ '
@@ -20,14 +20,14 @@ alias tree='tree -C --gitignore'
 . /etc/bash_completion
 
 project() {
-	bash --rcfile ~/Projects/"$1"/.bashrc
+    bash --rcfile ~/Projects/"$1"/.bashrc
 }
 
 _project() {
-	set -- ~/Projects/${2}*/.bashrc
-	set -- "${@#~/Projects/}"
-	set -- "${@%/.bashrc}"
-	COMPREPLY=("$@")
+    set -- ~/Projects/${2}*/.bashrc
+    set -- "${@#~/Projects/}"
+    set -- "${@%/.bashrc}"
+    COMPREPLY=("$@")
 }
 
 complete -F _project project
