@@ -24,9 +24,18 @@ project() {
 }
 
 _project() {
+    # Glob for matching project directories which contain a `.bashrc` file.
     set -- ~/Projects/${2}*/.bashrc
+
+    # Check at least one real path has been matched and we aren't going
+    # to complete a unexpanded glob.
+    test -f "$1" || set --
+
+    # For each match, remove the beginning and end of the path to leave
+    # just the directory/project name.
     set -- "${@#~/Projects/}"
     set -- "${@%/.bashrc}"
+
     COMPREPLY=("$@")
 }
 
