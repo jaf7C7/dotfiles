@@ -4,6 +4,8 @@
 
 - [ ] Work through `Beck - TDD By Example`
 
+- [ ] Work through [Shell Scripting With Node.js](https://exploringjs.com/nodejs-shell-scripting/index.html)
+
 - [ ] Complete Mozilla's [Learn Web Development Course](https://developer.mozilla.org/en-US/docs/Learn/JavaScript) all sections. ([Continue](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Network_requests)).
 
 - [ ] PROJECT: Use TDD (also for UI) to make `Conway's Game of Life` for web (front-end only)
@@ -17,6 +19,8 @@
 
 - [ ] Complete [Introduction to Agile Development and Scrum](https://www.coursera.org/learn/agile-development-and-scrum)
 
+- [ ] Work Through [Exploring Javascript](https://exploringjs.com/js/book/index.html)
+
 - [ ] Complete [Agile with Jira](https://www.coursera.org/learn/agile-atlassian-jira) and make sure you can use Jira to implement agile in your next project.
 
 - [ ] Complete [DevOps, Cloud, and Agile Foundations Specialization](https://www.coursera.org/specializations/devops-cloud-and-agile-foundations)
@@ -28,8 +32,6 @@
 - [ ] Think of some [projects](https://www.devdungeon.com/content/i-know-how-program-i-dont-know-what-program) and add them to this list.
 
 - [ ] PROJECT: Try to copy the `trainline` app, using [national rail data](https://www.nationalrail.co.uk/developers/). This is a good one!
-
-- [ ] Read [Exploring Javascript](https://exploringjs.com/js/book/index.html)
 
 - [ ] Complete [IBM Full-Stack JavaScript Developer Professional Certificate](https://www.coursera.org/professional-certificates/ibm-full-stack-javascript-developer)
 
