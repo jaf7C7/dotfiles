@@ -1,7 +1,23 @@
 [[ $- == *i* ]] || return
 
 export EDITOR=vi
-export VIMINIT='set compatible expandtab shiftwidth=4 softtabstop=-1 autoindent hidden autoread wildchar=<Tab> history=100 formatprg=fmt\ -p\\\\#\\\  more listchars=tab:»\ ,space:· t_Co=8 background=dark highlight=vr,+ri,=rb,x-,Xr'
+export VIMINIT='
+set compatible
+set expandtab
+set shiftwidth=4
+set softtabstop=-1
+set autoindent
+set hidden
+set autoread
+set wildchar=<Tab>
+set history=100
+set formatprg=fmt\ -p\\\\#\\\ 
+set more
+set listchars=tab:»\ ,space:·
+set t_Co=8
+set background=dark
+set highlight=vr,+ri,=rb,x-,Xr
+'
 
 PROMPT_COMMAND='printf "\e]0;${TERMINAL_TITLE:-${USER}@${HOSTNAME}: ${PWD/~/\~}}\a"'
 PS1='\$ '
