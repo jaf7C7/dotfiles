@@ -1,6 +1,6 @@
 [[ $- == *i* ]] || return
 
-export EDITOR=vi
+export EDITOR='nano --zero --nohelp --syntax=none --autoindent --tabstospaces --tabsize=4 --breaklonglines --fill=79 --trimblanks'
 export VIMINIT='
 set compatible
 set expandtab
@@ -29,6 +29,7 @@ shopt -s globstar
 
 alias cfg='git --git-dir=$HOME/.local/opt/dotfiles/ --work-tree=$HOME'
 alias diff='diff --color=auto'
+alias e='$EDITOR'
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
 alias tree='tree -C --gitignore'
