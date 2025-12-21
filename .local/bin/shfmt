@@ -1,0 +1,118 @@
+#!/bin/sh
+#
+# Wrapper for shfmt to make it do what I want.
+#
+
+my_tweaks='
+	# Remove `;;` after last branch of `case` statement
+	/;;$/N
+	/esac$/s/^.*\n//
+
+	# Remove indent from lines following a line ending in
+	# `&&`, `||` , `&` or `|`
+	:s
+	/(&&|\|)$/ {
+		n
+		s/	//
+		b s
+	}
+'
+
+git_style='
+	# Add a space between function names and `()`
+	s/([[:alnum:]_]+)(\(\))/\1 \2/
+
+	# Move `then` and `do` to newline, removing semicolons
+	s/^([[:space:]]*)(.*); (then|do)/\1\2\n\1\3/
+'
+
+main() {
+	if ! test -x /usr/bin/shfmt; then
+		err "could not find /usr/bin/shfmt" \
+			"package shfmt is required for this script" \
+			'try `apt install shfmt` or visit https://github.com/mvdan/sh'
+	fi
+
+	while test $# -gt 0; do
+		case $1 in
+		--)
+			shift
+			break
+			;;
+		-w | --write)
+			shift
+			command='write'
+			;;
+		-d | --diff)
+			shift
+			command='diff'
+			;;
+		--git)
+			shift
+			my_tweaks="${my_tweaks}${git_style}"
+			;;
+		--help)
+			help
+			;;
+		-*)
+			err "unknown option: '$1'"
+			;;
+		*)
+			break
+		esac
+	done
+
+	"${command:-format}" "$@"
+}
+
+help() {
+	cat >&2 <<EOF
+Usage: ${0##*/} [options] [file] [file...]
+
+OPTIONS
+	-d
+	--diff
+		Write a diff to stdout representing the changes which
+		would be made by a '--write\` command.
+	-w
+	--write
+		Write changes to file.
+	--git
+		Format according the 'git(1)\` coding guidelines for
+		shellscripts.
+EOF
+	exit
+}
+
+err() {
+	printf '%s' "${0##*/}: "
+	printf '%s\n' "$@"
+} >&2
+
+diff() {
+	for arg; do
+		tmp=$(mktemp)
+		format "$arg" >"$tmp"
+		command -p diff \
+			--unified \
+			--color \
+			--label "$arg (original)" "$arg" \
+			--label "$arg (formatted)" "$tmp"
+		rm "$tmp"
+	done
+}
+
+write() {
+	for arg; do
+		tmp=$(mktemp)
+		cp "$arg" "$tmp"
+		format "$tmp" >"$arg"
+		rm "$tmp"
+	done
+}
+
+format() {
+	command -p shfmt "$@" | sed -E "$my_tweaks"
+}
+
+main "$@"
