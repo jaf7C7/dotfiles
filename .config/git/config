@@ -6,7 +6,7 @@
 	defaultBranch = main
 
 [core]
-	sshCommand = ssh -i ~/.ssh/id_ed25519.pub
+	sshCommand = ssh -i ~/.ssh/id_ed25519
 	whitespace = blank-at-eol,space-before-tab,blank-at-eof
 
 [alias]
