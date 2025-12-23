@@ -43,4 +43,6 @@
 
 - [ ] Work through `Gustedt - Modern C`
 
+- [ ] Port `ssam` to linux as a standalone executable
+
 - [ ] PROJECT: Write your own text editor in C.
