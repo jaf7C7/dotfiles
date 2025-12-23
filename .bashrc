@@ -14,6 +14,5 @@ shopt -s globstar
 
 alias cfg='git --git-dir=$HOME/.local/opt/dotfiles/ --work-tree=$HOME'
 alias e='$EDITOR'
-alias grep='grep --color=auto'
-alias ls='ls --color=auto'
 alias tree='tree -I .git --gitignore'
+alias T='gnome-terminal --'
