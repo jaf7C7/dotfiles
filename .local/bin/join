@@ -1,0 +1,19 @@
+#!/usr/bin/sed -f
+#
+# XXX: There is also a GNU coreutil named `join`.
+#
+# Append all subsequent lines to the first line, replacing all newlines and
+# leading whitespace with a single space.
+#
+# $ cat f.txt
+# 	a
+# 	b
+# 	c
+# $ join f.txt
+# 	a b c
+#
+:a
+N
+s/\n[[:space:]]*/ /
+t a
+
