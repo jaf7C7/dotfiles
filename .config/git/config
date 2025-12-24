@@ -22,3 +22,5 @@
 	# messages are loaded into the new commit message buffer for editing.
 	#
 	squash = "!f() { git reset --soft \"${1:?}~\" && git commit --edit --verbose -m \"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; }; f"
+[color]
+	ui = never
