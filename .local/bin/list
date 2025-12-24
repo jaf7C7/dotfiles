@@ -1,0 +1,5 @@
+#!/usr/bin/sed -f
+# TODO: Add other unicode chars for \a, \e, \n, \r etc. etc.
+#       GNU sed supports all those backslash escapes in a regex
+s/ /·/g
+s/	/»       /g
