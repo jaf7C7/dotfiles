@@ -1,0 +1,13 @@
+set autoindent
+set autoread
+set background=dark
+set compatible
+set formatprg=fmt\ -p'\\#\ '
+set hidden
+set highlight=vr,+ri,=rb,x-,Xr
+set history=100
+set listchars=tab:»\ ,space:·
+set more
+set softtabstop=-1
+set t_Co=8
+set wildchar=<Tab>

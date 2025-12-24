@@ -1,0 +1,10 @@
+set afterends
+set autoindent
+set constantshow
+set fill 79
+set minibar
+set nohelp
+set softwrap
+set trimblanks
+set zap
+set zero

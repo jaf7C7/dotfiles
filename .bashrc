@@ -1,8 +1,12 @@
 [[ $- == *i* ]] || return
 
 for _ in {${PREFIX}/usr/share/bash-completion,/etc}/bash_completion; do
-    test -f "$_" && . "$_"
+	test -f "$_" && . "$_"
 done
+
+if test -d ~/.local/bin; then
+	PATH=~/.local/bin:"$PATH"
+fi
 
 PROMPT_COMMAND='printf "\e]0;${TERMINAL_TITLE:-${USER}@${HOSTNAME}: ${PWD/~/\~}}\a"'
 PS1='\$ '
