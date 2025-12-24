@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+# Trim all trailing whitespace from a file.
+#
+if test "$1" = '-i'; then
+	shift
+	inplace='true'
+fi
+
+exec sed ${inplace+-i''} 's/[[:space:]]*$//' "$@"
