@@ -1,0 +1,4 @@
+#!/bin/sh
+export PLAN9=~/.local/opt/plan9
+PATH="${PATH}:${PLAN9}/bin"
+exec "${PLAN9}/bin/ssam" "$@"
