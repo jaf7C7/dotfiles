@@ -1,0 +1,39 @@
+#!/bin/sh
+
+set -eu
+
+mountpoint=/media/jfox/BACKUPS
+files='
+~/Desktop
+~/Documents
+~/Music
+~/Pictures
+~/Videos
+~/.local/bin
+~/.local/howto
+~/.local/iso
+~/.local/lib
+~/.local/opt
+~/.local/src
+~/.local/share/fonts
+'
+
+main() {
+	if ! test -d "$mountpoint"; then
+		die "could not find BACKUPS at $mountpoint"
+	fi
+
+	if ! command -v rsync >/dev/null 2>&1; then
+		die "\`rsync(1)' is required for this script to run"
+	fi
+
+	rsync --backup --checksum --compress --copy-dirlinks --recursive \
+		--verbose $files "$mountpoint"
+}
+
+die() {
+	echo "${0##*/}: $1" >&2
+	exit 1
+}
+
+main "$@"

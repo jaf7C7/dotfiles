@@ -1,0 +1,10 @@
+[user]
+	email = jossappletonfox@protonmail.com
+	name = Joss Appleton-Fox
+[core]
+	whitespace = space-before-tab,trailing-space
+	sshCommand = ssh -i ~/.ssh/id_ed25519
+[init]
+	defaultBranch = main
+[color]
+	ui = false
